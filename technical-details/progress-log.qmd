@@ -23,14 +23,19 @@ Also, describe a log of their project roles.
 **Weekly project contribution log:**
 
 
-**T: 10-15-2024** 
+**11-21-2024** 
 
-* [x] Coordinate with team member to set up weekly meeting time 
+* [x] Coordinate with team member to set up first project meeting
 
 
-**M: 10-14-2024** 
+**11-25-2024** 
 
-* [x] Do a first draft of the project landing page 
+* [x] Begin working on data collection and researching use of Selenium 
+
+
+**12-01-2024** 
+
+* [x] Upload completed code to the project website and push to github 
 
 
 ## Member-2
@@ -42,6 +47,6 @@ Also, describe a log of their project roles.
 **Weekly project contribution log:**
 
 
-**W: 10-16-2024** 
+**11-21-2024** 
 
 * [x] Attend first group meeting

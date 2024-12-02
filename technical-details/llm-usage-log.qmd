@@ -18,4 +18,4 @@ LLM tools were used in the following way for the tasks below
 
 ## Code: 
 
-* Code commenting and explanatory documentation 
+* Used ChatGPT to help with error that was faced when accessing the ChromeDriver for Selenium. It suggested that we add the 4 lines of code adjusting chrome options.

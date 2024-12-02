@@ -338,59 +338,145 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="example">Example</h2>
 <p>In the following code, we first utilized the requests library to retrieve the HTML content from the Wikipedia page. Afterward, we employed BeautifulSoup to parse the HTML and locate the specific table of interest by using the find function. Once the table was identified, we extracted the relevant data by iterating through its rows, gathering country names and their respective populations. Finally, we used Pandas to store the collected data in a DataFrame, allowing for easy analysis and visualization. The data could also be optionally saved as a CSV file for further use.</p>
 <div id="cell-6" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Send a request to Wikipedia page</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population'</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Parse the page content using BeautifulSoup</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(response.content, <span class="st">'html.parser'</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Find the table containing the data (usually the first table for such lists)</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> soup.find(<span class="st">'table'</span>, {<span class="st">'class'</span>: <span class="st">'wikitable'</span>})</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Extract data from the table rows</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> []</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>populations <span class="op">=</span> []</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over the table rows</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> table.find_all(<span class="st">'tr'</span>)[<span class="dv">1</span>:]:  <span class="co"># Skip the header row</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    cells <span class="op">=</span> row.find_all(<span class="st">'td'</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(cells) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        country <span class="op">=</span> cells[<span class="dv">1</span>].text.strip()  <span class="co"># The country name is in the second column</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        population <span class="op">=</span> cells[<span class="dv">2</span>].text.strip()  <span class="co"># The population is in the third column</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        countries.append(country)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        populations.append(population)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Create a DataFrame to store the results</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Country'</span>: countries,</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Population'</span>: populations</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the scraped data</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Optionally save to CSV</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>data.to_csv(<span class="st">'../../data/raw-data/countries_population.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IMPORTS</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.chrome.options <span class="im">import</span> Options</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CONFIGURE DRIVER</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Initiate options object and configure chrome settings to run headless (without GUI)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ChatGPT helped address error with Chrome crashing upon startup</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>chrome_options <span class="op">=</span> Options()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>chrome_options.add_argument(<span class="st">"--headless"</span>)  <span class="co"># Run in headless mode</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>chrome_options.add_argument(<span class="st">"--no-sandbox"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>chrome_options.add_argument(<span class="st">"--disable-dev-shm-usage"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define path to driver</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>DRIVER_PATH <span class="op">=</span> <span class="st">'/home/gentry/.cache/selenium/chromedriver/linux64/131.0.6778.85/chromedriver'</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the path to the chromedriver to set a service object</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>cService <span class="op">=</span> webdriver.ChromeService(executable_path<span class="op">=</span>DRIVER_PATH)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Pass service object to make a driver object</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> webdriver.Chrome(service<span class="op">=</span>cService, options<span class="op">=</span>chrome_options)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Use driver to access the bike path website</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>driver.get(<span class="st">'http://bikewashington.org/routes/all.htm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Xpath's (found using inspect in website) to locate instances of data we want</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for instances of bike path names </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">'//td/a'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for instances of bike path descriptions </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>descriptions <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">'//td[@colspan="3"]'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for instances of bike path ratings </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">"//tr[td/b[text()='Traffic:']]"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Grab text from searched objects and turn them into lists</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>bike_path_names <span class="op">=</span> [name.text <span class="cf">for</span> name <span class="kw">in</span> names]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>bike_path_descriptions <span class="op">=</span> [description.text <span class="cf">for</span> description <span class="kw">in</span> descriptions]</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>bike_path_ratings <span class="op">=</span> [rating.text <span class="cf">for</span> rating <span class="kw">in</span> ratings]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Since they are all ordered the same, we can combine into a single data frame. </span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'name'</span>:bike_path_names, <span class="st">'description'</span>:bike_path_descriptions, <span class="st">'ratings'</span>: bike_path_ratings})</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract ratings into their own columns leveraging regex pattern in strings</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'terrain'</span>,<span class="st">'traffic'</span>,<span class="st">'scenery'</span>]] <span class="op">=</span> df[<span class="st">'ratings'</span>].<span class="bu">str</span>.extract(<span class="vs">r'Terrain: (\d+) Traffic: (\d+) Scenery: (\d+)'</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop ratings column </span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'ratings'</span>])</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the scraped data</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># save to CSV</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'../../data/raw-data/dc_bike_routes.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                 Country     Population
-0                                  World  8,119,000,000
-1                                  China  1,409,670,000
-2                          1,404,910,000          17.3%
-3                          United States    335,893,238
-4                              Indonesia    281,603,800
-..                                   ...            ...
-235                   Niue (New Zealand)          1,681
-236                Tokelau (New Zealand)          1,647
-237                         Vatican City            764
-238  Cocos (Keeling) Islands (Australia)            593
-239                Pitcairn Islands (UK)             35
+<pre><code>                             name  \
+0                    Potomac Tour   
+1                       BWI Trail   
+2                  Airpark Cruise   
+3              Seneca Valley Tour   
+4                   For The Boyds   
+5                  Key Chain Tour   
+6          The Arlington Triangle   
+7              Mount Vernon Trail   
+8                 Gettysburg Tour   
+9                  The Zoo Review   
+10      Antietam Battlefield Tour   
+11                Thurmont Ramble   
+12                        Wye Not   
+13              Lost Blossom Tour   
+14  Patuxent Wildlife Center Loop   
+15        Western Montgomery Loop   
+16                Peach Tree Loop   
+17                    Oxford Loop   
+18            A Ride to the Falls   
+19           Montgomery Lake Tour   
+20        Shenandoah River Ramble   
+21      The Great Washington Loop   
+22               Chesapeake Bound   
+23         Waterford Double-Cross   
+24            South Mountain Loop   
+25       Mason-Dixon Double-Cross   
+26               Greenbelt to Bay   
+27    Northern Central Rail Trail   
+28                Little Fletcher   
+29                W&amp;OD Rail Trail   
+30            North to Gettysburg   
+31        Washington to Baltimore   
+32       Sugarloaf Challenge Loop   
+33              The Fletcher Loop   
+34       The Blue Ridge Challenge   
+35                 DC to Thurmont   
+36                     Super Nova   
+37                 The WODCO Loop   
+38            Tour Between Cities   
+39  Tkaczyk's All Terrain Century   
+40                  Skyline Drive   
+41                   Bay-to-Beach   
+42                    C&amp;O Towpath   
 
-[240 rows x 2 columns]</code></pre>
+                                          description terrain traffic scenery  
+0   D.C. - A nice short tour of the downtown water...       1       2       2  
+1        Glen Burnie - Paved trail around BWI Airport       2       1       3  
+2   Gaithersburg - Short workout route around Mont...       3       3       3  
+3   Germantown - A short workout route around Grea...       3       3       2  
+4   Germantown - A short workout route through Boy...       2       3       2  
+5   Arlington - Nice short ride out the C&amp;O Towpat...       3       3       2  
+6   Arlington - Park your car at Roosevelt Island ...       2       2       3  
+7   Washington/Mount Vernon - Wonderful bike trail...       2       1       1  
+8   Gettysburg, PA - A great ride around the famou...       3       3       1  
+9   Georgetown/Bethesda - An excellent weekend rid...       1       2       2  
+10  Sharpsburg, MD - A nice ride through the battl...       3       2       1  
+11  Thurmont, MD - Very nice tour of the valley at...       3       2       1  
+12  Wye Mills, MD (Eastern Shore) - An easy ride t...       1       2       2  
+13  Northwest DC - Tour some lesser known Cherry B...       2       3       2  
+14  Greenbelt MD - Popular Ride from Greenbelt Met...       2       3       2  
+15  Poolesville, MD - Nice easy tour of Western Mo...       2       2       2  
+16  Poolesville, MD - Open road tour of various or...       3       2       1  
+17  Easton, MD - Excellent loop ride on the Easter...       1       2       1  
+18  Georgetown - A very popular ride out to Great ...       1       1       2  
+19  Gaithersburg - This quick jaunt around Gaither...       3       3       3  
+20  Berryville - A beautiful ride way, way out in ...       3       1       1  
+21  D.C. - A great tour of Washington's varied nei...       2       3       3  
+22  Eastern Suburbs - A fairly direct route to the...       3       4       3  
+23  Whites Ferry, MD - Crosses the Potomac River t...       3       3       1  
+24  Brunswick, MD - A great ride around historic S...       4       2       1  
+25  Hagerstown, MD - A beautiful ride through the ...       3       3       1  
+26  Eastern Suburbs - A more "bike friendlier" rou...       3       3       3  
+27  Ashland/York - Excellent rail trail between Ba...       1       1       1  
+28  Georgetown/Rockville - A shorter version of th...       3       4       2  
+29  Washington/Purcellville - A great rail trail t...       1       2       1  
+30  Thurmont, MD - Great loop out to Gettysburg Ba...       3       2       1  
+31  North Eastern Suburbs - The often requested ro...       3       3       3  
+32  Poolesville, MD - Great tour of area around Su...       4       2       1  
+33  Georgetown/Gaithersburg - A great route from G...       2       3       2  
+34  Marshall, VA - They don't come much tougher th...       5       3       1  
+35  Northern Suburbs - A "no nonsense" route to th...       3       4       2  
+36  Northern Virginia - This challenging route sho...       3       3       3  
+37  Western Suburbs - This monster trail is real e...       1       3       2  
+38  Northeast Suburbs - A great route between Gree...       3       4       2  
+39  Western Suburbs - An even longer version of th...       2       3       2  
+40  Front Royal, VA - Very tough ride through Shen...       5       4       1  
+41  Kent Island, MD - Bike to the beach and leave ...       2       3       1  
+42  Washington/Cumberland - One of the best off-ro...       1       1       1  </code></pre>
 </div>
 </div>
 </section>
