@@ -1,19 +1,31 @@
 git pull
+
 # DEFINE PATH
 dir1=${PWD}
 
 # START FRESH
-rm -rf _site;
+rm -rf _site
+echo "Removed old build"
 
 # BUILD WEBSITE
 quarto render
 
-# CLEAN UP 
-cd _site; for i in $(find  ./ -name .DS_Store); do rm $i; done; cd "$dir1"
-
 # SET CORRECT PERMISSIONS FOR ALL FILES 
 for i in $(find _site -type f); do chmod 644 $i; done
 for i in $(find _site -type d); do chmod 755 $i; done
+echo "Set file permissions"
+
+# Prompt user to push to the website
+printf 'Would you like to push the website to the server? (y/n):'
+read answer
+if [ "$answer" != "${answer#[Yy]}" ]; then 
+    # push to the website using rsync
+    rsync -alvr --delete _site/* gjlgeorg@gtown3.reclaimhosting.com:/home/gjlgeorg/public_html/portfolio_5000
+    
+else
+    echo NOT pushing the website to the server!
+fi
+
 
 # GITHUB SYNC
 printf 'Would you like to push to GITHUB? (y/n)? '
@@ -31,9 +43,6 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
     git add ./; 
     # MAIN BRANCH
     git commit -m "$message"; 
-
-    # PUSH NON-MAIN BRANCH
-    #git push  -u origin w05-draft
 
     # PUSH MAIN BRANCH
     git push

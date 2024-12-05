@@ -1,38 +1,33 @@
 ---
-title: "Landing page"
+title: " Analyzing Bike Routes in Washington, DC: Clustering and Classification for Urban Insights"
 ---
-
-**Audio instructions:**
-
-If you want, you can listen to the instructions:
-
-<audio controls><source src="audio/landing-page-instructions.mp3" type="audio/mpeg"></audio>
-
-<sup> **Source**: Text-to-speech conversion done with Amazon Polly on AWS </sup>
-
-`Note`: These audio instructions should not be included in your final submission or repository, once you are done wiht them, please delete the files and remove them from the website. 
-
-## Getting Started
-
-To begin the project, first read the instruction document ([click here](instructions/overview.qmd)). This document is also accessible from the navigation bar.
-
-Once you’ve completed that, you can proceed with the instructions found throughout the website.
-
-## What to Include on This Page
-
-This is the landing page for your project. Content from this page can be reused in sections of your final report.
-
-### Create an "About You" Page  
-
-- Develop your "About You" page. You can reuse content from previous assignments.
-- You can include the content here or on a separate page.
-   - It’s recommended to create one "About You" page for all DSAN projects, with links to your various class projects.
-
 ### Create a Landing Page for Your Project  
 
 - Summarize your topic, its significance, related work, and the questions you plan to explore.
 - Draft an introduction with at least **5 research questions**. These may evolve as your project progresses, since data science is an iterative process.
 - Include your data science questions on this page.
+
+
+
+
+## Summary
+Washington DC is a leader in urban cycling infrastructure, with an expansive network of bike lanes and trails supporting eco-friendly commuting. However, DC's trails are not only for commuting within the city but also numerous options for purely recreational use. In the confides of a large city these options for recreation can be extremly popular, so a deeper understanding of bike route utilization, accessibility, and safety are imperative. This project focuses on scraping, analyzing, and visualizing data about DC’s bike routes to identify patterns and trends through clustering and classification. The insights gained can guide city planners in optimizing infrastructure, improving safety, and promoting cycling as a sustainable mode of transportation.
+
+## Significance
+Cycling is integral to sustainable urban mobility, offering benefits such as reduced carbon emissions, improved public health, and decreased traffic congestion. By analyzing cycling routes, we can uncover patterns of use, gaps in infrastructure, and safety concerns, enabling data-driven decision-making for a greener and safer DC.
+
+## Related Work
+- Urban Cycling Studies: Research linking bike infrastructure to cycling adoption and safety.
+- Geospatial Data Science: Use of clustering algorithms for route categorization and optimization in other urban contexts.
+- Machine Learning in Mobility: Classification techniques applied to transportation data to understand user behavior and needs.
+- Local Reports: Existing reports on cycling trends in Washington, DC, such as those from DDOT and Capital Bikeshare.
+
+## Research Questions
+1. How can clustering techniques help categorize bike routes based on usage, distance, location, or ratings?
+2. Which factors are the most important in clustering of bike routes?
+3. Is it possible to classify bike routes with existing data?
+4. What insights can be drawn about the existing routes in developing more routes as the city grows?
+5. What data would make this clustering and classification more robust? 
 
 ### Literature review
 
@@ -81,3 +76,22 @@ By following these steps, you can 10X the efficiency of your literature review p
 - **Use Cases/Examples**: A brief teaser of compelling stories or case studies you’ve worked on.
 - **Call to Action**: Invite visitors to explore the content, follow along, or contact you for more information.
 - **Visual/Infographic**: Add a simple graphic or visual element to make the page more dynamic.
+
+
+## About Us
+:::: {.columns}
+
+::: {.column width="50%"}
+### Gentry Lamb
+Gentry Lamb is a Graduate Student at Georgetown University pursuing a Masters in Data Science and Analytics. He received a Bachelors in Operations Research in 2024 at the United States Air Force Academy in Colorado Springs, CO. He was also commissioned into the U.S. Air Force as a 2nd Lt and will be attending Pilot Training at Vance AFB in Oklahoma after graduating from Georgetown. After his time in the Air Force he is looking forward to working as a data scientist or operations analyst.
+**Education:**
+- 2024: United States Air Force Academy (USAFA) - B.S. Operations Research
+- 2025: Georgetown University - M.S. Data Science and Analytics (Current)
+:::
+
+::: {.column width="50%"}
+### Chase Clemence
+
+:::
+
+::::

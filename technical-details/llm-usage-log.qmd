@@ -8,7 +8,7 @@ LLM tools were used in the following way for the tasks below
 
 ## Brainstorming
 
-* To create the initial idea, LLM tools were used to brainstorm ideas and provide feedback and refine the project plan.
+* Once we decided on a topic, ChatGPT was used to help with refining our research questions and narrow in on topics for related work.
 
 ## Writing: 
 

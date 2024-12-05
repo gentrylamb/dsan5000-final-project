@@ -186,7 +186,7 @@
     "href": "technical-details/llm-usage-log.html#brainstorming",
     "title": "LLM usage log",
     "section": "Brainstorming",
-    "text": "Brainstorming\n\nTo create the initial idea, LLM tools were used to brainstorm ideas and provide feedback and refine the project plan."
+    "text": "Brainstorming\n\nOnce we decided on a topic, ChatGPT was used to help with refining our research questions and narrow in on topics for related work."
   },
   {
     "objectID": "technical-details/llm-usage-log.html#writing",
@@ -856,30 +856,51 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Landing page",
+    "title": "Analyzing Bike Routes in Washington, DC: Clustering and Classification for Urban Insights",
     "section": "",
-    "text": "Audio instructions:\nIf you want, you can listen to the instructions:\nSource: Text-to-speech conversion done with Amazon Polly on AWS\nNote: These audio instructions should not be included in your final submission or repository, once you are done wiht them, please delete the files and remove them from the website."
+    "text": "Summarize your topic, its significance, related work, and the questions you plan to explore.\nDraft an introduction with at least 5 research questions. These may evolve as your project progresses, since data science is an iterative process.\nInclude your data science questions on this page."
   },
   {
-    "objectID": "index.html#getting-started",
-    "href": "index.html#getting-started",
-    "title": "Landing page",
-    "section": "Getting Started",
-    "text": "Getting Started\nTo begin the project, first read the instruction document (click here). This document is also accessible from the navigation bar.\nOnce you’ve completed that, you can proceed with the instructions found throughout the website."
+    "objectID": "index.html#summary",
+    "href": "index.html#summary",
+    "title": "Analyzing Bike Routes in Washington, DC: Clustering and Classification for Urban Insights",
+    "section": "Summary",
+    "text": "Summary\nWashington DC is a leader in urban cycling infrastructure, with an expansive network of bike lanes and trails supporting eco-friendly commuting. However, DC’s trails are not only for commuting within the city but also numerous options for purely recreational use. In the confides of a large city these options for recreation can be extremly popular, so a deeper understanding of bike route utilization, accessibility, and safety are imperative. This project focuses on scraping, analyzing, and visualizing data about DC’s bike routes to identify patterns and trends through clustering and classification. The insights gained can guide city planners in optimizing infrastructure, improving safety, and promoting cycling as a sustainable mode of transportation."
   },
   {
-    "objectID": "index.html#what-to-include-on-this-page",
-    "href": "index.html#what-to-include-on-this-page",
-    "title": "Landing page",
-    "section": "What to Include on This Page",
-    "text": "What to Include on This Page\nThis is the landing page for your project. Content from this page can be reused in sections of your final report.\n\nCreate an “About You” Page\n\nDevelop your “About You” page. You can reuse content from previous assignments.\nYou can include the content here or on a separate page.\n\nIt’s recommended to create one “About You” page for all DSAN projects, with links to your various class projects.\n\n\n\n\nCreate a Landing Page for Your Project\n\nSummarize your topic, its significance, related work, and the questions you plan to explore.\nDraft an introduction with at least 5 research questions. These may evolve as your project progresses, since data science is an iterative process.\nInclude your data science questions on this page.\n\n\n\nLiterature review\nOnce you decide on a topic, you should ALWAYS START WITH A LITERATURE REVIEW, this is particularly important for academic projects.\nThe literature review is the most important part of most projects.\nIt allows you to;\n\n\nDetermine what is already known and what has already been tried, so that you don't re-invent the wheel.\n\n\nIt makes you more of a subject matter expert, allowing you to ask the right questions, target impactful projects, and communicate with other professionals.\n\n\n\nDoing a project that you think will change the world, only to find at the end that a very similar version of your project was already done in the 1980’s, isn’t a great use of time.\n\nIn this section, please do a literature review and cite at least 3 academic publications per group member, and include internal academic citations.\nOptional: Consider using LLM tools to 10X your literature review, e.g. instead of focusing on 3 papers, aim for 30 or more\nBy following these steps, you can 10X the efficiency of your literature review process, gaining more insights while minimizing the time spent on manual reading.\n\nExpand Your Literature Search\nAim to gather a larger pool of papers. Use academic databases (Google Scholar, arXiv, etc.) to find relevant studies and ensure a broad scope.\nSkim the Abstracts\nRead the abstracts of each paper to quickly understand their focus and identify those most relevant to your topic. Prioritize these papers for deeper analysis.\nUse LLM Tools for Summarization\nUpload the selected papers to an LLM tool capable of text summarization. Have it condense the main points of each paper into a concise, manageable summary (e.g., condense hundreds of pages into a 10-page summary). Carefully review this summary to absorb the key insights.\nLeverage Interactive LLM Tools\nUse tools like NotebookLM or other AI-based text digesters to ask specific, targeted questions about the papers:\n\nExample questions:\n\n“In the papers uploaded, did any of them explore XYZ?”\n“Which paper is most closely related to the following project idea: [explain idea]?” These tools will help you quickly extract relevant information without re-reading entire papers."
+    "objectID": "index.html#significance",
+    "href": "index.html#significance",
+    "title": "Analyzing Bike Routes in Washington, DC: Clustering and Classification for Urban Insights",
+    "section": "Significance",
+    "text": "Significance\nCycling is integral to sustainable urban mobility, offering benefits such as reduced carbon emissions, improved public health, and decreased traffic congestion. By analyzing cycling routes, we can uncover patterns of use, gaps in infrastructure, and safety concerns, enabling data-driven decision-making for a greener and safer DC."
+  },
+  {
+    "objectID": "index.html#related-work",
+    "href": "index.html#related-work",
+    "title": "Analyzing Bike Routes in Washington, DC: Clustering and Classification for Urban Insights",
+    "section": "Related Work",
+    "text": "Related Work\n\nUrban Cycling Studies: Research linking bike infrastructure to cycling adoption and safety.\nGeospatial Data Science: Use of clustering algorithms for route categorization and optimization in other urban contexts.\nMachine Learning in Mobility: Classification techniques applied to transportation data to understand user behavior and needs.\nLocal Reports: Existing reports on cycling trends in Washington, DC, such as those from DDOT and Capital Bikeshare."
+  },
+  {
+    "objectID": "index.html#research-questions",
+    "href": "index.html#research-questions",
+    "title": "Analyzing Bike Routes in Washington, DC: Clustering and Classification for Urban Insights",
+    "section": "Research Questions",
+    "text": "Research Questions\n\nHow can clustering techniques help categorize bike routes based on usage, distance, location, or ratings?\nWhich factors are the most important in clustering of bike routes?\nIs it possible to classify bike routes with existing data?\nWhat insights can be drawn about the existing routes in developing more routes as the city grows?\nWhat data would make this clustering and classification more robust?\n\n\nLiterature review\nOnce you decide on a topic, you should ALWAYS START WITH A LITERATURE REVIEW, this is particularly important for academic projects.\nThe literature review is the most important part of most projects.\nIt allows you to;\n\n\nDetermine what is already known and what has already been tried, so that you don't re-invent the wheel.\n\n\nIt makes you more of a subject matter expert, allowing you to ask the right questions, target impactful projects, and communicate with other professionals.\n\n\n\nDoing a project that you think will change the world, only to find at the end that a very similar version of your project was already done in the 1980’s, isn’t a great use of time.\n\nIn this section, please do a literature review and cite at least 3 academic publications per group member, and include internal academic citations.\nOptional: Consider using LLM tools to 10X your literature review, e.g. instead of focusing on 3 papers, aim for 30 or more\nBy following these steps, you can 10X the efficiency of your literature review process, gaining more insights while minimizing the time spent on manual reading.\n\nExpand Your Literature Search\nAim to gather a larger pool of papers. Use academic databases (Google Scholar, arXiv, etc.) to find relevant studies and ensure a broad scope.\nSkim the Abstracts\nRead the abstracts of each paper to quickly understand their focus and identify those most relevant to your topic. Prioritize these papers for deeper analysis.\nUse LLM Tools for Summarization\nUpload the selected papers to an LLM tool capable of text summarization. Have it condense the main points of each paper into a concise, manageable summary (e.g., condense hundreds of pages into a 10-page summary). Carefully review this summary to absorb the key insights.\nLeverage Interactive LLM Tools\nUse tools like NotebookLM or other AI-based text digesters to ask specific, targeted questions about the papers:\n\nExample questions:\n\n“In the papers uploaded, did any of them explore XYZ?”\n“Which paper is most closely related to the following project idea: [explain idea]?” These tools will help you quickly extract relevant information without re-reading entire papers."
   },
   {
     "objectID": "index.html#additional-ideas-for-things-to-include",
     "href": "index.html#additional-ideas-for-things-to-include",
-    "title": "Landing page",
+    "title": "Analyzing Bike Routes in Washington, DC: Clustering and Classification for Urban Insights",
     "section": "Additional Ideas for things to include",
     "text": "Additional Ideas for things to include\n\nAudience: Who is this for? Data professionals, businesses, researchers, or curious readers.\nHeadline: A captivating title introducing the data science theme (e.g., “Unlocking Insights Through Data Stories”).\nIntroduction: A brief, engaging overview of what the website offers (e.g., data-driven stories, insights, or case studies).\nQuestions You Are Addressing: What do you hope to learn?\nMotivation: Explain why this topic matters, highlighting the importance of data in solving real-world problems.\nKey Topics: List the main focus areas (e.g., machine learning, data visualization, predictive modeling).\nUse Cases/Examples: A brief teaser of compelling stories or case studies you’ve worked on.\nCall to Action: Invite visitors to explore the content, follow along, or contact you for more information.\nVisual/Infographic: Add a simple graphic or visual element to make the page more dynamic."
+  },
+  {
+    "objectID": "index.html#about-us",
+    "href": "index.html#about-us",
+    "title": "Analyzing Bike Routes in Washington, DC: Clustering and Classification for Urban Insights",
+    "section": "About Us",
+    "text": "About Us\n\n\n\nGentry Lamb\nGentry Lamb is a Graduate Student at Georgetown University pursuing a Masters in Data Science and Analytics. He received a Bachelors in Operations Research in 2024 at the United States Air Force Academy in Colorado Springs, CO. He was also commissioned into the U.S. Air Force as a 2nd Lt and will be attending Pilot Training at Vance AFB in Oklahoma after graduating from Georgetown. After his time in the Air Force he is looking forward to working as a data scientist or operations analyst. Education: - 2024: United States Air Force Academy (USAFA) - B.S. Operations Research - 2025: Georgetown University - M.S. Data Science and Analytics (Current)\n\n\n\nChase Clemence"
   },
   {
     "objectID": "technical-details/progress-log.html",
