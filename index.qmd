@@ -1,5 +1,6 @@
 ---
-title: " Analyzing Bike Routes in Washington, DC: Clustering and Classification for Urban Insights"
+title: "Analyzing Bike Routes in Washington, DC"
+subtitle:  "Clustering and Classification for Urban Insights"
 ---
 ### Create a Landing Page for Your Project  
 
@@ -84,7 +85,9 @@ By following these steps, you can 10X the efficiency of your literature review p
 ::: {.column width="50%"}
 ### Gentry Lamb
 Gentry Lamb is a Graduate Student at Georgetown University pursuing a Masters in Data Science and Analytics. He received a Bachelors in Operations Research in 2024 at the United States Air Force Academy in Colorado Springs, CO. He was also commissioned into the U.S. Air Force as a 2nd Lt and will be attending Pilot Training at Vance AFB in Oklahoma after graduating from Georgetown. After his time in the Air Force he is looking forward to working as a data scientist or operations analyst.
+
 **Education:**
+
 - 2024: United States Air Force Academy (USAFA) - B.S. Operations Research
 - 2025: Georgetown University - M.S. Data Science and Analytics (Current)
 :::
