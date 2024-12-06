@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -184,27 +204,36 @@ ul.task-list li input[type="checkbox"] {
 <section id="brainstorming" class="level2">
 <h2 class="anchored" data-anchor-id="brainstorming">Brainstorming</h2>
 <ul>
-<li>Once we decided on a topic, ChatGPT was used to help with refining our research questions and narrow in on topics for related work.</li>
+<li>Once we decided on a topic, ChatGPT was used to help with refining our research questions and narrow in on topics for related work.<span class="citation" data-cites="gpt4o_resrch_quest"><sup><a href="#ref-gpt4o_resrch_quest" role="doc-biblioref">1</a></sup></span></li>
 </ul>
 </section>
 <section id="writing" class="level2">
 <h2 class="anchored" data-anchor-id="writing">Writing:</h2>
 <ul>
-<li>Reformating text from bulleted lists into proses</li>
-<li>Proofreading</li>
-<li>Text summarization for literature review</li>
+<li>Proofreading and improving grammar in the literature reviews.<span class="citation" data-cites="gpt4o_grammar"><sup><a href="#ref-gpt4o_grammar" role="doc-biblioref">2</a></sup></span></li>
 </ul>
 </section>
 <section id="code" class="level2">
 <h2 class="anchored" data-anchor-id="code">Code:</h2>
 <ul>
-<li>Used ChatGPT to help with error that was faced when accessing the ChromeDriver for Selenium. It suggested that we add the 4 lines of code adjusting chrome options.</li>
+<li>Used ChatGPT to help with error that was faced when accessing the ChromeDriver for Selenium. It suggested that we add the 4 lines of code adjusting chrome options.<span class="citation" data-cites="gpt4o_driver_error"><sup><a href="#ref-gpt4o_driver_error" role="doc-biblioref">3</a></sup></span></li>
 </ul>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-gpt4o_resrch_quest" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Prompt: Fix the grammar of this text, ChatGPT, version-4o, OpenAI, dec-01, 2024, chat.openai.com.</div>
+</div>
+<div id="ref-gpt4o_grammar" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Prompt: Fix the grammar of this text, ChatGPT, version-4o, OpenAI, dec-05, 2024, chat.openai.com.</div>
+</div>
+<div id="ref-gpt4o_driver_error" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Prompt: How to address this error, ChatGPT, version-4o, OpenAI, dec-02, 2024, chat.openai.com.</div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
