@@ -1,16 +1,5 @@
 # Final Report
 
-**Audio instructions:** 
-
-If you want, you can listen to the instructions:
-
-<audio controls><source src="../audio/report-page.mp3" type="audio/mpeg"></audio>
-
-<sup> **Source**: Text-to-speech conversion done with Amazon Polly on AWS </sup>
-
-`Note`: These audio instructions should not be included in your final submission or repository, once you are done wiht them, please delete the files and remove them from the website. 
-
-
 This report is designed for a **non-technical audience** (e.g., the general public, executives, marketing teams, or clients), focusing on **high-level insights**, **actionable results**, and **visualizations** to convey the impact without requiring technical knowledge. The goal is to highlight how a model affects business strategy or revenue without diving into complex methods.
 
 ## Guidelines for Creating a Good Narrative
@@ -72,3 +61,9 @@ These are just examples, you can use any structure that is suitable for your pro
 - **Simplicity**: Avoid jargon; focus on business-relevant insights.
 - **Visual Focus**: Prioritize charts and graphs over dense text.
 - **Emphasize Impact**: Always link data insights to business outcomes.
+
+---------------------------------------------------------------------------------------------------
+
+## Introduction
+
+Going to a new city can be overwhelming, especially when considering all of the new traditions, attractions, and outdoor activities that come with it. For avid biking fans, this stress is further amplified when trying to find new bike paths to explore. Which bike paths offer the best scenery around the city? Which paths are best for getting to work, going to the grocery store, or going somewhere else important? All of these are natural questions that come to mind when thinking about the biking scene of a new city. Even for those not passionate about biking, companies like Lime, Capital Bikeshare, and others provide accessible eBikes for those looking to get off their feet. Biking, both as a hobby and as a simple mode of transportation, is an essential part of a city's culture. Not only that, it helps lower carbon emissions, aiding in the environmental footprint a city has. Undoubtedly, biking is an essential activity in the lives of many, especially those living in Washington, DC. It can be a daunting task to look at all bike trails in the area to find ones that best fit your goals. This study attempts to rectify that concern by clustering bike paths based on their inherent qualities. Specifically, we focus on three qualities to cluster the bike paths effectively - difficulty of terrain, the amount of traffic the bike path sees, and the scenery of the bike path. With these characteristics, we hope to group similar bike paths together, allowing the public to see which paths are best for their needs.
