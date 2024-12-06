@@ -2,14 +2,14 @@
 title: "Analyzing Bike Routes in Washington, DC"
 subtitle:  "Clustering and Classification for Urban Insights"
 ---
+
+![](assets/our-logo.png)
+
 ### Create a Landing Page for Your Project  
 
 - Summarize your topic, its significance, related work, and the questions you plan to explore.
 - Draft an introduction with at least **5 research questions**. These may evolve as your project progresses, since data science is an iterative process.
 - Include your data science questions on this page.
-
-
-
 
 ## Summary
 Washington DC is a leader in urban cycling infrastructure, with an expansive network of bike lanes and trails supporting eco-friendly commuting. However, DC's trails are not only for commuting within the city but also numerous options for purely recreational use. In the confides of a large city these options for recreation can be extremly popular, so a deeper understanding of bike route utilization, accessibility, and safety are imperative. This project focuses on scraping, analyzing, and visualizing data about DC’s bike routes to identify patterns and trends through clustering and classification. The insights gained can guide city planners in optimizing infrastructure, improving safety, and promoting cycling as a sustainable mode of transportation.
@@ -45,26 +45,6 @@ It allows you to;
 
 In this section, please do a literature review and cite at least **3 academic publications** per group member, and include **internal academic citations**.
 
-**Optional**: Consider using LLM tools to 10X your literature review, e.g. instead of focusing on 3 papers, aim for 30 or more
-
-By following these steps, you can 10X the efficiency of your literature review process, gaining more insights while minimizing the time spent on manual reading.
-
-1. **Expand Your Literature Search**  
-   Aim to gather a larger pool of papers. Use academic databases (Google Scholar, arXiv, etc.) to find relevant studies and ensure a broad scope.
-
-2. **Skim the Abstracts**  
-   Read the abstracts of each paper to quickly understand their focus and identify those most relevant to your topic. Prioritize these papers for deeper analysis.
-
-3. **Use LLM Tools for Summarization**  
-   Upload the selected papers to an LLM tool capable of text summarization. Have it condense the main points of each paper into a concise, manageable summary (e.g., condense hundreds of pages into a 10-page summary). Carefully review this summary to absorb the key insights.
-
-4. **Leverage Interactive LLM Tools**  
-   Use tools like NotebookLM or other AI-based text digesters to ask specific, targeted questions about the papers:
-   - Example questions:
-     - "In the papers uploaded, did any of them explore XYZ?"
-     - "Which paper is most closely related to the following project idea: [explain idea]?"
-   These tools will help you quickly extract relevant information without re-reading entire papers.
-
 
 ## Additional Ideas for things to include 
 
@@ -90,6 +70,8 @@ Gentry Lamb is a Graduate Student at Georgetown University pursuing a Masters in
 
 - 2024: United States Air Force Academy (USAFA) - B.S. Operations Research
 - 2025: Georgetown University - M.S. Data Science and Analytics (Current)
+
+![Headshot - Gentry Lamb](assets/gl-headshot.png)
 :::
 
 ::: {.column width="50%"}
