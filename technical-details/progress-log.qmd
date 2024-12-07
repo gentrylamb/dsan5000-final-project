@@ -16,9 +16,7 @@ If you are working as a team, at the end, you can duplicate the project and add 
 
 ## Member-1:
 
-Provide their name, a link to their "About Me" page.
-
-Also, describe a log of their project roles.
+[Gentry Lamb](../index.qmd#about-us)
 
 **Weekly project contribution log:**
 
@@ -38,11 +36,16 @@ Also, describe a log of their project roles.
 * [x] Upload completed code to the project website and push to github 
 
 
-## Member-2
+**12-06-2024**
 
-Provide their name, a link to their "About Me" page.
+* [x] Complete literature review and put together the landing page 
 
-Also, describe a log of their project roles.
+
+
+
+## Member-2:
+
+[Chase Clemence](../index.qmd#about-us)
 
 **Weekly project contribution log:**
 
@@ -50,3 +53,8 @@ Also, describe a log of their project roles.
 **11-21-2024** 
 
 * [x] Attend first group meeting
+
+
+**12-06-2024**
+
+* [x] Complete literature review and put together the landing page 
