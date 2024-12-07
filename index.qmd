@@ -86,7 +86,7 @@ Chase Clemence is currently a graduate student at Georgetown University pursuing
 - 2024: United States Air Force Academy (USAFA) - B.S. Operations Research
 - 2025: Georgetown University - M.S. Data Science and Analytics (Current)
 
-![Headshot - Chase Clemence](../../../../../Downloads/Headshot%20-%20Chase%20Clemence.jpg)
+![Headshot - Chase Clemence](assets/cc-headshot.jpg)
 :::
 
 ::::
