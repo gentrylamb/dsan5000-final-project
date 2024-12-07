@@ -34,7 +34,7 @@ The cleaned data was exported to a CSV file consisting of:
   - `integer` for mileage and ratings.
 - **Regression Target:** mileage
 - **Binary Classification Target:** *insert here*
-- **Multiclass-Classification Target:** *insert here*
+- **Multiclass-Classification Target:** location of trail (Maryland, Virginia, or DC) - found in the description
 ---
 
 ## Data Link

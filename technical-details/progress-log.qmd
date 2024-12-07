@@ -2,6 +2,18 @@
 title: "Progress log"
 ---
 
+Use this page to track your progress and keep a log of your contributions to the project, please update this each time you work on your project, it is generally a good habit to adopt.
+
+If you are working as a team, at the end, you can duplicate the project and add it to your individual portfolio websites. If you do, you **MUST** retain attribution to your teammates. Removing attribution would constitute plagiarism.
+
+## To-do
+
+* [ ] Explore possible topics by brainstorming with GPT 
+* [ ] write a technical methods sections for K-means
+* [ ] write a technical methods sections for PCA
+
+... etc 
+
 ## Member-1:
 
 [Gentry Lamb](../index.qmd#about-us)
@@ -46,3 +58,9 @@ title: "Progress log"
 **12-06-2024**
 
 * [x] Complete literature review and put together the landing page 
+
+
+**12-07-2024**
+
+* [x] Wrote technical details for data collection
+* [x] Refined the landing page to include more information
