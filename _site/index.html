@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Analyzing Bike Routes in Washington, DC – DSAN-5000: Project</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assets/gu-logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">DSAN-5000: Project</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./instructions/overview.html"> 
+<span class="menu-text">Instructions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./report/report.html"> 
+<span class="menu-text">Report</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-technical-details" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Technical details</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-technical-details">    
+        <li>
+    <a class="dropdown-item" href="./technical-details/data-collection/main.html">
+ <span class="dropdown-text">Data-collection</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./technical-details/data-cleaning/main.html">
+ <span class="dropdown-text">Data-cleaning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./technical-details/eda/main.html">
+ <span class="dropdown-text">Exploratory Data Analysis</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./technical-details/unsupervised-learning/main.html">
+ <span class="dropdown-text">Unsupervised Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./technical-details/supervised-learning/main.html">
+ <span class="dropdown-text">Supervised Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./technical-details/progress-log.html">
+ <span class="dropdown-text">Progress Log</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./technical-details/llm-usage-log.html">
+ <span class="dropdown-text">LLM usage Log</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#create-a-landing-page-for-your-project" id="toc-create-a-landing-page-for-your-project" class="nav-link active" data-scroll-target="#create-a-landing-page-for-your-project">Create a Landing Page for Your Project</a></li>
+  <li><a href="#additional-ideas-for-things-to-include" id="toc-additional-ideas-for-things-to-include" class="nav-link" data-scroll-target="#additional-ideas-for-things-to-include">Additional Ideas for things to include</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#significance" id="toc-significance" class="nav-link" data-scroll-target="#significance">Significance</a></li>
+  <li><a href="#related-work" id="toc-related-work" class="nav-link" data-scroll-target="#related-work">Related Work</a></li>
+  <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">Research Questions</a></li>
+  <li><a href="#literature-review" id="toc-literature-review" class="nav-link" data-scroll-target="#literature-review">Literature Review</a></li>
+  <li><a href="#about-us" id="toc-about-us" class="nav-link" data-scroll-target="#about-us">About Us</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Analyzing Bike Routes in Washington, DC</h1>
+<p class="subtitle lead">Clustering and Classification for Urban Insights</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><img src="assets/our-logo.png" class="img-fluid"></p>
+<section id="create-a-landing-page-for-your-project" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-landing-page-for-your-project">Create a Landing Page for Your Project</h3>
+<ul>
+<li>Summarize your topic, its significance, related work, and the questions you plan to explore.</li>
+<li>Draft an introduction with at least <strong>5 research questions</strong>. These may evolve as your project progresses, since data science is an iterative process.</li>
+<li>Include your data science questions on this page.</li>
+</ul>
+</section>
+<section id="additional-ideas-for-things-to-include" class="level3">
+<h3 class="anchored" data-anchor-id="additional-ideas-for-things-to-include">Additional Ideas for things to include</h3>
+<ul>
+<li><strong>Audience</strong>: Who is this for? Data professionals, businesses, researchers, or curious readers.</li>
+<li><strong>Headline</strong>: A captivating title introducing the data science theme (e.g., “Unlocking Insights Through Data Stories”).</li>
+<li><strong>Introduction</strong>: A brief, engaging overview of what the website offers (e.g., data-driven stories, insights, or case studies).</li>
+<li><strong>Questions You Are Addressing</strong>: What do you hope to learn?</li>
+<li><strong>Motivation</strong>: Explain why this topic matters, highlighting the importance of data in solving real-world problems.</li>
+<li><strong>Key Topics</strong>: List the main focus areas (e.g., machine learning, data visualization, predictive modeling).</li>
+<li><strong>Use Cases/Examples</strong>: A brief teaser of compelling stories or case studies you’ve worked on.</li>
+<li><strong>Call to Action</strong>: Invite visitors to explore the content, follow along, or contact you for more information.</li>
+<li><strong>Visual/Infographic</strong>: Add a simple graphic or visual element to make the page more dynamic.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Washington DC is a leader in urban cycling infrastructure, with an expansive network of bike lanes and trails supporting eco-friendly commuting. However, DC’s trails are not only for commuting within the city but also numerous options for purely recreational use. In the confides of a large city these options for recreation can be extremly popular, so a deeper understanding of bike route utilization, accessibility, and safety are imperative. This project focuses on scraping, analyzing, and visualizing data about DC’s bike routes to identify patterns and trends through clustering and classification. The insights gained can guide city planners in optimizing infrastructure, improving safety, and promoting cycling as a sustainable mode of transportation.</p>
+</section>
+<section id="significance" class="level2">
+<h2 class="anchored" data-anchor-id="significance">Significance</h2>
+<p>Cycling is integral to sustainable urban mobility, offering benefits such as reduced carbon emissions, improved public health, and decreased traffic congestion. By analyzing cycling routes, we can uncover patterns of use, gaps in infrastructure, and safety concerns, enabling data-driven decision-making for a greener and safer DC.</p>
+</section>
+<section id="related-work" class="level2">
+<h2 class="anchored" data-anchor-id="related-work">Related Work</h2>
+<ul>
+<li>Urban Cycling Studies: Research linking bike infrastructure to cycling adoption and safety.</li>
+<li>Geospatial Data Science: Use of clustering algorithms for route categorization and optimization in other urban contexts.</li>
+<li>Machine Learning in Mobility: Classification techniques applied to transportation data to understand user behavior and needs.</li>
+<li>Local Reports: Existing reports on cycling trends in Washington, DC, such as those from DDOT and Capital Bikeshare.</li>
+</ul>
+</section>
+<section id="research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions">Research Questions</h2>
+<ol type="1">
+<li>How can clustering techniques help categorize bike routes based on usage, distance, location, or ratings?</li>
+<li>Which factors are the most important in clustering of bike routes?</li>
+<li>Is it possible to classify bike routes with existing data?</li>
+<li>What insights can be drawn about the existing routes in developing more routes as the city grows?</li>
+<li>What data would make this clustering and classification more robust?</li>
+</ol>
+</section>
+<section id="literature-review" class="level2">
+<h2 class="anchored" data-anchor-id="literature-review">Literature Review</h2>
+<p>In the past decade, urban cycling infrastructure has garnered attention due to the relevance in addressing environmental sustainability concerns. Cycling offers a low-cost, sustainable mode of transportation that reduces greenhouse gas emissions, mitigates traffic congestion, and promotes physical activity. Understanding the current landscape of research on this topic is crucial for identifying gaps in knowledge and expand on them. This literature review aims to harmonize key findings, methodologies, and trends have shaped the current understanding of this topic area.</p>
+<p>“How to Use Selenium to Web-Scrape with Example” provides a step-by-step guide on using Selenium, a Python library, for web scraping tasks, focusing on extracting NBA player salary data from Hoopshype. Selenium automates web browsers, allowing for efficient data collection from websites that may be otherwise difficult to scrape through traditional methods. Selenium’s advantage lies in its ability to interact with dynamic web pages, which may load content via JavaScript. This method is particularly useful for collecting structured data from websites that do not provide APIs or straightforward access to information, such as the site we are interested in gathering our data from. This article is relevant to our study as it demonstrates the basic workflow for setting up and using Selenium for web scraping. The same techniques of web driver installation, XPath usage, and data extraction will be applicable for scraping bike route information from the provided websites. Additionally, the iterative process of scraping multiple pages and aggregating data aligns with the need to collect comprehensive datasets for clustering and classification in this project.<span class="citation" data-cites="Pfalzgraf_2020_selenium"><sup><a href="#ref-Pfalzgraf_2020_selenium" role="doc-biblioref">1</a></sup></span></p>
+<p>In the article “Visual Exploration of Cycling Semantics with GPS Trajectory Data”, the authors address the need for a comprehensive system to analyze cycling semantics from both the cyclist’s and the road’s perspectives. By utilizing large-scale GPS trajectory and road network data, the authors propose VizCycSemantics, a visual analytic system that aims to uncover hidden patterns in cycling behaviors and moving characteristics along road segments. While this paper gets bogged down with technical jargon about GPS data and challenges, they present some very interesting points on clustering. The VizCycSemantics system uses Latent Dirichlet Allocation (LDA) to extract cycling topics—representing cyclist behaviors—and k-means++ clustering to identify groups of similar cyclists and road segments. This research is particularly relevant to our project, as it provides a proven framework for analyzing cycling data through clustering and topic modeling. While our base approach will differ significantly, our goal of uncovering patterns in cycling routes and behaviors aligns well with their study.<span class="citation" data-cites="gao_visual_2023"><sup><a href="#ref-gao_visual_2023" role="doc-biblioref">2</a></sup></span></p>
+<p>Chapter 9 of “Capital Dilemma” addresses bicycling trends and policies in the DC area since 1990. The study of cycling trends in the Washington, DC metropolitan area provides essential insights into the growing role of cycling in urban mobility and infrastructure planning. The expansion of bike lanes, along with innovative programs and policies, has significantly increased cycling levels in the region, particularly within the urban core of Washington, DC, Arlington, and Alexandria. As highlighted, cycling levels have risen in tandem with the development of bike-friendly infrastructure, such as on-street bike lanes and off-street shared-use paths, though challenges remain in terms of accessibility and inclusivity. This literature is highly relevant to our project, where we aim to analyze and classify bike routes in Washington, DC. Understanding the spatial distribution of bike lanes and their relationship with cyclist behavior in various neighborhoods offers a valuable framework for our clustering and classification efforts.<span class="citation" data-cites="hyra_capital_2015"><sup><a href="#ref-hyra_capital_2015" role="doc-biblioref">3</a></sup></span></p>
+<p>The article “Machine Learning Approaches to Bike-Sharing Systems: A Systematic Literature Review” details numerous applications of machine learning techniques within the sphere of bike-sharing systems (BSS). It stresses the importance of these systems in the modern era, highlighting their role in reducing carbon emissions, improving transportation accessibility, and influencing the overall transportation culture of a city. The paper reviews 35 studies from 2015 to 2019, aiming to evaluate the performance of various machine learning techniques applied to BSS while also identifying challenges and proposing future research directions. The methodology used to evaluate the machine learning methods is the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) Framework. Key findings from the paper include the high accuracy with which random forests and gradient boosting machines predicted bike availability and demand trends. Other techniques, such as decision trees and deep learning, were useful for understanding trip patterns and user segmentation. Deep learning, in particular, is becoming more prevalent, as neural networks are capable of efficiently handling complex datasets. Finally, clustering techniques were applied to analyze station usage patterns and trends. The paper concludes that, through a combination of machine learning, transportation engineering, and planning, future efforts should focus on developing machine learning models that are easily interpretable and transferable to various cities. Another goal is to leverage real-time data to optimize BSS instantaneously.<span class="citation" data-cites="albuquerque2021machine"><sup><a href="#ref-albuquerque2021machine" role="doc-biblioref">4</a></sup></span></p>
+<p>The article “Learning to Cluster Urban Areas: Two Competitive Approaches and an Empirical Validation” compares two clustering methodologies to effectively group urban areas with similar characteristics. The two approaches introduced are Deep Modularity Networks (DMON) and a traditional graph-based clustering method. DMON is a neural network approach designed to optimize cluster modularity. Specifically, it graphically represents urban areas and connects them to other areas that share similar spatial or economic traits. The network maximizes modularity while adapting to different situations for greater flexibility. The traditional graph method, on the other hand, relies on classical algorithms like spectral clustering. Although these algorithms also maximize modularity, they underperform in terms of adaptability, scalability, and other areas. Through empirical validation, the authors demonstrate that DMON outperforms the traditional graph method in terms of performance, processing efficiency, and utility. One application of DMON discussed in the paper is its use for transportation planning. This clustering method helps identify critical transportation nodes and corridors, facilitating more efficient transit design. However, DMON has some limitations, particularly in terms of interpretability. Deep learning often produces outputs that are difficult for non-experts to understand, which could hinder the urban planning process and lead to stagnation. Despite this, the paper demonstrates the effectiveness of clustering methods in addressing urban environmental issues.<span class="citation" data-cites="vera2022learning"><sup><a href="#ref-vera2022learning" role="doc-biblioref">5</a></sup></span></p>
+<p>Unlike the previous two papers, this research, “A Taxonomy of Machine Learning Clustering Algorithms, Challenges, and Future Realms”, offers a more comprehensive examination of clustering algorithms. The paper categorizes various clustering algorithms based on their methodologies and use cases, providing insight into which algorithms are best suited for specific situations. More specifically, the paper focuses on five different types of clustering algorithms: partitioning-based clustering, hierarchical clustering, density-based clustering, model-based clustering, and graph-based clustering. Partitioning-based clustering is best used in applications such as customer segmentation and urban planning. Hierarchical clustering is more appropriate for social network analysis or gene expression studies. Density-based clustering is suitable for spatial analysis and transportation planning. Model-based clustering is commonly applied to problems involving images and text. Finally, graph-based clustering excels in social network detection and geospatial analysis. Regardless of the problem, all clustering methods have their inherent limitations and should be used carefully. Future directions for clustering algorithms include combining two or more algorithms to leverage their strengths, as well as exploring automatic hyperparameter tuning to ensure optimal performance for specific problems. Clustering is an invaluable tool for solving real-world problems, but it is essential to choose the right algorithm based on the specific context.<span class="citation" data-cites="pitafi2023taxonomy"><sup><a href="#ref-pitafi2023taxonomy" role="doc-biblioref">6</a></sup></span></p>
+</section>
+<section id="about-us" class="level2">
+<h2 class="anchored" data-anchor-id="about-us">About Us</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="gentry-lamb" class="level3">
+<h3 class="anchored" data-anchor-id="gentry-lamb">Gentry Lamb</h3>
+<p>Gentry Lamb is a Graduate Student at Georgetown University pursuing a Masters in Data Science and Analytics. He received a Bachelors in Operations Research in 2024 at the United States Air Force Academy in Colorado Springs, CO. He was also commissioned into the U.S. Air Force as a 2nd Lt and will be attending Pilot Training at Vance AFB in Oklahoma after graduating from Georgetown. After his time in the Air Force he is looking forward to working as a data scientist or operations analyst.</p>
+<p><strong>Education:</strong></p>
+<ul>
+<li>2024: United States Air Force Academy (USAFA) - B.S. Operations Research</li>
+<li>2025: Georgetown University - M.S. Data Science and Analytics (Current)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/gl-headshot.png" class="img-fluid figure-img"></p>
+<figcaption>Headshot - Gentry Lamb</figcaption>
+</figure>
+</div>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="chase-clemence" class="level3">
+<h3 class="anchored" data-anchor-id="chase-clemence">Chase Clemence</h3>
+<p>Chase Clemence is currently a graduate student at Georgetown University pursuing a Masters of Science in Data Science &amp; Analytics. Prior to this, he received a Bachelors of Science in Operations Research from the United States Air Force Academy in 2024, commissioning as a 2nd Lieutenant. After obtaining his degree, he will head to Goodfellow AFB in San Angelo, Texas to start training as a Military Intelligence Officer in the United States Air Force. Following his Air Force career, he has aspirations of getting an MBA and working in industry. He hopes having a background in data science and business will make him an effective leader in the civilian sector.</p>
+<p><strong>Education:</strong></p>
+<ul>
+<li>2024: United States Air Force Academy (USAFA) - B.S. Operations Research</li>
+<li>2025: Georgetown University - M.S. Data Science and Analytics (Current)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../../../Downloads/Headshot - Chase Clemence.jpg" class="img-fluid figure-img"></p>
+<figcaption>Headshot - Chase Clemence</figcaption>
+</figure>
+</div>
+</section>
+</div>
+</div>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Pfalzgraf_2020_selenium" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Pfalzgraf, B. <a href="https://towardsdatascience.com/how-to-use-selenium-to-web-scrape-with-example-80f9b23a843a">How to use selenium to web-scrape with example</a>. <em>Medium</em> (2020).</div>
+</div>
+<div id="ref-gao_visual_2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Gao, X., Liao, C., Chen, C. &amp; Li, R. <a href="https://doi.org/10.3390/app13042748">Visual <span>Exploration</span> of <span>Cycling</span> <span>Semantics</span> with <span>GPS</span> <span>Trajectory</span> <span>Data</span></a>. <em>Applied Sciences</em> <strong>13</strong>, 2748 (2023).</div>
+</div>
+<div id="ref-hyra_capital_2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline"><em>Capital <span>Dilemma</span></em>. (Routledge, 2015). doi:<a href="https://doi.org/10.4324/9781315714486">10.4324/9781315714486</a>.</div>
+</div>
+<div id="ref-albuquerque2021machine" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Albuquerque, V., Sales Dias, M. &amp; Bacao, F. Machine learning approaches to bike-sharing systems: A systematic literature review. <em>ISPRS International Journal of Geo-Information</em> <strong>10</strong>, 62 (2021).</div>
+</div>
+<div id="ref-vera2022learning" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Vera, C. <em>et al.</em> Learning to cluster urban areas: Two competitive approaches and an empirical validation. <em>EPJ Data Science</em> <strong>11</strong>, 62 (2022).</div>
+</div>
+<div id="ref-pitafi2023taxonomy" class="csl-entry" role="listitem">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Pitafi, S., Anwar, T. &amp; Sharif, Z. A taxonomy of machine learning clustering algorithms, challenges, and future realms. <em>Applied sciences</em> <strong>13</strong>, 3529 (2023).</div>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

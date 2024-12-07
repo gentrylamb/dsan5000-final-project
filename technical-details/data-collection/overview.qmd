@@ -1,12 +1,15 @@
 # Overview
 
-In this section, provide a high-level overview for technical staff, summarizing the key tasks and processes carried out here. Include the following elements:
+## Goals
 
-- **Goals**: Clearly define the purpose of the tasks or analysis being conducted.
-- **Motivation**: Explain the reasoning behind the work, such as solving a specific problem, improving a system, or optimizing performance.
-- **Objectives**: Outline the specific outcomes you aim to achieve, whether it's implementing a solution, analyzing data, or building a model.
+The primary objective of this project is to leverage data from *bikewashington.org* to provide actionable insights about bike paths in Washington, DC. By analyzing and presenting detailed information about these trails, we aim to help riders make informed decisions about their routes. This knowledge will enhance their preparation and contribute to safer biking experiences across the city.
 
-This overview should give technical staff a clear understanding of the context and importance of the work, while guiding them on what to focus on in the details that follow.
+## Motivation
 
+Our motivation lies in supporting the biking community by empowering riders to choose trails that align with their specific needs and goals. Whether for exercise, commuting, or leisure, informed decisions about bike paths can optimize the overall experience. Additionally, providing better trail information is expected to inherently enhance safety, especially for those exploring new or unfamiliar routes.
 
+## Objectives
 
+- **Trail Clustering:** Group similar bike trails in Washington, DC, using algorithms such as KMeans Clustering and Spectral Clustering.
+- **Length Prediction:** Develop a regression decision tree model to predict the length of a trail based on its other qualities.
+- **Personalized Recommendations:** Offer tailored trail recommendations for riders of varying experience levels, addressing their unique preferences.

@@ -16,8 +16,6 @@ bibliography: assets/references.bib
 
 ### Additional Ideas for things to include 
 
-<<<<<<< HEAD
-=======
 - **Audience**: Who is this for? Data professionals, businesses, researchers, or curious readers.
 - **Headline**: A captivating title introducing the data science theme (e.g., "Unlocking Insights Through Data Stories").
 - **Introduction**: A brief, engaging overview of what the website offers (e.g., data-driven stories, insights, or case studies).
@@ -28,7 +26,6 @@ bibliography: assets/references.bib
 - **Call to Action**: Invite visitors to explore the content, follow along, or contact you for more information.
 - **Visual/Infographic**: Add a simple graphic or visual element to make the page more dynamic.
 
->>>>>>> d762081ff2d7d257923fcd7eedaa6e138a253f98
 ## Summary
 Washington DC is a leader in urban cycling infrastructure, with an expansive network of bike lanes and trails supporting eco-friendly commuting. However, DC's trails are not only for commuting within the city but also numerous options for purely recreational use. In the confides of a large city these options for recreation can be extremly popular, so a deeper understanding of bike route utilization, accessibility, and safety are imperative. This project focuses on scraping, analyzing, and visualizing data about DC’s bike routes to identify patterns and trends through clustering and classification. The insights gained can guide city planners in optimizing infrastructure, improving safety, and promoting cycling as a sustainable mode of transportation.
 
@@ -77,12 +74,7 @@ Gentry Lamb is a Graduate Student at Georgetown University pursuing a Masters in
 - 2024: United States Air Force Academy (USAFA) - B.S. Operations Research
 - 2025: Georgetown University - M.S. Data Science and Analytics (Current)
 
-<<<<<<< HEAD
-![Headshot - Gentry Lamb](../../../../../Downloads/Headshot%20-%20Chase%20Clemence.jpg)
-
-=======
 ![Headshot - Gentry Lamb](assets/gl-headshot.png)
->>>>>>> d762081ff2d7d257923fcd7eedaa6e138a253f98
 :::
 
 ::: {.column width="50%"}
