@@ -12,8 +12,6 @@ bibliography: assets/references.bib
 - Include your data science questions on this page.
 
 
-
-
 ## Summary
 Washington DC is a leader in urban cycling infrastructure, with an expansive network of bike lanes and trails supporting eco-friendly commuting. However, DC's trails are not only for commuting within the city but also numerous options for purely recreational use. In the confides of a large city these options for recreation can be extremly popular, so a deeper understanding of bike route utilization, accessibility, and safety are imperative. This project focuses on scraping, analyzing, and visualizing data about DC’s bike routes to identify patterns and trends through clustering and classification. The insights gained can guide city planners in optimizing infrastructure, improving safety, and promoting cycling as a sustainable mode of transportation.
 
@@ -103,6 +101,9 @@ Gentry Lamb is a Graduate Student at Georgetown University pursuing a Masters in
 
 - 2024: United States Air Force Academy (USAFA) - B.S. Operations Research
 - 2025: Georgetown University - M.S. Data Science and Analytics (Current)
+
+![Headshot - Gentry Lamb](../../../../../Downloads/Headshot%20-%20Chase%20Clemence.jpg)
+
 :::
 
 ::: {.column width="50%"}
