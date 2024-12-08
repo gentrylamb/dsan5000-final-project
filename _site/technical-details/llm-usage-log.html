@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>overview – DSAN-5000: Project</title>
+<title>LLM usage log – DSAN-5000: Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,46 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../assets/gu-logo.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/gu-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">DSAN-5000: Project</span>
     </a>
   </div>
@@ -89,15 +109,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../instructions/overview.html"> 
+    <a class="nav-link" href="../instructions/overview.html"> 
 <span class="menu-text">Instructions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../report/report.html"> 
+    <a class="nav-link" href="../report/report.html"> 
 <span class="menu-text">Report</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -106,31 +126,31 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-technical-details">    
         <li>
-    <a class="dropdown-item" href="../../technical-details/data-collection/main.html">
+    <a class="dropdown-item" href="../technical-details/data-collection/main.html">
  <span class="dropdown-text">Data-collection</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../technical-details/data-cleaning/main.html">
+    <a class="dropdown-item" href="../technical-details/data-cleaning/main.html">
  <span class="dropdown-text">Data-cleaning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../technical-details/eda/main.html">
+    <a class="dropdown-item" href="../technical-details/eda/main.html">
  <span class="dropdown-text">Exploratory Data Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../technical-details/unsupervised-learning/main.html">
+    <a class="dropdown-item" href="../technical-details/unsupervised-learning/main.html">
  <span class="dropdown-text">Unsupervised Learning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../technical-details/supervised-learning/main.html">
+    <a class="dropdown-item" href="../technical-details/supervised-learning/main.html">
  <span class="dropdown-text">Supervised Learning</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../technical-details/progress-log.html">
+    <a class="dropdown-item" href="../technical-details/progress-log.html">
  <span class="dropdown-text">Progress Log</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../technical-details/llm-usage-log.html">
+    <a class="dropdown-item" href="../technical-details/llm-usage-log.html">
  <span class="dropdown-text">LLM usage Log</span></a>
   </li>  
     </ul>
@@ -151,77 +171,73 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#data-source-information" id="toc-data-source-information" class="nav-link" data-scroll-target="#data-source-information">Data Source Information</a>
-  <ul class="collapse">
-  <li><a href="#rating-definitions" id="toc-rating-definitions" class="nav-link" data-scroll-target="#rating-definitions">Rating Definitions</a></li>
-  </ul></li>
-  <li><a href="#data-collection-methods" id="toc-data-collection-methods" class="nav-link" data-scroll-target="#data-collection-methods">Data Collection Methods</a></li>
-  <li><a href="#data-structure-and-format" id="toc-data-structure-and-format" class="nav-link" data-scroll-target="#data-structure-and-format">Data Structure and Format</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#brainstorming" id="toc-brainstorming" class="nav-link active" data-scroll-target="#brainstorming">Brainstorming</a></li>
+  <li><a href="#writing" id="toc-writing" class="nav-link" data-scroll-target="#writing">Writing:</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code:</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LLM usage log</h1>
+</div>
 
 
 
-<section id="goals" class="level2">
-<h2 class="anchored" data-anchor-id="goals">Goals</h2>
-<p>The primary objective of this project is to leverage data from <a href="http://bikewashington.org">bikewashington.org</a> to provide actionable insights about bike paths in Washington, DC. By analyzing and presenting detailed information about these trails, we aim to help riders make informed decisions about their routes. This knowledge will enhance their preparation and contribute to safer biking experiences across the city.</p>
-</section>
-<section id="motivation" class="level2">
-<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
-<p>Our motivation lies in supporting the biking community by empowering riders to choose trails that align with their specific needs and goals. Whether for exercise, commuting, or leisure, informed decisions about bike paths can optimize the overall experience. Additionally, providing better trail information is expected to inherently enhance safety, especially for those exploring new or unfamiliar routes.</p>
-</section>
-<section id="objectives" class="level2">
-<h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This page can serve as a “catch-all” for LLM use cases that don’t involve content creation, such as reformatting your own ideas, commenting code that you wrote, or proofreading text, PDF summarization.</p>
+<p>LLM tools were used in the following way for the tasks below</p>
+<section id="brainstorming" class="level2">
+<h2 class="anchored" data-anchor-id="brainstorming">Brainstorming</h2>
 <ul>
-<li><strong>Trail Clustering:</strong> Group similar bike trails in Washington, DC, using algorithms such as KMeans Clustering and Spectral Clustering.</li>
-<li><strong>Length Prediction:</strong> Develop a regression decision tree model to predict the length of a trail based on its other qualities.</li>
-<li><strong>Personalized Recommendations:</strong> Offer tailored trail recommendations for riders of varying experience levels, addressing their unique preferences.</li>
+<li>Once we decided on a topic, ChatGPT was used to help with refining our research questions and narrow in on topics for related work.<span class="citation" data-cites="gpt4o_resrch_quest"><sup><a href="#ref-gpt4o_resrch_quest" role="doc-biblioref">1</a></sup></span></li>
 </ul>
 </section>
-<section id="data-source-information" class="level2">
-<h2 class="anchored" data-anchor-id="data-source-information">Data Source Information</h2>
-<p>All data used in this project originates from <em><a href="http://bikewashington.org/routes/all.htm">Bike Washington</a></em>. The website provides a table of detailed information about bike routes within the DMV (DC, Maryland, and Virginia) area. Specifically, it includes:</p>
+<section id="writing" class="level2">
+<h2 class="anchored" data-anchor-id="writing">Writing:</h2>
 <ul>
-<li><strong>Trail Length:</strong> Measured in miles.</li>
-<li><strong>Trail Name:</strong> The name of each bike route.</li>
-<li><strong>Trail Description:</strong> A summary of the trail’s features.</li>
-<li><strong>Ratings:</strong> Scores for terrain difficulty, traffic levels, and scenic beauty.</li>
-</ul>
-<section id="rating-definitions" class="level3">
-<h3 class="anchored" data-anchor-id="rating-definitions">Rating Definitions</h3>
-<ul>
-<li><strong>Terrain:</strong> A score of <code>1</code> corresponds to a very flat trail, while <code>5</code> represents extremely challenging climbs.</li>
-<li><strong>Traffic:</strong> A score of <code>1</code> indicates minimal traffic, while <code>5</code> suggests heavy traffic conditions.</li>
-<li><strong>Scenery:</strong> A score of <code>1</code> indicates a highly scenic trail, whereas <code>5</code> represents less visually appealing routes.</li>
+<li>Proofreading and improving grammar in the literature reviews.<span class="citation" data-cites="gpt4o_grammar"><sup><a href="#ref-gpt4o_grammar" role="doc-biblioref">2</a></sup></span></li>
+<li>Improved content we wrote to improve overall flow and idea expression<span class="citation" data-cites="gpt4o_improve"><sup><a href="#ref-gpt4o_improve" role="doc-biblioref">3</a></sup></span></li>
 </ul>
 </section>
-</section>
-<section id="data-collection-methods" class="level2">
-<h2 class="anchored" data-anchor-id="data-collection-methods">Data Collection Methods</h2>
-<p>We utilized Selenium, an open-source browser automation framework, to scrape data from the website. Specifically: - The <code>webdriver</code> function was employed to extract trail names, mileage, and ratings. - The extracted data was processed using Pandas to consolidate all relevant information into a single DataFrame. - The tabular data was then saved for future analysis.</p>
-</section>
-<section id="data-structure-and-format" class="level2">
-<h2 class="anchored" data-anchor-id="data-structure-and-format">Data Structure and Format</h2>
-<p>The cleaned data was exported to a CSV file consisting of: - <strong>Rows:</strong> 43 (one for each trail). - <strong>Columns:</strong> 6 (trail name, description, mileage, terrain rating, traffic rating, and scenery rating). - <strong>Data Types:</strong> - <code>string</code> for trail names and descriptions. - <code>integer</code> for mileage and ratings. - <strong>Regression Target:</strong> mileage - <strong>Binary Classification Target:</strong> <em>insert here</em> - <strong>Multiclass-Classification Target:</strong> location of trail (Maryland, Virginia, or DC) - found in the description</p>
-</section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>We utilized <a href="https://www.selenium.dev/documentation/webdriver/">Selenium</a>, an open-source framework for automating web browsers, to scrape data from bikewashington.org. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame.</p>
-<p>The ratings were further processed and split into three distinct columns: terrain, scenery, and traffic. Irrelevant or redundant columns were removed from the dataset to streamline the analysis. One such column was the original ‘rating’ column. Finally, the cleaned DataFrame was exported as a CSV file for seamless integration with the machine learning components of this project.</p>
-<p>While the dataset is relatively small, it encompasses all the essential information about bike paths and trails in the DC area, making it a valuable resource for our analysis.</p>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code:</h2>
+<ul>
+<li>Used ChatGPT to help with error that was faced when accessing the ChromeDriver for Selenium. It suggested that we add the 4 lines of code adjusting chrome options.<span class="citation" data-cites="gpt4o_driver_error"><sup><a href="#ref-gpt4o_driver_error" role="doc-biblioref">4</a></sup></span></li>
+</ul>
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-gpt4o_resrch_quest" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Prompt: Fix the grammar of this text, ChatGPT, version-4o, OpenAI, dec-01, 2024, chat.openai.com.</div>
+</div>
+<div id="ref-gpt4o_grammar" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Prompt: Fix the grammar of this text, ChatGPT, version-4o, OpenAI, dec-05, 2024, chat.openai.com.</div>
+</div>
+<div id="ref-gpt4o_improve" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Prompt: Improve this text to make it more professional, ChatGPT, version-4o, OpenAI, dec-01, 2024, chat.openai.com.</div>
+</div>
+<div id="ref-gpt4o_driver_error" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Prompt: How to address this error, ChatGPT, version-4o, OpenAI, dec-02, 2024, chat.openai.com.</div>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

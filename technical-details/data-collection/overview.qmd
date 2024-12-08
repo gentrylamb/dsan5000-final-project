@@ -54,7 +54,7 @@ The cleaned data was exported to a CSV file consisting of:
 
 ## Methods
 
-We utilized (Selenium)[], an open-source framework for automating web browsers, to scrape data from bikewashington.org. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame. 
+We utilized [Selenium](https://www.selenium.dev/documentation/webdriver/), an open-source framework for automating web browsers, to scrape data from bikewashington.org. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame. 
 
 The ratings were further processed and split into three distinct columns: terrain, scenery, and traffic. Irrelevant or redundant columns were removed from the dataset to streamline the analysis. One such column was the original 'rating' column. Finally, the cleaned DataFrame was exported as a CSV file for seamless integration with the machine learning components of this project.
 
