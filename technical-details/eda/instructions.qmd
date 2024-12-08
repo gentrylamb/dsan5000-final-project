@@ -21,6 +21,7 @@ Bar charts helped us visualize the distributions of trail ratings—**terrain**,
 We explored relationships between trail ratings using heatmaps:
 - **Terrain vs. Scenery**: The combination of terrain (3) and scenery (1) is the most frequent.
 - **Terrain vs. Traffic**: The most common combination is when both ratings are 3.
+- **Traffic vs. Scenery**: Most common combinations are scenery (1) and traffic (2) as well as scenery (2) and traffic (3).
 
 #### Correlation Analysis
 A correlation matrix comparing **mileage**, **sentiment**, and the three ratings showed no strong correlations. However, **sentiment** and **terrain rating** had the highest correlation, suggesting that challenging terrains might lead to more negative sentiments.
