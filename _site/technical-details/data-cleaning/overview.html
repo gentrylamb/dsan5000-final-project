@@ -151,7 +151,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#explanation-of-new-variables" id="toc-explanation-of-new-variables" class="nav-link active" data-scroll-target="#explanation-of-new-variables">Explanation of New Variables</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#explanation-of-new-variables" id="toc-explanation-of-new-variables" class="nav-link" data-scroll-target="#explanation-of-new-variables">Explanation of New Variables</a></li>
   <li><a href="#managing-missing-data" id="toc-managing-missing-data" class="nav-link" data-scroll-target="#managing-missing-data">Managing Missing Data</a></li>
   <li><a href="#outlier-detection-and-treatment" id="toc-outlier-detection-and-treatment" class="nav-link" data-scroll-target="#outlier-detection-and-treatment">Outlier Detection and Treatment</a></li>
   <li><a href="#data-type-corrections-and-formatting" id="toc-data-type-corrections-and-formatting" class="nav-link" data-scroll-target="#data-type-corrections-and-formatting">Data Type Corrections and Formatting</a></li>
@@ -166,9 +167,12 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>Cleaning the raw trail data was a critical step in extracting meaningful insights. The descriptions of each bike trail contained a wealth of information, making data cleaning essential for conducting deeper exploratory analysis and enabling robust machine learning applications. It’s important to note that data cleaning is a dynamic and iterative process. As this project evolves, additional cleaning may be required. Below is a summary of the transformations applied to produce the cleaned dataset.</p>
-<section id="explanation-of-new-variables" class="level3">
-<h3 class="anchored" data-anchor-id="explanation-of-new-variables">Explanation of New Variables</h3>
+</section>
+<section id="explanation-of-new-variables" class="level2">
+<h2 class="anchored" data-anchor-id="explanation-of-new-variables">Explanation of New Variables</h2>
 <ul>
 <li><strong>Unpaved</strong>: Binary variable (1 = unpaved road, 0 = paved road).</li>
 <li><strong>Flat</strong>: Binary variable (1 = flat road, 0 = not flat).</li>
@@ -181,25 +185,30 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>State2</strong>: The state where the trail ends.</li>
 </ul>
 </section>
-<section id="managing-missing-data" class="level3">
-<h3 class="anchored" data-anchor-id="managing-missing-data">Managing Missing Data</h3>
+<section id="managing-missing-data" class="level2">
+<h2 class="anchored" data-anchor-id="managing-missing-data">Managing Missing Data</h2>
 <p>This dataset initially had no missing values—every cell contained data. To confirm, we used the <strong><code>is.na().sum()</code></strong> function in Python to verify the absence of null or missing values. When text-scraping trail descriptions to generate binary variables (e.g., identifying if the word “workout” was present), missing words were assumed to indicate the absence of that characteristic, and the corresponding cell was assigned a value of 0.</p>
 </section>
-<section id="outlier-detection-and-treatment" class="level3">
-<h3 class="anchored" data-anchor-id="outlier-detection-and-treatment">Outlier Detection and Treatment</h3>
+<section id="outlier-detection-and-treatment" class="level2">
+<h2 class="anchored" data-anchor-id="outlier-detection-and-treatment">Outlier Detection and Treatment</h2>
 <p>Outliers were not a significant concern. For instance, while the <em>C&amp;O Towpath</em> trail spans 184 miles—considerably longer than most other trails—removing such outliers was unnecessary. Given the limited number of bike trails in the DMV area, retaining all observations was crucial for maintaining data integrity and size.</p>
 </section>
-<section id="data-type-corrections-and-formatting" class="level3">
-<h3 class="anchored" data-anchor-id="data-type-corrections-and-formatting">Data Type Corrections and Formatting</h3>
-<p>The raw dataset contained two data types: <code>object</code> (trail names and descriptions) and <code>int64</code> (ratings and mileage). After cleaning, the dataset included <code>object</code>, <code>int64</code>, and <code>float64</code> types: - <strong>Object</strong>: <code>name</code>, <code>state1</code>, <code>state2</code>. - <strong>Float64</strong>: <code>sentiment</code>. - <strong>Int64</strong>: All other features.</p>
+<section id="data-type-corrections-and-formatting" class="level2">
+<h2 class="anchored" data-anchor-id="data-type-corrections-and-formatting">Data Type Corrections and Formatting</h2>
+<p>The raw dataset contained two data types: <code>object</code> (trail names and descriptions) and <code>int64</code> (ratings and mileage). After cleaning, the dataset included <code>object</code>, <code>int64</code>, and <code>float64</code> types:</p>
+<ul>
+<li><strong>Object</strong>: <code>name</code>, <code>state1</code>, <code>state2</code>.</li>
+<li><strong>Float64</strong>: <code>sentiment</code>.</li>
+<li><strong>Int64</strong>: All other features.</li>
+</ul>
 <p>Descriptions were transformed to lowercase for consistency and ease of keyword matching. The most significant transformation involved converting descriptions into multiple binary (one-hot-encoded) features based on meaningful keywords, as described in the “New Variables” section. State information was also extracted using lists of specific locations within Virginia, Maryland, DC, and Pennsylvania, allowing us to assign values to <code>state1</code> and <code>state2</code>. This process enabled the extraction of numerical data from text, enriching the dataset for subsequent machine learning analyses.</p>
 </section>
-<section id="normalization-and-scaling" class="level3">
-<h3 class="anchored" data-anchor-id="normalization-and-scaling">Normalization and Scaling</h3>
+<section id="normalization-and-scaling" class="level2">
+<h2 class="anchored" data-anchor-id="normalization-and-scaling">Normalization and Scaling</h2>
 <p>Given the significant right skew in the mileage distribution, normalization was applied. We used z-score normalization to scale this variable, ensuring it would not disproportionately influence machine learning models. Both normalized and unnormalized mileage distributions are provided in the ‘Code’ section below.</p>
 </section>
-<section id="subsetting-data" class="level3">
-<h3 class="anchored" data-anchor-id="subsetting-data">Subsetting Data</h3>
+<section id="subsetting-data" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-data">Subsetting Data</h2>
 <p>Subsetting was deemed unnecessary due to the already limited size of the dataset.</p>
 
 

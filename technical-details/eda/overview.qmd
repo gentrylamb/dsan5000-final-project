@@ -1,38 +1,38 @@
-## Exploratory Data Analysis (EDA)
+## Overview
 
 With our processed data, we created numerous visualizations to uncover the underlying patterns in the bike trail dataset. Most of the analyses focused on univariate relationships, though we also explored some bivariate relationships, particularly between trail ratings. Additionally, we examined the potential for clustering by comparing mileage with sentiment, using the trail's scenery score as a color-coded feature.
 
-### Univariate Analysis
+## Univariate Analysis
 
-#### Numerical Variables
+### Numerical Variables
 We analyzed the distributions of numerical variables, particularly **mileage** and **sentiment**:
 - **Mileage**: A discrete variable, categorized into bins for easier analysis. The distribution shows that most trails fall within the 10-120 mile range, with a slight right skew indicating a few longer trails (up to 175 miles).
 - **Sentiment**: A continuous variable analyzed using Kernel Density Estimation. The distribution reveals that most sentiments are positive, concentrated within the 0-0.8 range. The bimodal nature of the distribution indicates peaks around 0 and 0.6.
 
-#### Categorical Variables
+### Categorical Variables
 Bar charts helped us visualize the distributions of trail ratings—**terrain**, **traffic**, and **scenery**:
 - **Terrain**: The only rating using the full range (1-5). Most trails are rated 3, with fewer trails rated 4 or 5.
 - **Traffic**: Ranges from 1-4, with most trails rated 2 or 3.
 - **Scenery**: Restricted to scores of 1-3, with the majority of trails rated 1 or 2.
 
-### Bivariate Analysis
+## Bivariate Analysis
 
-#### Heatmaps
+### Heatmaps
 We explored relationships between trail ratings using heatmaps:
 - **Terrain vs. Scenery**: The combination of terrain (3) and scenery (1) is the most frequent.
 - **Terrain vs. Traffic**: The most common combination is when both ratings are 3.
 - **Traffic vs. Scenery**: Most common combinations are scenery (1) and traffic (2) as well as scenery (2) and traffic (3).
 
-#### Correlation Analysis
+### Correlation Analysis
 A correlation matrix comparing **mileage**, **sentiment**, and the three ratings showed no strong correlations. However, **sentiment** and **terrain rating** had the highest correlation, suggesting that challenging terrains might lead to more negative sentiments.
 
-### Multivariate Analysis
+## Multivariate Analysis
 
 To identify potential clusters, we visualized **distance** vs. **sentiment**, color-coded by the **scenery score** and annotated with the **loop** variable (loop vs. non-loop trails). The scatter plot revealed:
 - No clear clusters based on distance and sentiment.
 - Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.
 
-### Key Insights
+## Key Insights
 
 - Sentiment is generally positive, with a bimodal distribution.
 - Most trails are relatively short (10-120 miles), though a few exceed 175 miles.
@@ -40,7 +40,7 @@ To identify potential clusters, we visualized **distance** vs. **sentiment**, co
 - No strong correlations exist between numerical or categorical variables.
 - Distinct clusters are not evident based on distance, sentiment, or scenery.
 
-### Conclusion and Next Steps
+## Conclusion and Next Steps
 
 The EDA revealed limited patterns for effectively grouping trails. While the correlation matrix and scatter plots showed minimal relationships, the insights into distributions and rating combinations inform our understanding of the data. These findings will guide the next steps:
 - **Modeling**: Explore whether machine learning can identify subtle patterns.

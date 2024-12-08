@@ -188,14 +188,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link active" data-scroll-target="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis">Univariate Analysis</a>
   <ul class="collapse">
-  <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis">Univariate Analysis</a></li>
-  <li><a href="#bivariate-analysis" id="toc-bivariate-analysis" class="nav-link" data-scroll-target="#bivariate-analysis">Bivariate Analysis</a></li>
+  <li><a href="#numerical-variables" id="toc-numerical-variables" class="nav-link" data-scroll-target="#numerical-variables">Numerical Variables</a></li>
+  <li><a href="#categorical-variables" id="toc-categorical-variables" class="nav-link" data-scroll-target="#categorical-variables">Categorical Variables</a></li>
+  </ul></li>
+  <li><a href="#bivariate-analysis" id="toc-bivariate-analysis" class="nav-link" data-scroll-target="#bivariate-analysis">Bivariate Analysis</a>
+  <ul class="collapse">
+  <li><a href="#heatmaps" id="toc-heatmaps" class="nav-link" data-scroll-target="#heatmaps">Heatmaps</a></li>
+  <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis">Correlation Analysis</a></li>
+  </ul></li>
   <li><a href="#multivariate-analysis" id="toc-multivariate-analysis" class="nav-link" data-scroll-target="#multivariate-analysis">Multivariate Analysis</a></li>
   <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">Key Insights</a></li>
   <li><a href="#conclusion-and-next-steps" id="toc-conclusion-and-next-steps" class="nav-link" data-scroll-target="#conclusion-and-next-steps">Conclusion and Next Steps</a></li>
-  </ul></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   </ul>
 </nav>
@@ -222,38 +228,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<!-- After digesting the instructions, you can delete this cell, these are assignment instructions and do not need to be included in your final submission.  -->
-<section id="exploratory-data-analysis-eda" class="level2">
-<h2 class="anchored" data-anchor-id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h2>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>With our processed data, we created numerous visualizations to uncover the underlying patterns in the bike trail dataset. Most of the analyses focused on univariate relationships, though we also explored some bivariate relationships, particularly between trail ratings. Additionally, we examined the potential for clustering by comparing mileage with sentiment, using the trail’s scenery score as a color-coded feature.</p>
-<section id="univariate-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="univariate-analysis">Univariate Analysis</h3>
-<section id="numerical-variables" class="level4">
-<h4 class="anchored" data-anchor-id="numerical-variables">Numerical Variables</h4>
+</section>
+<section id="univariate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-analysis">Univariate Analysis</h2>
+<section id="numerical-variables" class="level3">
+<h3 class="anchored" data-anchor-id="numerical-variables">Numerical Variables</h3>
 <p>We analyzed the distributions of numerical variables, particularly <strong>mileage</strong> and <strong>sentiment</strong>: - <strong>Mileage</strong>: A discrete variable, categorized into bins for easier analysis. The distribution shows that most trails fall within the 10-120 mile range, with a slight right skew indicating a few longer trails (up to 175 miles). - <strong>Sentiment</strong>: A continuous variable analyzed using Kernel Density Estimation. The distribution reveals that most sentiments are positive, concentrated within the 0-0.8 range. The bimodal nature of the distribution indicates peaks around 0 and 0.6.</p>
 </section>
-<section id="categorical-variables" class="level4">
-<h4 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h4>
+<section id="categorical-variables" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h3>
 <p>Bar charts helped us visualize the distributions of trail ratings—<strong>terrain</strong>, <strong>traffic</strong>, and <strong>scenery</strong>: - <strong>Terrain</strong>: The only rating using the full range (1-5). Most trails are rated 3, with fewer trails rated 4 or 5. - <strong>Traffic</strong>: Ranges from 1-4, with most trails rated 2 or 3. - <strong>Scenery</strong>: Restricted to scores of 1-3, with the majority of trails rated 1 or 2.</p>
 </section>
 </section>
-<section id="bivariate-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="bivariate-analysis">Bivariate Analysis</h3>
-<section id="heatmaps" class="level4">
-<h4 class="anchored" data-anchor-id="heatmaps">Heatmaps</h4>
+<section id="bivariate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-analysis">Bivariate Analysis</h2>
+<section id="heatmaps" class="level3">
+<h3 class="anchored" data-anchor-id="heatmaps">Heatmaps</h3>
 <p>We explored relationships between trail ratings using heatmaps: - <strong>Terrain vs.&nbsp;Scenery</strong>: The combination of terrain (3) and scenery (1) is the most frequent. - <strong>Terrain vs.&nbsp;Traffic</strong>: The most common combination is when both ratings are 3. - <strong>Traffic vs.&nbsp;Scenery</strong>: Most common combinations are scenery (1) and traffic (2) as well as scenery (2) and traffic (3).</p>
 </section>
-<section id="correlation-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="correlation-analysis">Correlation Analysis</h4>
+<section id="correlation-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-analysis">Correlation Analysis</h3>
 <p>A correlation matrix comparing <strong>mileage</strong>, <strong>sentiment</strong>, and the three ratings showed no strong correlations. However, <strong>sentiment</strong> and <strong>terrain rating</strong> had the highest correlation, suggesting that challenging terrains might lead to more negative sentiments.</p>
 </section>
 </section>
-<section id="multivariate-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="multivariate-analysis">Multivariate Analysis</h3>
+<section id="multivariate-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="multivariate-analysis">Multivariate Analysis</h2>
 <p>To identify potential clusters, we visualized <strong>distance</strong> vs.&nbsp;<strong>sentiment</strong>, color-coded by the <strong>scenery score</strong> and annotated with the <strong>loop</strong> variable (loop vs.&nbsp;non-loop trails). The scatter plot revealed: - No clear clusters based on distance and sentiment. - Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.</p>
 </section>
-<section id="key-insights" class="level3">
-<h3 class="anchored" data-anchor-id="key-insights">Key Insights</h3>
+<section id="key-insights" class="level2">
+<h2 class="anchored" data-anchor-id="key-insights">Key Insights</h2>
 <ul>
 <li>Sentiment is generally positive, with a bimodal distribution.</li>
 <li>Most trails are relatively short (10-120 miles), though a few exceed 175 miles.</li>
@@ -262,23 +268,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Distinct clusters are not evident based on distance, sentiment, or scenery.</li>
 </ul>
 </section>
-<section id="conclusion-and-next-steps" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion-and-next-steps">Conclusion and Next Steps</h3>
+<section id="conclusion-and-next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-and-next-steps">Conclusion and Next Steps</h2>
 <p>The EDA revealed limited patterns for effectively grouping trails. While the correlation matrix and scatter plots showed minimal relationships, the insights into distributions and rating combinations inform our understanding of the data. These findings will guide the next steps: - <strong>Modeling</strong>: Explore whether machine learning can identify subtle patterns. - <strong>Feature Engineering</strong>: Consider different variable relationships or transformations to improve clustering potential.</p>
 <p>All visualizations, including heatmaps, bar charts, and scatter plots, can be found in the <strong>Code</strong> section below.</p>
 </section>
-</section>
 <section id="code" class="level1">
 <h1>Code</h1>
-<div id="cell-3" class="cell" data-execution_count="3">
+<div id="cell-3" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ IMPORTS ------------------------------------ #</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../data/processed-data/dc_bike_routes.csv'</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> combinations</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> kstest, chi2_contingency, ttest_ind, f_oneway</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../data/processed-data/dc_bike_routes.csv'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
 <div>
 
 
@@ -400,7 +409,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="4">
+<div id="cell-4" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ouput summary stats for numerical variables</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'distance_mi'</span>, <span class="st">'sentiment'</span>]].describe())</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -442,7 +451,7 @@ max     184.000000   0.911500</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="5">
+<div id="cell-5" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count occurrences of each category for ranking variables</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rank_counts <span class="op">=</span> df[[<span class="st">'terrain'</span>, <span class="st">'traffic'</span>, <span class="st">'scenery'</span>]].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.value_counts())</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rank_counts)</span>
@@ -488,7 +497,7 @@ max     184.000000   0.911500</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="6">
+<div id="cell-6" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate correlation matrix</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'distance_mi'</span>, <span class="st">'sentiment'</span>, <span class="st">'terrain'</span>, <span class="st">'traffic'</span>, <span class="st">'scenery'</span>]].corr())</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -523,7 +532,7 @@ scenery        -0.214241   0.055650 -0.113830  0.307563  1.000000</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="7">
+<div id="cell-7" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize distance against sentiment to see if longer trails correlate with higher sentiment</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># color points based on scenery score and style them based on if ther are a loop</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'distance_mi'</span>, y<span class="op">=</span><span class="st">'sentiment'</span>, hue<span class="op">=</span><span class="st">'scenery'</span>, style<span class="op">=</span><span class="st">'loop'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
@@ -537,6 +546,148 @@ scenery        -0.214241   0.055650 -0.113830  0.307563  1.000000</code></pre>
 <p><img src="main_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
+</div>
+</div>
+<div id="cell-8" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Break columns into respective groups, continuous, categorical, binary</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cont_vars <span class="op">=</span> [<span class="st">'sentiment'</span>, <span class="st">'distance_mi'</span>] <span class="co">#, 'distance_norm']</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>cat_vars <span class="op">=</span> [<span class="st">'traffic'</span>, <span class="st">'scenery'</span>, <span class="st">'terrain'</span>, <span class="st">'state1'</span>, <span class="st">'state2'</span>]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>bin_vars <span class="op">=</span> [<span class="st">'unpaved'</span>, <span class="st">'flat'</span>, <span class="st">'workout'</span>, <span class="st">'park'</span>, <span class="st">'river'</span>, <span class="st">'loop'</span>]<span class="co"># Check continuous numeric vars for normality</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># test numeric varaibles for normality</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> var <span class="kw">in</span> cont_vars:</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Perform KS test, compare obs distribution with expected normal distribution</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    stat, p <span class="op">=</span> kstest(df[var], <span class="st">'norm'</span>, args<span class="op">=</span>(np.mean(df[var]), np.std(df[var])))</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># simple if statement to interpret result</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> p <span class="op">&gt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>var<span class="sc">}</span><span class="ss"> appears to be normally distributed (p-value=</span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">)."</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>var<span class="sc">}</span><span class="ss"> does not appear to be normally distributed (p-value=</span><span class="sc">{</span>p<span class="sc">}</span><span class="ss">)."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>sentiment appears to be normally distributed (p-value=0.19893260966830684).
+distance_mi appears to be normally distributed (p-value=0.09142254585650134).</code></pre>
+</div>
+</div>
+<div id="cell-9" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical testing</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># T-test</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over the continuous variables</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> var1 <span class="kw">in</span> cont_vars:</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print statement which variable you are comparing means of</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Means Across </span><span class="sc">{</span>var1<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize lists to store test stats and pvals</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    ts <span class="op">=</span> []</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    pvals <span class="op">=</span> []</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># iterate over the binary variables</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> var2 <span class="kw">in</span> bin_vars:</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># make seperate lists for routes with 0 or 1 for current variable</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        zeros <span class="op">=</span> df[df[var2]<span class="op">==</span><span class="dv">0</span>][var1]</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        ones <span class="op">=</span> df[df[var2]<span class="op">==</span><span class="dv">1</span>][var1]</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># conduct the t test</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        ttest <span class="op">=</span> ttest_ind(zeros, ones)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># append the test stat and pvalue to their lists</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        ts.append(ttest.statistic)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        pvals.append(ttest.pvalue)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># optional output</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(f'T-Test for {var2}: t={ttest.statistic}, p-val={ttest.pvalue}')</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Combine into orderly data frame for output</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(pd.DataFrame({<span class="st">'variable'</span>:bin_vars, <span class="st">'T-stat'</span>: ts, <span class="st">'p-values'</span>:pvals}), <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Means Across Sentiment
+  variable    T-stat  p-values
+0  unpaved -0.798712  0.429060
+1     flat -1.255270  0.216489
+2  workout  0.343609  0.732897
+3     park  1.252806  0.217375
+4    river  0.273525  0.785823
+5     loop -0.925050  0.360353 
+
+Means Across Distance_mi
+  variable    T-stat  p-values
+0  unpaved -0.337290  0.737619
+1     flat -0.988985  0.328471
+2  workout  1.577108  0.122456
+3     park  0.692671  0.492421
+4    river  0.836002  0.407999
+5     loop -0.371249  0.712363 
+</code></pre>
+</div>
+</div>
+<div id="cell-10" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chi-square</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use combinations to find all non repeated pars of categorical variables</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>pairs <span class="op">=</span> <span class="bu">list</span>(combinations(cat_vars, <span class="dv">2</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize lists to store test stats and pvals</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>chi2s <span class="op">=</span> []</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>pvals <span class="op">=</span> []</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over the pairs of categorical variables</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pair <span class="kw">in</span> pairs:</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># construct contingency table of current pair</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    contingency_table <span class="op">=</span> pd.crosstab(df[pair[<span class="dv">0</span>]], df[pair[<span class="dv">1</span>]])</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># conduct the chi square test</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    chi2 <span class="op">=</span> chi2_contingency(contingency_table)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># append the test stat and pvalue to their lists</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    chi2s.append(chi2.statistic)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    pvals.append(chi2.pvalue)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># optional output</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(f'Chi-Square test for {pair[0]} and {pair[1]}:\n\t chi2={chi2.statistic},\n\t p-val={chi2.pvalue}')</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into orderly data frame for output</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.DataFrame({<span class="st">'pair'</span>:pairs, <span class="st">'Chi2 Stat'</span>: chi2s, <span class="st">'p-values'</span>:pvals}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 pair     T-stat      p-values
+0  (traffic, scenery)   7.569852  2.713401e-01
+1  (traffic, terrain)  21.859405  3.912610e-02
+2   (traffic, state1)   5.661211  7.732882e-01
+3   (traffic, state2)   6.185171  7.212520e-01
+4  (scenery, terrain)  12.476579  1.311730e-01
+5   (scenery, state1)   6.288026  3.917107e-01
+6   (scenery, state2)   5.302261  5.056705e-01
+7   (terrain, state1)  22.436062  3.291347e-02
+8   (terrain, state2)  15.650236  2.077861e-01
+9    (state1, state2)  67.104056  5.612906e-11</code></pre>
+</div>
+</div>
+<div id="cell-11" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over the continuous variables</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> var1 <span class="kw">in</span> cont_vars:</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print statement which variable you are comparing means of</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Means Across </span><span class="sc">{</span>var1<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize lists to store test stats and pvals</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    fs <span class="op">=</span> []</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    pvals <span class="op">=</span> []</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># iterate over the categorical variables</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> var2 <span class="kw">in</span> cat_vars:</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># get unique categories from current variable</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        groups <span class="op">=</span> df[var2].unique()</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># for each unique category, subset and get the current continuous column</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        group_data <span class="op">=</span> [df[df[var2] <span class="op">==</span> category][var1] <span class="cf">for</span> category <span class="kw">in</span> groups]</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># conduct the one way anova test, test across the categories in the current variable</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        anova <span class="op">=</span> f_oneway(<span class="op">*</span>group_data)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># append the test stat and pvalue to their lists</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        fs.append(anova.statistic)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>        pvals.append(anova.pvalue)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(f'ANOVA Test for {var2}: f={f_oneway.statistic}, p-val={f_oneway.pvalue}')</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Combine into orderly data frame for output</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(pd.DataFrame({<span class="st">'variable'</span>:cat_vars, <span class="st">'F-stat'</span>: fs, <span class="st">'p-values'</span>:pvals}), <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Means Across Sentiment
+  variable    F-stat  p-values
+0  traffic  2.693770  0.059227
+1  scenery  0.506293  0.606536
+2  terrain  3.067727  0.027668
+3   state1  1.543986  0.218446
+4   state2  0.474775  0.701643 
+
+Means Across Distance_mi
+  variable    F-stat  p-values
+0  traffic  1.793229  0.164421
+1  scenery  0.981119  0.383731
+2  terrain  0.954898  0.443290
+3   state1  0.392242  0.759249
+4   state2  0.742856  0.533016 
+</code></pre>
 </div>
 </div>
 
