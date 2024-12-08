@@ -205,7 +205,13 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-collection" id="toc-data-collection" class="nav-link active" data-scroll-target="#data-collection">Data Collection</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#goals" id="toc-goals" class="nav-link" data-scroll-target="#goals">Goals</a></li>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
+  </ul></li>
+  <li><a href="#data-collection-process" id="toc-data-collection-process" class="nav-link" data-scroll-target="#data-collection-process">Data Collection Process</a>
   <ul class="collapse">
   <li><a href="#data-source-information" id="toc-data-source-information" class="nav-link" data-scroll-target="#data-source-information">Data Source Information</a>
   <ul class="collapse">
@@ -214,12 +220,6 @@ div.csl-indent {
   <li><a href="#data-collection-methods" id="toc-data-collection-methods" class="nav-link" data-scroll-target="#data-collection-methods">Data Collection Methods</a></li>
   <li><a href="#data-structure-and-format" id="toc-data-structure-and-format" class="nav-link" data-scroll-target="#data-structure-and-format">Data Structure and Format</a></li>
   <li><a href="#data-link" id="toc-data-link" class="nav-link" data-scroll-target="#data-link">Data Link</a></li>
-  </ul></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a>
-  <ul class="collapse">
-  <li><a href="#goals" id="toc-goals" class="nav-link" data-scroll-target="#goals">Goals</a></li>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   </ul></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
@@ -254,43 +254,11 @@ div.csl-indent {
 </header>
 
 
-<section id="data-collection" class="level1">
-<h1>Data Collection</h1>
-<section id="data-source-information" class="level2">
-<h2 class="anchored" data-anchor-id="data-source-information">Data Source Information</h2>
-<p>All data used in this project originates from <em><a href="http://bikewashington.org/routes/all.htm">Bike Washington</a></em>. The website provides detailed information about bike routes within the DMV (DC, Maryland, and Virginia) area. Specifically, it includes: - <strong>Trail Length:</strong> Measured in miles. - <strong>Trail Name:</strong> The name of each bike route. - <strong>Trail Description:</strong> A summary of the trail’s features. - <strong>Ratings:</strong> Scores for terrain difficulty, traffic levels, and scenic beauty.</p>
-<section id="rating-definitions" class="level3">
-<h3 class="anchored" data-anchor-id="rating-definitions">Rating Definitions</h3>
-<ul>
-<li><strong>Terrain:</strong> A score of <code>1</code> corresponds to a very flat trail, while <code>5</code> represents extremely challenging climbs.</li>
-<li><strong>Traffic:</strong> A score of <code>1</code> indicates minimal traffic, while <code>5</code> suggests heavy traffic conditions.</li>
-<li><strong>Scenery:</strong> A score of <code>1</code> indicates a highly scenic trail, whereas <code>5</code> represents less visually appealing routes.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="data-collection-methods" class="level2">
-<h2 class="anchored" data-anchor-id="data-collection-methods">Data Collection Methods</h2>
-<p>We utilized Selenium, an open-source browser automation framework, to scrape data from the website. Specifically: - The <code>webdriver</code> function was employed to extract trail names, mileage, and ratings. - The extracted data was processed using Pandas to consolidate all relevant information into a single DataFrame. - The tabular data was then saved for future analysis.</p>
-<hr>
-</section>
-<section id="data-structure-and-format" class="level2">
-<h2 class="anchored" data-anchor-id="data-structure-and-format">Data Structure and Format</h2>
-<p>The cleaned data was exported to a CSV file consisting of: - <strong>Rows:</strong> 43 (one for each trail). - <strong>Columns:</strong> 6 (trail name, description, mileage, terrain rating, traffic rating, and scenery rating). - <strong>Data Types:</strong> - <code>string</code> for trail names and descriptions. - <code>integer</code> for mileage and ratings. - <strong>Regression Target:</strong> mileage - <strong>Binary Classification Target:</strong> <em>insert here</em> - <strong>Multiclass-Classification Target:</strong> location of trail (Maryland, Virginia, or DC) - found in the description —</p>
-</section>
-<section id="data-link" class="level2">
-<h2 class="anchored" data-anchor-id="data-link">Data Link</h2>
-<ul>
-<li><strong>Raw Data:</strong> <a href="*add-link-here*">Link to dataset</a></li>
-<li><strong>Data Collection Code:</strong> Provided below.</li>
-</ul>
-</section>
-</section>
 <section id="overview" class="level1">
 <h1>Overview</h1>
 <section id="goals" class="level2">
 <h2 class="anchored" data-anchor-id="goals">Goals</h2>
-<p>The primary objective of this project is to leverage data from <em>bikewashington.org</em> to provide actionable insights about bike paths in Washington, DC. By analyzing and presenting detailed information about these trails, we aim to help riders make informed decisions about their routes. This knowledge will enhance their preparation and contribute to safer biking experiences across the city.</p>
+<p>The primary objective of this project is to leverage data from <a href="bikewashington.org"></a> to provide actionable insights about bike paths in Washington, DC. By analyzing and presenting detailed information about these trails, we aim to help riders make informed decisions about their routes. This knowledge will enhance their preparation and contribute to safer biking experiences across the city.</p>
 </section>
 <section id="motivation" class="level2">
 <h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
@@ -305,6 +273,36 @@ div.csl-indent {
 </ul>
 </section>
 </section>
+<section id="data-collection-process" class="level1">
+<h1>Data Collection Process</h1>
+<section id="data-source-information" class="level2">
+<h2 class="anchored" data-anchor-id="data-source-information">Data Source Information</h2>
+<p>All data used in this project originates from <em><a href="http://bikewashington.org">Bike Washington</a></em>. The website provides detailed information about bike routes within the DMV (DC, Maryland, and Virginia) area. Specifically, it includes: - <strong>Trail Length:</strong> Measured in miles. - <strong>Trail Name:</strong> The name of each bike route. - <strong>Trail Description:</strong> A summary of the trail’s features. - <strong>Ratings:</strong> Scores for terrain difficulty, traffic levels, and scenic beauty.</p>
+<section id="rating-definitions" class="level3">
+<h3 class="anchored" data-anchor-id="rating-definitions">Rating Definitions</h3>
+<ul>
+<li><strong>Terrain:</strong> A score of <code>1</code> corresponds to a very flat trail, while <code>5</code> represents extremely challenging climbs.</li>
+<li><strong>Traffic:</strong> A score of <code>1</code> indicates minimal traffic, while <code>5</code> suggests heavy traffic conditions.</li>
+<li><strong>Scenery:</strong> A score of <code>1</code> indicates a highly scenic trail, whereas <code>5</code> represents less visually appealing routes.</li>
+</ul>
+</section>
+</section>
+<section id="data-collection-methods" class="level2">
+<h2 class="anchored" data-anchor-id="data-collection-methods">Data Collection Methods</h2>
+<p>We utilized Selenium, an open-source browser automation framework, to scrape data from the website. Specifically: - The <code>webdriver</code> function was employed to extract trail names, mileage, and ratings. - The extracted data was processed using Pandas to consolidate all relevant information into a single DataFrame. - The tabular data was then saved for future analysis.</p>
+</section>
+<section id="data-structure-and-format" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure-and-format">Data Structure and Format</h2>
+<p>The cleaned data was exported to a CSV file consisting of: - <strong>Rows:</strong> 43 (one for each trail). - <strong>Columns:</strong> 6 (trail name, description, mileage, terrain rating, traffic rating, and scenery rating). - <strong>Data Types:</strong> - <code>string</code> for trail names and descriptions. - <code>integer</code> for mileage and ratings. - <strong>Regression Target:</strong> mileage - <strong>Binary Classification Target:</strong> <em>insert here</em> - <strong>Multiclass-Classification Target:</strong> location of trail (Maryland, Virginia, or DC) - found in the description</p>
+</section>
+<section id="data-link" class="level2">
+<h2 class="anchored" data-anchor-id="data-link">Data Link</h2>
+<ul>
+<li><strong>Raw Data:</strong> <a href="http://bikewashington.org/routes/all.htm">Link to dataset</a></li>
+<li><strong>Data Collection Code:</strong> Provided below.</li>
+</ul>
+</section>
+</section>
 <section id="methods" class="level1">
 <h1>Methods</h1>
 <p>We utilized Selenium, an open-source framework for automating web browsers, to scrape data from bikewashington.org. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame.</p>
@@ -313,16 +311,15 @@ div.csl-indent {
 </section>
 <section id="code" class="level1">
 <h1>Code</h1>
-<p>In the following code, we first utilized the requests library to retrieve the HTML content from the Wikipedia page. Afterward, we employed BeautifulSoup to parse the HTML and locate the specific table of interest by using the find function. Once the table was identified, we extracted the relevant data by iterating through its rows, gathering country names and their respective populations. Finally, we used Pandas to store the collected data in a DataFrame, allowing for easy analysis and visualization. The data could also be optionally saved as a CSV file for further use.</p>
-<p>The code in this section was largely manipulated from<span class="citation" data-cites="Pfalzgraf_2020_selenium"><sup><a href="#ref-Pfalzgraf_2020_selenium" role="doc-biblioref">1</a></sup></span> walkthough in scraping data for NBA players.</p>
-<div id="cell-5" class="cell" data-execution_count="1">
+<p>The code in this section was largely manipulated from the walkthough in scraping data for NBA players discussed in the literature review<span class="citation" data-cites="Pfalzgraf_2020_selenium"><sup><a href="#ref-Pfalzgraf_2020_selenium" role="doc-biblioref">1</a></sup></span>.</p>
+<div id="cell-3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># IMPORTS</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.chrome.options <span class="im">import</span> Options</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CONFIGURE DRIVER</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Initiate options object and configure chrome settings to run headless (without GUI)</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ChatGPT helped address error with Chrome crashing upon startup</span></span>
@@ -340,76 +337,79 @@ div.csl-indent {
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Use driver to access the bike path website</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>driver.get(<span class="st">'http://bikewashington.org/routes/all.htm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="3">
+<div id="cell-5" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Xpath's (found using inspect in website) to locate instances of data we want</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for instances of bike path names </span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">'//td/a'</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for instances of bike path descriptions </span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>descriptions <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">'//td[@colspan="3"]'</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for instances of bike path ratings </span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">"//tr[td/b[text()='Traffic:']]"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Grab text from searched objects and turn them into lists</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>bike_path_names <span class="op">=</span> [name.text <span class="cf">for</span> name <span class="kw">in</span> names]</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>bike_path_descriptions <span class="op">=</span> [description.text <span class="cf">for</span> description <span class="kw">in</span> descriptions]</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>bike_path_ratings <span class="op">=</span> [rating.text <span class="cf">for</span> rating <span class="kw">in</span> ratings]</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Since they are all ordered the same, we can combine into a single data frame. </span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'name'</span>:bike_path_names, <span class="st">'description'</span>:bike_path_descriptions, <span class="st">'ratings'</span>: bike_path_ratings})</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract ratings into their own columns leveraging regex pattern in strings</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'terrain'</span>,<span class="st">'traffic'</span>,<span class="st">'scenery'</span>]] <span class="op">=</span> df[<span class="st">'ratings'</span>].<span class="bu">str</span>.extract(<span class="vs">r'Terrain: (\d+) Traffic: (\d+) Scenery: (\d+)'</span>)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop ratings column </span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'ratings'</span>])</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the scraped data</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># save to CSV</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'../../data/raw-data/dc_bike_routes.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for instances of bike path distances </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>distances <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">'//tr/td[@align="center"][1]'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for instances of bike path descriptions </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>descriptions <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">'//td[@colspan="3"]'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for instances of bike path ratings </span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ratings <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">"//tr[td/b[text()='Traffic:']]"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Grab text from searched objects and turn them into lists</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>bike_path_names <span class="op">=</span> [name.text <span class="cf">for</span> name <span class="kw">in</span> names]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>bike_path_distances <span class="op">=</span> [<span class="bu">int</span>(i.text) <span class="cf">for</span> i <span class="kw">in</span> distances <span class="cf">if</span> i.text.strip()]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>bike_path_descriptions <span class="op">=</span> [description.text <span class="cf">for</span> description <span class="kw">in</span> descriptions]</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>bike_path_ratings <span class="op">=</span> [rating.text <span class="cf">for</span> rating <span class="kw">in</span> ratings]</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Since they are all ordered the same, we can combine into a single data frame. </span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'name'</span>:bike_path_names, <span class="st">'distance_mi'</span>:bike_path_distances, <span class="st">'description'</span>:bike_path_descriptions, <span class="st">'ratings'</span>: bike_path_ratings})</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract ratings into their own columns leveraging regex pattern in strings</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'terrain'</span>,<span class="st">'traffic'</span>,<span class="st">'scenery'</span>]] <span class="op">=</span> df[<span class="st">'ratings'</span>].<span class="bu">str</span>.extract(<span class="vs">r'Terrain: (\d+) Traffic: (\d+) Scenery: (\d+)'</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop ratings column </span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'ratings'</span>])</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the scraped data</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># save to CSV</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'../../data/raw-data/dc_bike_routes.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                             name  \
-0                    Potomac Tour   
-1                       BWI Trail   
-2                  Airpark Cruise   
-3              Seneca Valley Tour   
-4                   For The Boyds   
-5                  Key Chain Tour   
-6          The Arlington Triangle   
-7              Mount Vernon Trail   
-8                 Gettysburg Tour   
-9                  The Zoo Review   
-10      Antietam Battlefield Tour   
-11                Thurmont Ramble   
-12                        Wye Not   
-13              Lost Blossom Tour   
-14  Patuxent Wildlife Center Loop   
-15        Western Montgomery Loop   
-16                Peach Tree Loop   
-17                    Oxford Loop   
-18            A Ride to the Falls   
-19           Montgomery Lake Tour   
-20        Shenandoah River Ramble   
-21      The Great Washington Loop   
-22               Chesapeake Bound   
-23         Waterford Double-Cross   
-24            South Mountain Loop   
-25       Mason-Dixon Double-Cross   
-26               Greenbelt to Bay   
-27    Northern Central Rail Trail   
-28                Little Fletcher   
-29                W&amp;OD Rail Trail   
-30            North to Gettysburg   
-31        Washington to Baltimore   
-32       Sugarloaf Challenge Loop   
-33              The Fletcher Loop   
-34       The Blue Ridge Challenge   
-35                 DC to Thurmont   
-36                     Super Nova   
-37                 The WODCO Loop   
-38            Tour Between Cities   
-39  Tkaczyk's All Terrain Century   
-40                  Skyline Drive   
-41                   Bay-to-Beach   
-42                    C&amp;O Towpath   
+<pre><code>                             name  distance_mi  \
+0                    Potomac Tour           10   
+1                       BWI Trail           11   
+2                  Airpark Cruise           12   
+3              Seneca Valley Tour           13   
+4                   For The Boyds           14   
+5                  Key Chain Tour           16   
+6          The Arlington Triangle           17   
+7              Mount Vernon Trail           18   
+8                 Gettysburg Tour           19   
+9                  The Zoo Review           20   
+10      Antietam Battlefield Tour           21   
+11                Thurmont Ramble           23   
+12                        Wye Not           23   
+13              Lost Blossom Tour           24   
+14  Patuxent Wildlife Center Loop           25   
+15        Western Montgomery Loop           25   
+16                Peach Tree Loop           25   
+17                    Oxford Loop           26   
+18            A Ride to the Falls           27   
+19           Montgomery Lake Tour           27   
+20        Shenandoah River Ramble           27   
+21      The Great Washington Loop           30   
+22               Chesapeake Bound           33   
+23         Waterford Double-Cross           34   
+24            South Mountain Loop           37   
+25       Mason-Dixon Double-Cross           38   
+26               Greenbelt to Bay           38   
+27    Northern Central Rail Trail           40   
+28                Little Fletcher           44   
+29                W&amp;OD Rail Trail           45   
+30            North to Gettysburg           46   
+31        Washington to Baltimore           47   
+32       Sugarloaf Challenge Loop           50   
+33              The Fletcher Loop           55   
+34       The Blue Ridge Challenge           56   
+35                 DC to Thurmont           67   
+36                     Super Nova           72   
+37                 The WODCO Loop           75   
+38            Tour Between Cities           80   
+39  Tkaczyk's All Terrain Century          104   
+40                  Skyline Drive          105   
+41                   Bay-to-Beach          106   
+42                    C&amp;O Towpath          184   
 
                                           description terrain traffic scenery  
 0   D.C. - A nice short tour of the downtown water...       1       2       2  

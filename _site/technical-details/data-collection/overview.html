@@ -157,6 +157,17 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   </ul></li>
+  <li><a href="#data-collection-process" id="toc-data-collection-process" class="nav-link" data-scroll-target="#data-collection-process">Data Collection Process</a>
+  <ul class="collapse">
+  <li><a href="#data-source-information" id="toc-data-source-information" class="nav-link" data-scroll-target="#data-source-information">Data Source Information</a>
+  <ul class="collapse">
+  <li><a href="#rating-definitions" id="toc-rating-definitions" class="nav-link" data-scroll-target="#rating-definitions">Rating Definitions</a></li>
+  </ul></li>
+  <li><a href="#data-collection-methods" id="toc-data-collection-methods" class="nav-link" data-scroll-target="#data-collection-methods">Data Collection Methods</a></li>
+  <li><a href="#data-structure-and-format" id="toc-data-structure-and-format" class="nav-link" data-scroll-target="#data-structure-and-format">Data Structure and Format</a></li>
+  <li><a href="#data-link" id="toc-data-link" class="nav-link" data-scroll-target="#data-link">Data Link</a></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
   </ul>
 </nav>
     </div>
@@ -170,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Overview</h1>
 <section id="goals" class="level2">
 <h2 class="anchored" data-anchor-id="goals">Goals</h2>
-<p>The primary objective of this project is to leverage data from <em>bikewashington.org</em> to provide actionable insights about bike paths in Washington, DC. By analyzing and presenting detailed information about these trails, we aim to help riders make informed decisions about their routes. This knowledge will enhance their preparation and contribute to safer biking experiences across the city.</p>
+<p>The primary objective of this project is to leverage data from <a href="bikewashington.org"></a> to provide actionable insights about bike paths in Washington, DC. By analyzing and presenting detailed information about these trails, we aim to help riders make informed decisions about their routes. This knowledge will enhance their preparation and contribute to safer biking experiences across the city.</p>
 </section>
 <section id="motivation" class="level2">
 <h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
@@ -183,9 +194,45 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Length Prediction:</strong> Develop a regression decision tree model to predict the length of a trail based on its other qualities.</li>
 <li><strong>Personalized Recommendations:</strong> Offer tailored trail recommendations for riders of varying experience levels, addressing their unique preferences.</li>
 </ul>
-
-
 </section>
+</section>
+<section id="data-collection-process" class="level1">
+<h1>Data Collection Process</h1>
+<section id="data-source-information" class="level2">
+<h2 class="anchored" data-anchor-id="data-source-information">Data Source Information</h2>
+<p>All data used in this project originates from <em><a href="http://bikewashington.org">Bike Washington</a></em>. The website provides detailed information about bike routes within the DMV (DC, Maryland, and Virginia) area. Specifically, it includes: - <strong>Trail Length:</strong> Measured in miles. - <strong>Trail Name:</strong> The name of each bike route. - <strong>Trail Description:</strong> A summary of the trail’s features. - <strong>Ratings:</strong> Scores for terrain difficulty, traffic levels, and scenic beauty.</p>
+<section id="rating-definitions" class="level3">
+<h3 class="anchored" data-anchor-id="rating-definitions">Rating Definitions</h3>
+<ul>
+<li><strong>Terrain:</strong> A score of <code>1</code> corresponds to a very flat trail, while <code>5</code> represents extremely challenging climbs.</li>
+<li><strong>Traffic:</strong> A score of <code>1</code> indicates minimal traffic, while <code>5</code> suggests heavy traffic conditions.</li>
+<li><strong>Scenery:</strong> A score of <code>1</code> indicates a highly scenic trail, whereas <code>5</code> represents less visually appealing routes.</li>
+</ul>
+</section>
+</section>
+<section id="data-collection-methods" class="level2">
+<h2 class="anchored" data-anchor-id="data-collection-methods">Data Collection Methods</h2>
+<p>We utilized Selenium, an open-source browser automation framework, to scrape data from the website. Specifically: - The <code>webdriver</code> function was employed to extract trail names, mileage, and ratings. - The extracted data was processed using Pandas to consolidate all relevant information into a single DataFrame. - The tabular data was then saved for future analysis.</p>
+</section>
+<section id="data-structure-and-format" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure-and-format">Data Structure and Format</h2>
+<p>The cleaned data was exported to a CSV file consisting of: - <strong>Rows:</strong> 43 (one for each trail). - <strong>Columns:</strong> 6 (trail name, description, mileage, terrain rating, traffic rating, and scenery rating). - <strong>Data Types:</strong> - <code>string</code> for trail names and descriptions. - <code>integer</code> for mileage and ratings. - <strong>Regression Target:</strong> mileage - <strong>Binary Classification Target:</strong> <em>insert here</em> - <strong>Multiclass-Classification Target:</strong> location of trail (Maryland, Virginia, or DC) - found in the description</p>
+</section>
+<section id="data-link" class="level2">
+<h2 class="anchored" data-anchor-id="data-link">Data Link</h2>
+<ul>
+<li><strong>Raw Data:</strong> <a href="http://bikewashington.org/routes/all.htm">Link to dataset</a></li>
+<li><strong>Data Collection Code:</strong> Provided below.</li>
+</ul>
+</section>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<p>We utilized Selenium, an open-source framework for automating web browsers, to scrape data from bikewashington.org. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame.</p>
+<p>The ratings were further processed and split into three distinct columns: terrain, scenery, and traffic. Irrelevant or redundant columns were removed from the dataset to streamline the analysis. One such column was the original ‘rating’ column. Finally, the cleaned DataFrame was exported as a CSV file for seamless integration with the machine learning components of this project.</p>
+<p>While the dataset is relatively small, it encompasses all the essential information about bike paths and trails in the DC area, making it a valuable resource for our analysis.</p>
+
+
 </section>
 
 </main> <!-- /main -->
