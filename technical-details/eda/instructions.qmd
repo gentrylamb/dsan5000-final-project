@@ -1,83 +1,49 @@
-# Instructions 
+## Exploratory Data Analysis (EDA)
 
-`Note`: You should remove these instructions once you have read and understood them. They should not be included in your final submission.
+With our processed data, we created numerous visualizations to uncover the underlying patterns in the bike trail dataset. Most of the analyses focused on univariate relationships, though we also explored some bivariate relationships, particularly between trail ratings. Additionally, we examined the potential for clustering by comparing mileage with sentiment, using the trail's scenery score as a color-coded feature.
 
-`Remember:` Exactly what do you put on this page will be specific you your project and data. Some things might "make more sense" on one page rather than another, depending on your workflow. Organize your project in a logical way that makes the most sense to you.  
+### Univariate Analysis
 
-## Suggested page structure
+#### Numerical Variables
+We analyzed the distributions of numerical variables, particularly **mileage** and **sentiment**:
+- **Mileage**: A discrete variable, categorized into bins for easier analysis. The distribution shows that most trails fall within the 10-120 mile range, with a slight right skew indicating a few longer trails (up to 175 miles).
+- **Sentiment**: A continuous variable analyzed using Kernel Density Estimation. The distribution reveals that most sentiments are positive, concentrated within the 0-0.8 range. The bimodal nature of the distribution indicates peaks around 0 and 0.6.
 
-Here’s one suggested structure for organizing your technical pages. You can adjust this as needed:
+#### Categorical Variables
+Bar charts helped us visualize the distributions of trail ratings—**terrain**, **traffic**, and **scenery**:
+- **Terrain**: The only rating using the full range (1-5). Most trails are rated 3, with fewer trails rated 4 or 5.
+- **Traffic**: Ranges from 1-4, with most trails rated 2 or 3.
+- **Scenery**: Restricted to scores of 1-3, with the majority of trails rated 1 or 2.
 
-`Audience`:Remember that these are written for a technical audience. Assume they have completed the DSAN program, but would appreciate refreshers of the important concepts. 
+### Bivariate Analysis
 
-- **Introduction and Motivation:** Briefly outline your plan. What are you doing on this page, and why? Provide context and explain the goals of your analysis.
-- **Overview of Methods:** Give a concise explanation of the methods used. For example, if using K-Means clustering, describe what it is, how it works, the inputs and outputs, and key hyperparameters.
-- **Code:** Include the code you used to implement your workflow.
-- **Summary and Interpretation of Results:** Summarize your findings, interpret the results, and discuss their technical implications.
+#### Heatmaps
+We explored relationships between trail ratings using heatmaps:
+- **Terrain vs. Scenery**: The combination of terrain (3) and scenery (1) is the most frequent.
+- **Terrain vs. Traffic**: The most common combination is when both ratings are 3.
 
-## What to address 
+#### Correlation Analysis
+A correlation matrix comparing **mileage**, **sentiment**, and the three ratings showed no strong correlations. However, **sentiment** and **terrain rating** had the highest correlation, suggesting that challenging terrains might lead to more negative sentiments.
 
-The following is a list of some of the things you should address on this page. This list is not exhaustive, and you should use your judgment to decide what is most relevant to your project.
+### Multivariate Analysis
 
-The **EDA (Exploratory Data Analysis)** tab in your portfolio serves as a crucial foundation for your project. It provides a thorough overview of the dataset, highlights patterns, identifies potential issues, and prepares the data for further analysis. Follow these instructions to document your EDA effectively:
+To identify potential clusters, we visualized **distance** vs. **sentiment**, color-coded by the **scenery score** and annotated with the **loop** variable (loop vs. non-loop trails). The scatter plot revealed:
+- No clear clusters based on distance and sentiment.
+- Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.
 
-The goal of EDA is to gain a deeper understanding of the dataset and its relevance to your project’s objectives. It involves summarizing key data characteristics, identifying patterns, anomalies, and preparing for future analysis phases.
+### Key Insights
 
-Here are suggestions for things to include on this page 
+- Sentiment is generally positive, with a bimodal distribution.
+- Most trails are relatively short (10-120 miles), though a few exceed 175 miles.
+- Terrain ratings are diverse, but traffic and scenery ratings have narrower ranges.
+- No strong correlations exist between numerical or categorical variables.
+- Distinct clusters are not evident based on distance, sentiment, or scenery.
 
-**Univariate Analysis**:
+### Conclusion and Next Steps
 
-- **Numerical Variables**:
-    - Provide summary statistics (mean, median, standard deviation).
-    - Visualize distributions using histograms or density plots.
-- **Categorical Variables**:
-    - Present frequency counts and visualize distributions using bar charts or pie charts.
-- **Key Insights**:
-    - Highlight any notable trends or patterns observed.
+The EDA revealed limited patterns for effectively grouping trails. While the correlation matrix and scatter plots showed minimal relationships, the insights into distributions and rating combinations inform our understanding of the data. These findings will guide the next steps:
+- **Modeling**: Explore whether machine learning can identify subtle patterns.
+- **Feature Engineering**: Consider different variable relationships or transformations to improve clustering potential.
 
-**Bivariate and Multivariate Analysis**:
-
-- **Correlation Analysis**:
-  - Analyze relationships between numerical variables using a correlation matrix.
-  - Visualize with heatmaps or pair plots and discuss any strong correlations.
-- **Crosstabulations**:
-  - For categorical variables, use crosstabs to explore relationships and visualize them with grouped bar plots.
-- **Feature Pairings**:
-  - Analyze relationships between key variables, particularly those related to your target.
-  - Visualize with scatter plots, box plots, or violin plots.
-
-**Data Distribution and Normalization**:
-
-- **Skewness and Kurtosis**:
- - Analyze and discuss the distribution of variables.
- - Apply transformations (e.g., log transformation) if needed for skewed data.
-- **Normalization**:
- - Apply normalization or scaling techniques (e.g., min-max scaling, z-score).
- - Document and visualize the impact of normalization.
-
-
-**Statistical Insights**:
-
-- Conduct basic statistical tests (e.g., T-tests, ANOVA, chi-square) to explore relationships between variables.
-- Summarize the statistical results and their implications for your analysis.
-
-
-**Data Visualization and Storytelling**:
-
-
-- **Visual Summary**:
- - Present key insights using charts and visualizations (e.g., Matplotlib, Seaborn, Plotly).
- - Ensure all visualizations are well-labeled and easy to interpret.
-- **Interactive Visualizations (Optional)**:
- - Include interactive elements (e.g., Plotly, Bokeh) to allow users to explore the data further.
-
-
-**Conclusions and Next Steps**:
-
-- **Summary of EDA Findings**:
- - Highlight the main takeaways from the EDA process (key trends, patterns, data quality issues).
-- **Implications for Modeling**:
- - Discuss how your EDA informs the next steps in your project (e.g., feature selection, data transformations).
- - Outline any further data cleaning or preparation required before moving into modeling.
-
+All visualizations, including heatmaps, bar charts, and scatter plots, can be found in the **Code** section below.
 

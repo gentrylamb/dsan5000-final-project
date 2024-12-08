@@ -151,10 +151,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a>
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link active" data-scroll-target="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a>
   <ul class="collapse">
-  <li><a href="#suggested-page-structure" id="toc-suggested-page-structure" class="nav-link" data-scroll-target="#suggested-page-structure">Suggested page structure</a></li>
-  <li><a href="#what-to-address" id="toc-what-to-address" class="nav-link" data-scroll-target="#what-to-address">What to address</a></li>
+  <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis">Univariate Analysis</a></li>
+  <li><a href="#bivariate-analysis" id="toc-bivariate-analysis" class="nav-link" data-scroll-target="#bivariate-analysis">Bivariate Analysis</a></li>
+  <li><a href="#multivariate-analysis" id="toc-multivariate-analysis" class="nav-link" data-scroll-target="#multivariate-analysis">Multivariate Analysis</a></li>
+  <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">Key Insights</a></li>
+  <li><a href="#conclusion-and-next-steps" id="toc-conclusion-and-next-steps" class="nav-link" data-scroll-target="#conclusion-and-next-steps">Conclusion and Next Steps</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -165,90 +168,49 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="instructions" class="level1">
-<h1>Instructions</h1>
-<p><code>Note</code>: You should remove these instructions once you have read and understood them. They should not be included in your final submission.</p>
-<p><code>Remember:</code> Exactly what do you put on this page will be specific you your project and data. Some things might “make more sense” on one page rather than another, depending on your workflow. Organize your project in a logical way that makes the most sense to you.</p>
-<section id="suggested-page-structure" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-page-structure">Suggested page structure</h2>
-<p>Here’s one suggested structure for organizing your technical pages. You can adjust this as needed:</p>
-<p><code>Audience</code>:Remember that these are written for a technical audience. Assume they have completed the DSAN program, but would appreciate refreshers of the important concepts.</p>
+<section id="exploratory-data-analysis-eda" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h2>
+<p>With our processed data, we created numerous visualizations to uncover the underlying patterns in the bike trail dataset. Most of the analyses focused on univariate relationships, though we also explored some bivariate relationships, particularly between trail ratings. Additionally, we examined the potential for clustering by comparing mileage with sentiment, using the trail’s scenery score as a color-coded feature.</p>
+<section id="univariate-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="univariate-analysis">Univariate Analysis</h3>
+<section id="numerical-variables" class="level4">
+<h4 class="anchored" data-anchor-id="numerical-variables">Numerical Variables</h4>
+<p>We analyzed the distributions of numerical variables, particularly <strong>mileage</strong> and <strong>sentiment</strong>: - <strong>Mileage</strong>: A discrete variable, categorized into bins for easier analysis. The distribution shows that most trails fall within the 10-120 mile range, with a slight right skew indicating a few longer trails (up to 175 miles). - <strong>Sentiment</strong>: A continuous variable analyzed using Kernel Density Estimation. The distribution reveals that most sentiments are positive, concentrated within the 0-0.8 range. The bimodal nature of the distribution indicates peaks around 0 and 0.6.</p>
+</section>
+<section id="categorical-variables" class="level4">
+<h4 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h4>
+<p>Bar charts helped us visualize the distributions of trail ratings—<strong>terrain</strong>, <strong>traffic</strong>, and <strong>scenery</strong>: - <strong>Terrain</strong>: The only rating using the full range (1-5). Most trails are rated 3, with fewer trails rated 4 or 5. - <strong>Traffic</strong>: Ranges from 1-4, with most trails rated 2 or 3. - <strong>Scenery</strong>: Restricted to scores of 1-3, with the majority of trails rated 1 or 2.</p>
+</section>
+</section>
+<section id="bivariate-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="bivariate-analysis">Bivariate Analysis</h3>
+<section id="heatmaps" class="level4">
+<h4 class="anchored" data-anchor-id="heatmaps">Heatmaps</h4>
+<p>We explored relationships between trail ratings using heatmaps: - <strong>Terrain vs.&nbsp;Scenery</strong>: The combination of terrain (3) and scenery (1) is the most frequent. - <strong>Terrain vs.&nbsp;Traffic</strong>: The most common combination is when both ratings are 3.</p>
+</section>
+<section id="correlation-analysis" class="level4">
+<h4 class="anchored" data-anchor-id="correlation-analysis">Correlation Analysis</h4>
+<p>A correlation matrix comparing <strong>mileage</strong>, <strong>sentiment</strong>, and the three ratings showed no strong correlations. However, <strong>sentiment</strong> and <strong>terrain rating</strong> had the highest correlation, suggesting that challenging terrains might lead to more negative sentiments.</p>
+</section>
+</section>
+<section id="multivariate-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="multivariate-analysis">Multivariate Analysis</h3>
+<p>To identify potential clusters, we visualized <strong>distance</strong> vs.&nbsp;<strong>sentiment</strong>, color-coded by the <strong>scenery score</strong> and annotated with the <strong>loop</strong> variable (loop vs.&nbsp;non-loop trails). The scatter plot revealed: - No clear clusters based on distance and sentiment. - Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.</p>
+</section>
+<section id="key-insights" class="level3">
+<h3 class="anchored" data-anchor-id="key-insights">Key Insights</h3>
 <ul>
-<li><strong>Introduction and Motivation:</strong> Briefly outline your plan. What are you doing on this page, and why? Provide context and explain the goals of your analysis.</li>
-<li><strong>Overview of Methods:</strong> Give a concise explanation of the methods used. For example, if using K-Means clustering, describe what it is, how it works, the inputs and outputs, and key hyperparameters.</li>
-<li><strong>Code:</strong> Include the code you used to implement your workflow.</li>
-<li><strong>Summary and Interpretation of Results:</strong> Summarize your findings, interpret the results, and discuss their technical implications.</li>
+<li>Sentiment is generally positive, with a bimodal distribution.</li>
+<li>Most trails are relatively short (10-120 miles), though a few exceed 175 miles.</li>
+<li>Terrain ratings are diverse, but traffic and scenery ratings have narrower ranges.</li>
+<li>No strong correlations exist between numerical or categorical variables.</li>
+<li>Distinct clusters are not evident based on distance, sentiment, or scenery.</li>
 </ul>
 </section>
-<section id="what-to-address" class="level2">
-<h2 class="anchored" data-anchor-id="what-to-address">What to address</h2>
-<p>The following is a list of some of the things you should address on this page. This list is not exhaustive, and you should use your judgment to decide what is most relevant to your project.</p>
-<p>The <strong>EDA (Exploratory Data Analysis)</strong> tab in your portfolio serves as a crucial foundation for your project. It provides a thorough overview of the dataset, highlights patterns, identifies potential issues, and prepares the data for further analysis. Follow these instructions to document your EDA effectively:</p>
-<p>The goal of EDA is to gain a deeper understanding of the dataset and its relevance to your project’s objectives. It involves summarizing key data characteristics, identifying patterns, anomalies, and preparing for future analysis phases.</p>
-<p>Here are suggestions for things to include on this page</p>
-<p><strong>Univariate Analysis</strong>:</p>
-<ul>
-<li><strong>Numerical Variables</strong>:
-<ul>
-<li>Provide summary statistics (mean, median, standard deviation).</li>
-<li>Visualize distributions using histograms or density plots.</li>
-</ul></li>
-<li><strong>Categorical Variables</strong>:
-<ul>
-<li>Present frequency counts and visualize distributions using bar charts or pie charts.</li>
-</ul></li>
-<li><strong>Key Insights</strong>:
-<ul>
-<li>Highlight any notable trends or patterns observed.</li>
-</ul></li>
-</ul>
-<p><strong>Bivariate and Multivariate Analysis</strong>:</p>
-<ul>
-<li><strong>Correlation Analysis</strong>:
-<ul>
-<li>Analyze relationships between numerical variables using a correlation matrix.</li>
-<li>Visualize with heatmaps or pair plots and discuss any strong correlations.</li>
-</ul></li>
-<li><strong>Crosstabulations</strong>:
-<ul>
-<li>For categorical variables, use crosstabs to explore relationships and visualize them with grouped bar plots.</li>
-</ul></li>
-<li><strong>Feature Pairings</strong>:
-<ul>
-<li>Analyze relationships between key variables, particularly those related to your target.</li>
-<li>Visualize with scatter plots, box plots, or violin plots.</li>
-</ul></li>
-</ul>
-<p><strong>Data Distribution and Normalization</strong>:</p>
-<ul>
-<li><strong>Skewness and Kurtosis</strong>:</li>
-<li>Analyze and discuss the distribution of variables.</li>
-<li>Apply transformations (e.g., log transformation) if needed for skewed data.</li>
-<li><strong>Normalization</strong>:</li>
-<li>Apply normalization or scaling techniques (e.g., min-max scaling, z-score).</li>
-<li>Document and visualize the impact of normalization.</li>
-</ul>
-<p><strong>Statistical Insights</strong>:</p>
-<ul>
-<li>Conduct basic statistical tests (e.g., T-tests, ANOVA, chi-square) to explore relationships between variables.</li>
-<li>Summarize the statistical results and their implications for your analysis.</li>
-</ul>
-<p><strong>Data Visualization and Storytelling</strong>:</p>
-<ul>
-<li><strong>Visual Summary</strong>:</li>
-<li>Present key insights using charts and visualizations (e.g., Matplotlib, Seaborn, Plotly).</li>
-<li>Ensure all visualizations are well-labeled and easy to interpret.</li>
-<li><strong>Interactive Visualizations (Optional)</strong>:</li>
-<li>Include interactive elements (e.g., Plotly, Bokeh) to allow users to explore the data further.</li>
-</ul>
-<p><strong>Conclusions and Next Steps</strong>:</p>
-<ul>
-<li><strong>Summary of EDA Findings</strong>:</li>
-<li>Highlight the main takeaways from the EDA process (key trends, patterns, data quality issues).</li>
-<li><strong>Implications for Modeling</strong>:</li>
-<li>Discuss how your EDA informs the next steps in your project (e.g., feature selection, data transformations).</li>
-<li>Outline any further data cleaning or preparation required before moving into modeling.</li>
-</ul>
+<section id="conclusion-and-next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-and-next-steps">Conclusion and Next Steps</h3>
+<p>The EDA revealed limited patterns for effectively grouping trails. While the correlation matrix and scatter plots showed minimal relationships, the insights into distributions and rating combinations inform our understanding of the data. These findings will guide the next steps: - <strong>Modeling</strong>: Explore whether machine learning can identify subtle patterns. - <strong>Feature Engineering</strong>: Consider different variable relationships or transformations to improve clustering potential.</p>
+<p>All visualizations, including heatmaps, bar charts, and scatter plots, can be found in the <strong>Code</strong> section below.</p>
 
 
 </section>
