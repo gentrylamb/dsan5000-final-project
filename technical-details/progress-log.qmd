@@ -33,13 +33,24 @@ If you are working as a team, at the end, you can duplicate the project and add 
 
 **12-01-2024** 
 
-* [x] Upload completed code to the project website and push to github 
+* [x] Write data collection code
 
 
 **12-06-2024**
 
-* [x] Complete literature review and put together the landing page 
+* [x] Write literature review and put together the landing page 
 
+
+**12-07-2024**
+
+* [x] Update data collection code to include distances
+* [x] Write data cleaning code
+* [x] Start writing EDA code
+
+
+**12-08-2024**
+
+* [x] Complete writing EDA code
 
 
 

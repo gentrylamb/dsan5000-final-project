@@ -1,12 +1,12 @@
-# Overview
-
 ## Goals
 
-The primary objective of this project is to leverage data from [](bikewashington.org) to provide actionable insights about bike paths in Washington, DC. By analyzing and presenting detailed information about these trails, we aim to help riders make informed decisions about their routes. This knowledge will enhance their preparation and contribute to safer biking experiences across the city.
+The primary objective of this project is to leverage data from [bikewashington.org](http://bikewashington.org) to provide actionable insights about bike paths in Washington, DC. By analyzing and presenting detailed information about these trails, we aim to help riders make informed decisions about their routes. This knowledge will enhance their preparation and contribute to safer biking experiences across the city.
+
 
 ## Motivation
 
 Our motivation lies in supporting the biking community by empowering riders to choose trails that align with their specific needs and goals. Whether for exercise, commuting, or leisure, informed decisions about bike paths can optimize the overall experience. Additionally, providing better trail information is expected to inherently enhance safety, especially for those exploring new or unfamiliar routes.
+
 
 ## Objectives
 
@@ -14,17 +14,18 @@ Our motivation lies in supporting the biking community by empowering riders to c
 - **Length Prediction:** Develop a regression decision tree model to predict the length of a trail based on its other qualities.
 - **Personalized Recommendations:** Offer tailored trail recommendations for riders of varying experience levels, addressing their unique preferences.
 
-# Data Collection Process
 
 ## Data Source Information
 
-All data used in this project originates from *[Bike Washington](http://bikewashington.org)*. The website provides detailed information about bike routes within the DMV (DC, Maryland, and Virginia) area. Specifically, it includes:
+All data used in this project originates from *[Bike Washington](http://bikewashington.org/routes/all.htm)*. The website provides a table of detailed information about bike routes within the DMV (DC, Maryland, and Virginia) area. Specifically, it includes:
+
 - **Trail Length:** Measured in miles.
 - **Trail Name:** The name of each bike route.
 - **Trail Description:** A summary of the trail’s features.
 - **Ratings:** Scores for terrain difficulty, traffic levels, and scenic beauty.
 
 ### Rating Definitions
+
 - **Terrain:** A score of `1` corresponds to a very flat trail, while `5` represents extremely challenging climbs.
 - **Traffic:** A score of `1` indicates minimal traffic, while `5` suggests heavy traffic conditions.
 - **Scenery:** A score of `1` indicates a highly scenic trail, whereas `5` represents less visually appealing routes.
@@ -51,15 +52,9 @@ The cleaned data was exported to a CSV file consisting of:
 - **Multiclass-Classification Target:** location of trail (Maryland, Virginia, or DC) - found in the description
 
 
-## Data Link
+## Methods
 
-- **Raw Data:** [Link to dataset](http://bikewashington.org/routes/all.htm)
-- **Data Collection Code:** Provided below.
-
-
-# Methods
-
-We utilized Selenium, an open-source framework for automating web browsers, to scrape data from bikewashington.org. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame. 
+We utilized (Selenium)[], an open-source framework for automating web browsers, to scrape data from bikewashington.org. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame. 
 
 The ratings were further processed and split into three distinct columns: terrain, scenery, and traffic. Irrelevant or redundant columns were removed from the dataset to streamline the analysis. One such column was the original 'rating' column. Finally, the cleaned DataFrame was exported as a CSV file for seamless integration with the machine learning components of this project.
 

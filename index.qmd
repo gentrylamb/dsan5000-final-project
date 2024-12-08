@@ -3,7 +3,6 @@ title: "Analyzing Bike Routes in Washington, DC"
 subtitle:  "Clustering and Classification for Urban Insights"
 
 bibliography: assets/references.bib
-
 ---
 
 ![](assets/our-logo.png)
