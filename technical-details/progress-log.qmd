@@ -76,3 +76,8 @@ If you are working as a team, at the end, you can duplicate the project and add 
 * [x] Wrote technical details for data collection
 * [x] Refined the landing page to include more information
 * [x] Wrote technical details for data cleaning
+
+
+**12-08-2024**
+
+* [x] Wrote technical details for EDA
