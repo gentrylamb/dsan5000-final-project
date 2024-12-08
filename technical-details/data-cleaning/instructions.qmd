@@ -74,3 +74,43 @@ Possible things to include:
 - **Rationale**: Justify why you chose to work with a particular subset of the data.
 
 
+## Data Cleaning Process
+
+Cleaning the raw trail data was a critical step in extracting meaningful insights. The descriptions of each bike trail contained a wealth of information, making data cleaning essential for conducting deeper exploratory analysis and enabling robust machine learning applications. It’s important to note that data cleaning is a dynamic and iterative process. As this project evolves, additional cleaning may be required. Below is a summary of the transformations applied to produce the cleaned dataset.
+
+### Explanation of New Variables
+
+- **Unpaved**: Binary variable (1 = unpaved road, 0 = paved road).
+- **Flat**: Binary variable (1 = flat road, 0 = not flat).
+- **Workout**: Binary variable (1 = trail designed for workouts, 0 = not designed for workouts).
+- **Park**: Binary variable (1 = trail located in a park, 0 = not located in a park).
+- **River**: Binary variable (1 = trail runs along a river, 0 = does not run along a river).
+- **Loop**: Binary variable (1 = trail forms a loop, 0 = does not form a loop).
+- **Sentiment**: Float variable measuring the sentiment score of the trail description.
+- **State1**: The state where the trail begins.
+- **State2**: The state where the trail ends.
+
+### Managing Missing Data
+
+This dataset initially had no missing values—every cell contained data. To confirm, we used the **`is.na().sum()`** function in Python to verify the absence of null or missing values. When text-scraping trail descriptions to generate binary variables (e.g., identifying if the word "workout" was present), missing words were assumed to indicate the absence of that characteristic, and the corresponding cell was assigned a value of 0.
+
+### Outlier Detection and Treatment
+
+Outliers were not a significant concern. For instance, while the *C&O Towpath* trail spans 184 miles—considerably longer than most other trails—removing such outliers was unnecessary. Given the limited number of bike trails in the DMV area, retaining all observations was crucial for maintaining data integrity and size.
+
+### Data Type Corrections and Formatting
+
+The raw dataset contained two data types: `object` (trail names and descriptions) and `int64` (ratings and mileage). After cleaning, the dataset included `object`, `int64`, and `float64` types:
+- **Object**: `name`, `state1`, `state2`.
+- **Float64**: `sentiment`.
+- **Int64**: All other features.
+
+Descriptions were transformed to lowercase for consistency and ease of keyword matching. The most significant transformation involved converting descriptions into multiple binary (one-hot-encoded) features based on meaningful keywords, as described in the "New Variables" section. State information was also extracted using lists of specific locations within Virginia, Maryland, DC, and Pennsylvania, allowing us to assign values to `state1` and `state2`. This process enabled the extraction of numerical data from text, enriching the dataset for subsequent machine learning analyses.
+
+### Normalization and Scaling
+
+Given the significant right skew in the mileage distribution, normalization was applied. We used z-score normalization to scale this variable, ensuring it would not disproportionately influence machine learning models. Both normalized and unnormalized mileage distributions are provided in the 'Code' section below.
+
+### Subsetting Data
+
+Subsetting was deemed unnecessary due to the already limited size of the dataset.

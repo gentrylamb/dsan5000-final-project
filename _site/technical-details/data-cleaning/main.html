@@ -190,6 +190,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#suggested-page-structure" id="toc-suggested-page-structure" class="nav-link" data-scroll-target="#suggested-page-structure">Suggested page structure</a></li>
   <li><a href="#general-comments" id="toc-general-comments" class="nav-link" data-scroll-target="#general-comments">General comments:</a></li>
   <li><a href="#what-to-address" id="toc-what-to-address" class="nav-link" data-scroll-target="#what-to-address">What to address</a></li>
+  <li><a href="#data-cleaning-process" id="toc-data-cleaning-process" class="nav-link" data-scroll-target="#data-cleaning-process">Data Cleaning Process</a>
+  <ul class="collapse">
+  <li><a href="#explanation-of-new-variables" id="toc-explanation-of-new-variables" class="nav-link" data-scroll-target="#explanation-of-new-variables">Explanation of New Variables</a></li>
+  <li><a href="#managing-missing-data" id="toc-managing-missing-data" class="nav-link" data-scroll-target="#managing-missing-data">Managing Missing Data</a></li>
+  <li><a href="#outlier-detection-and-treatment" id="toc-outlier-detection-and-treatment" class="nav-link" data-scroll-target="#outlier-detection-and-treatment">Outlier Detection and Treatment</a></li>
+  <li><a href="#data-type-corrections-and-formatting" id="toc-data-type-corrections-and-formatting" class="nav-link" data-scroll-target="#data-type-corrections-and-formatting">Data Type Corrections and Formatting</a></li>
+  <li><a href="#normalization-and-scaling" id="toc-normalization-and-scaling" class="nav-link" data-scroll-target="#normalization-and-scaling">Normalization and Scaling</a></li>
+  <li><a href="#subsetting-data" id="toc-subsetting-data" class="nav-link" data-scroll-target="#subsetting-data">Subsetting Data</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   </ul>
@@ -289,92 +298,231 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Rationale</strong>: Justify why you chose to work with a particular subset of the data.</li>
 </ul>
 </section>
+<section id="data-cleaning-process" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning-process">Data Cleaning Process</h2>
+<p>Cleaning the raw trail data was a critical step in extracting meaningful insights. The descriptions of each bike trail contained a wealth of information, making data cleaning essential for conducting deeper exploratory analysis and enabling robust machine learning applications. It’s important to note that data cleaning is a dynamic and iterative process. As this project evolves, additional cleaning may be required. Below is a summary of the transformations applied to produce the cleaned dataset.</p>
+<section id="explanation-of-new-variables" class="level3">
+<h3 class="anchored" data-anchor-id="explanation-of-new-variables">Explanation of New Variables</h3>
+<ul>
+<li><strong>Unpaved</strong>: Binary variable (1 = unpaved road, 0 = paved road).</li>
+<li><strong>Flat</strong>: Binary variable (1 = flat road, 0 = not flat).</li>
+<li><strong>Workout</strong>: Binary variable (1 = trail designed for workouts, 0 = not designed for workouts).</li>
+<li><strong>Park</strong>: Binary variable (1 = trail located in a park, 0 = not located in a park).</li>
+<li><strong>River</strong>: Binary variable (1 = trail runs along a river, 0 = does not run along a river).</li>
+<li><strong>Loop</strong>: Binary variable (1 = trail forms a loop, 0 = does not form a loop).</li>
+<li><strong>Sentiment</strong>: Float variable measuring the sentiment score of the trail description.</li>
+<li><strong>State1</strong>: The state where the trail begins.</li>
+<li><strong>State2</strong>: The state where the trail ends.</li>
+</ul>
+</section>
+<section id="managing-missing-data" class="level3">
+<h3 class="anchored" data-anchor-id="managing-missing-data">Managing Missing Data</h3>
+<p>This dataset initially had no missing values—every cell contained data. To confirm, we used the <strong><code>is.na().sum()</code></strong> function in Python to verify the absence of null or missing values. When text-scraping trail descriptions to generate binary variables (e.g., identifying if the word “workout” was present), missing words were assumed to indicate the absence of that characteristic, and the corresponding cell was assigned a value of 0.</p>
+</section>
+<section id="outlier-detection-and-treatment" class="level3">
+<h3 class="anchored" data-anchor-id="outlier-detection-and-treatment">Outlier Detection and Treatment</h3>
+<p>Outliers were not a significant concern. For instance, while the <em>C&amp;O Towpath</em> trail spans 184 miles—considerably longer than most other trails—removing such outliers was unnecessary. Given the limited number of bike trails in the DMV area, retaining all observations was crucial for maintaining data integrity and size.</p>
+</section>
+<section id="data-type-corrections-and-formatting" class="level3">
+<h3 class="anchored" data-anchor-id="data-type-corrections-and-formatting">Data Type Corrections and Formatting</h3>
+<p>The raw dataset contained two data types: <code>object</code> (trail names and descriptions) and <code>int64</code> (ratings and mileage). After cleaning, the dataset included <code>object</code>, <code>int64</code>, and <code>float64</code> types: - <strong>Object</strong>: <code>name</code>, <code>state1</code>, <code>state2</code>. - <strong>Float64</strong>: <code>sentiment</code>. - <strong>Int64</strong>: All other features.</p>
+<p>Descriptions were transformed to lowercase for consistency and ease of keyword matching. The most significant transformation involved converting descriptions into multiple binary (one-hot-encoded) features based on meaningful keywords, as described in the “New Variables” section. State information was also extracted using lists of specific locations within Virginia, Maryland, DC, and Pennsylvania, allowing us to assign values to <code>state1</code> and <code>state2</code>. This process enabled the extraction of numerical data from text, enriching the dataset for subsequent machine learning analyses.</p>
+</section>
+<section id="normalization-and-scaling" class="level3">
+<h3 class="anchored" data-anchor-id="normalization-and-scaling">Normalization and Scaling</h3>
+<p>Given the significant right skew in the mileage distribution, normalization was applied. We used z-score normalization to scale this variable, ensuring it would not disproportionately influence machine learning models. Both normalized and unnormalized mileage distributions are provided in the ‘Code’ section below.</p>
+</section>
+<section id="subsetting-data" class="level3">
+<h3 class="anchored" data-anchor-id="subsetting-data">Subsetting Data</h3>
+<p>Subsetting was deemed unnecessary due to the already limited size of the dataset.</p>
+</section>
+</section>
 </section>
 <section id="code" class="level1">
 <h1>Code</h1>
-<div id="cell-3" class="cell" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # ------------------------------------ IMPORTS ------------------------------------ #</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.sentiment <span class="im">import</span> SentimentIntensityAnalyzer</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># After scraping data from the site, an automatic detector blocked the IP address but we got distances from the site admin</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>distances <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">23</span>,<span class="dv">23</span>,<span class="dv">24</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">27</span>,<span class="dv">27</span>,<span class="dv">27</span>,<span class="dv">30</span>,<span class="dv">33</span>,<span class="dv">34</span>,<span class="dv">37</span>,<span class="dv">38</span>,<span class="dv">38</span>,<span class="dv">40</span>,<span class="dv">44</span>,<span class="dv">45</span>,<span class="dv">46</span>,<span class="dv">47</span>,<span class="dv">50</span>,<span class="dv">55</span>,<span class="dv">56</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">75</span>,<span class="dv">80</span>,<span class="dv">104</span>,<span class="dv">105</span>,<span class="dv">106</span>,<span class="dv">184</span>]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../data/raw-data/dc_bike_routes.csv'</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'distance_mi'</span>] <span class="op">=</span> distances</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df.head()</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Split location from description to make its own column. All are formatted the same so we split on the first "-"</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'location'</span>, <span class="st">'description'</span>]] <span class="op">=</span> df[<span class="st">'description'</span>].<span class="bu">str</span>.split(<span class="st">"-"</span>, n<span class="op">=</span><span class="dv">1</span>, expand<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ CREATE COLUMNS ------------------------------------ #</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dictionary of binary columns to add</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># For each column we define what text to look for in the description</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>keywords <span class="op">=</span> {</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'unpaved'</span>: <span class="st">'unpaved'</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'flat'</span>: <span class="st">'flat'</span>,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'workout'</span>: <span class="st">'workout'</span>,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'park'</span>: <span class="st">'park'</span>,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'river'</span>: <span class="st">'river'</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'loop'</span>: <span class="st">'loop'</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through the keywords and assign columns to the df</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col_name, keyword <span class="kw">in</span> keywords.items():</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># First lower case all characters, then use contains to see if the keyword appears in the string</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Search across both the description and name column, mostly for loop as many are named with loop</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    df[col_name] <span class="op">=</span> df[<span class="st">'description'</span>].<span class="bu">str</span>.lower().<span class="bu">str</span>.contains(keyword, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">int</span>) <span class="op">|</span> <span class="op">\</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'name'</span>].<span class="bu">str</span>.lower().<span class="bu">str</span>.contains(keyword, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ SENTIMENT ------------------------------------ #</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Initilize a sentiment analyzer object from nltk</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>sia <span class="op">=</span> SentimentIntensityAnalyzer()</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Use sentiment analyzer to get the polarity scores of each description</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the compound score for each trail as a new column</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'sentiment'</span>] <span class="op">=</span> df[<span class="st">'description'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: sia.polarity_scores(x)[<span class="st">'compound'</span>])</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ ASSIGN STATES ------------------------------------ #</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Define regions that fall within certain sates</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># After the first pass with just keywords, we researched to find which states the following regions were part off</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>dc_regions <span class="op">=</span> [<span class="st">'georgetown'</span>, <span class="st">'northern suburbs'</span>]</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>md_regions <span class="op">=</span> [<span class="st">'greenbelt'</span>, <span class="st">'gaithersburg'</span>, <span class="st">'germantown'</span>, <span class="st">'bethesda'</span>, <span class="st">'poolesville'</span>, <span class="st">'glen burnie'</span>, <span class="op">\</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>              <span class="st">'eastern suburbs'</span>, <span class="st">'western suburbs'</span>, <span class="st">'ashland'</span>, <span class="st">'northern suburbs'</span>, <span class="st">'northeast suburbs'</span>, <span class="op">\</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                <span class="st">'cumberland'</span>]</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>va_regions <span class="op">=</span> [<span class="st">'arlington'</span>, <span class="st">'alexandria'</span>, <span class="st">'berryville'</span>, <span class="st">'mount vernon'</span>, <span class="st">'western suburbs'</span>]</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>pa_regions <span class="op">=</span> [<span class="st">'york'</span>]</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Similar to adding the columns above we define the states and common words that would define them</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>state_keywords <span class="op">=</span> {</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DC'</span>: [<span class="st">'dc'</span>, <span class="st">'d.c.'</span>, <span class="st">'washington'</span>] <span class="op">+</span> dc_regions,  </span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MD'</span>: [<span class="st">'md'</span>, <span class="st">'maryland'</span>] <span class="op">+</span> md_regions,</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">'VA'</span>: [<span class="st">'va'</span>, <span class="st">'virginia'</span>] <span class="op">+</span> va_regions,</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">'PA'</span>: [<span class="st">'pa'</span>, <span class="st">'pennsylvania'</span>] <span class="op">+</span> pa_regions</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function to assign states to the routes</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assign_states(location):</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="co"># make the locations lower case</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    location_lower <span class="op">=</span> location.lower()</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="co"># initilize empty list to store possible states</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    possible_states <span class="op">=</span> []</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    <span class="co"># iterate through the states and their keywords</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> state, keywords <span class="kw">in</span> state_keywords.items():</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>        <span class="co"># check if any of the keywords are in the provided location</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">any</span>(keyword <span class="kw">in</span> location_lower <span class="cf">for</span> keyword <span class="kw">in</span> keywords):</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if yes, assign the keywords state to the list of states</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>            possible_states.append(state)</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return the list of states</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> possible_states</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Use function above to assign states to each of the bike routes. </span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'state'</span>] <span class="op">=</span> df[<span class="st">'location'</span>].<span class="bu">apply</span>(assign_states)</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn into seperate columns</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'state1'</span>,<span class="st">'state2'</span>]] <span class="op">=</span> pd.DataFrame(df[<span class="st">'state'</span>].to_list())</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="co"># fill second state column with first state if only one state</span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'state2'</span>] <span class="op">=</span> df[<span class="st">'state2'</span>].fillna(df[<span class="st">'state1'</span>])</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ FINALIZE ------------------------------------ #</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="co"># drop description, location, and state columns</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'description'</span>, <span class="st">'location'</span>, <span class="st">'state'</span>])</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for NA</span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>()</span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co"># save to CSV</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'../../data/processed-data/dc_bike_routes.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.sentiment <span class="im">import</span> SentimentIntensityAnalyzer</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># After scraping data from the site, an automatic detector blocked the IP address but we got distances from the site admin</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>distances <span class="op">=</span> [<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">23</span>,<span class="dv">23</span>,<span class="dv">24</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">27</span>,<span class="dv">27</span>,<span class="dv">27</span>,<span class="dv">30</span>,<span class="dv">33</span>,<span class="dv">34</span>,<span class="dv">37</span>,<span class="dv">38</span>,<span class="dv">38</span>,<span class="dv">40</span>,<span class="dv">44</span>,<span class="dv">45</span>,<span class="dv">46</span>,<span class="dv">47</span>,<span class="dv">50</span>,<span class="dv">55</span>,<span class="dv">56</span>,<span class="dv">67</span>,<span class="dv">72</span>,<span class="dv">75</span>,<span class="dv">80</span>,<span class="dv">104</span>,<span class="dv">105</span>,<span class="dv">106</span>,<span class="dv">184</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../data/raw-data/dc_bike_routes.csv'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'distance_mi'</span>] <span class="op">=</span> distances</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df.head()</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Split location from description to make its own column. All are formatted the same so we split on the first "-"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'location'</span>, <span class="st">'description'</span>]] <span class="op">=</span> df[<span class="st">'description'</span>].<span class="bu">str</span>.split(<span class="st">"-"</span>, n<span class="op">=</span><span class="dv">1</span>, expand<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ CREATE COLUMNS ------------------------------------ #</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dictionary of binary columns to add</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># For each column we define what text to look for in the description</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>keywords <span class="op">=</span> {</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'unpaved'</span>: <span class="st">'unpaved'</span>,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'flat'</span>: <span class="st">'flat'</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'workout'</span>: <span class="st">'workout'</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'park'</span>: <span class="st">'park'</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'river'</span>: <span class="st">'river'</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">'loop'</span>: <span class="st">'loop'</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through the keywords and assign columns to the df</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col_name, keyword <span class="kw">in</span> keywords.items():</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># First lower case all characters, then use contains to see if the keyword appears in the string</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Search across both the description and name column, mostly for loop as many are named with loop</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    df[col_name] <span class="op">=</span> df[<span class="st">'description'</span>].<span class="bu">str</span>.lower().<span class="bu">str</span>.contains(keyword, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">int</span>) <span class="op">|</span> <span class="op">\</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'name'</span>].<span class="bu">str</span>.lower().<span class="bu">str</span>.contains(keyword, regex<span class="op">=</span><span class="va">True</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ SENTIMENT ------------------------------------ #</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Initilize a sentiment analyzer object from nltk</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>sia <span class="op">=</span> SentimentIntensityAnalyzer()</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Use sentiment analyzer to get the polarity scores of each description</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the compound score for each trail as a new column</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'sentiment'</span>] <span class="op">=</span> df[<span class="st">'description'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: sia.polarity_scores(x)[<span class="st">'compound'</span>])</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ ASSIGN STATES ------------------------------------ #</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Define regions that fall within certain sates</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># After the first pass with just keywords, we researched to find which states the following regions were part off</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>dc_regions <span class="op">=</span> [<span class="st">'georgetown'</span>, <span class="st">'northern suburbs'</span>]</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>md_regions <span class="op">=</span> [<span class="st">'greenbelt'</span>, <span class="st">'gaithersburg'</span>, <span class="st">'germantown'</span>, <span class="st">'bethesda'</span>, <span class="st">'poolesville'</span>, <span class="st">'glen burnie'</span>, <span class="op">\</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>              <span class="st">'eastern suburbs'</span>, <span class="st">'western suburbs'</span>, <span class="st">'ashland'</span>, <span class="st">'northern suburbs'</span>, <span class="st">'northeast suburbs'</span>, <span class="op">\</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>                <span class="st">'cumberland'</span>]</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>va_regions <span class="op">=</span> [<span class="st">'arlington'</span>, <span class="st">'alexandria'</span>, <span class="st">'berryville'</span>, <span class="st">'mount vernon'</span>, <span class="st">'western suburbs'</span>]</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>pa_regions <span class="op">=</span> [<span class="st">'york'</span>]</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Similar to adding the columns above we define the states and common words that would define them</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>state_keywords <span class="op">=</span> {</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DC'</span>: [<span class="st">'dc'</span>, <span class="st">'d.c.'</span>, <span class="st">'washington'</span>] <span class="op">+</span> dc_regions,  </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MD'</span>: [<span class="st">'md'</span>, <span class="st">'maryland'</span>] <span class="op">+</span> md_regions,</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">'VA'</span>: [<span class="st">'va'</span>, <span class="st">'virginia'</span>] <span class="op">+</span> va_regions,</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    <span class="st">'PA'</span>: [<span class="st">'pa'</span>, <span class="st">'pennsylvania'</span>] <span class="op">+</span> pa_regions</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function to assign states to the routes</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> assign_states(location):</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># make the locations lower case</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    location_lower <span class="op">=</span> location.lower()</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># initilize empty list to store possible states</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    possible_states <span class="op">=</span> []</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="co"># iterate through the states and their keywords</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> state, keywords <span class="kw">in</span> state_keywords.items():</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        <span class="co"># check if any of the keywords are in the provided location</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">any</span>(keyword <span class="kw">in</span> location_lower <span class="cf">for</span> keyword <span class="kw">in</span> keywords):</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if yes, assign the keywords state to the list of states</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>            possible_states.append(state)</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Return the list of states</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> possible_states</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Use function above to assign states to each of the bike routes. </span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'state'</span>] <span class="op">=</span> df[<span class="st">'location'</span>].<span class="bu">apply</span>(assign_states)</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn into seperate columns</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'state1'</span>,<span class="st">'state2'</span>]] <span class="op">=</span> pd.DataFrame(df[<span class="st">'state'</span>].to_list())</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co"># fill second state column with first state if only one state</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'state2'</span>] <span class="op">=</span> df[<span class="st">'state2'</span>].fillna(df[<span class="st">'state1'</span>])</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize the mileage column</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"distance_mi_norm"</span>] <span class="op">=</span> (df[<span class="st">"distance_mi"</span>] <span class="op">-</span> np.mean(df[<span class="st">"distance_mi"</span>])) <span class="op">/</span> np.std(df[<span class="st">"distance_mi"</span>])</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ FINALIZE ------------------------------------ #</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co"># drop description, location, and state columns</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'description'</span>, <span class="st">'location'</span>, <span class="st">'state'</span>])</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for NA</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>()</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="co"># save to CSV</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'../../data/processed-data/dc_bike_routes.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg ansi-bold">FileNotFoundError</span>                         Traceback (most recent call last)
+Cell <span class="ansi-green-fg ansi-bold">In[1], line 8</span>
+<span class="ansi-green-fg">      6</span> distances <span style="color:rgb(98,98,98)">=</span> [<span style="color:rgb(98,98,98)">10</span>,<span style="color:rgb(98,98,98)">11</span>,<span style="color:rgb(98,98,98)">12</span>,<span style="color:rgb(98,98,98)">13</span>,<span style="color:rgb(98,98,98)">14</span>,<span style="color:rgb(98,98,98)">16</span>,<span style="color:rgb(98,98,98)">17</span>,<span style="color:rgb(98,98,98)">18</span>,<span style="color:rgb(98,98,98)">19</span>,<span style="color:rgb(98,98,98)">20</span>,<span style="color:rgb(98,98,98)">21</span>,<span style="color:rgb(98,98,98)">23</span>,<span style="color:rgb(98,98,98)">23</span>,<span style="color:rgb(98,98,98)">24</span>,<span style="color:rgb(98,98,98)">25</span>,<span style="color:rgb(98,98,98)">25</span>,<span style="color:rgb(98,98,98)">25</span>,<span style="color:rgb(98,98,98)">26</span>,<span style="color:rgb(98,98,98)">27</span>,<span style="color:rgb(98,98,98)">27</span>,<span style="color:rgb(98,98,98)">27</span>,<span style="color:rgb(98,98,98)">30</span>,<span style="color:rgb(98,98,98)">33</span>,<span style="color:rgb(98,98,98)">34</span>,<span style="color:rgb(98,98,98)">37</span>,<span style="color:rgb(98,98,98)">38</span>,<span style="color:rgb(98,98,98)">38</span>,<span style="color:rgb(98,98,98)">40</span>,<span style="color:rgb(98,98,98)">44</span>,<span style="color:rgb(98,98,98)">45</span>,<span style="color:rgb(98,98,98)">46</span>,<span style="color:rgb(98,98,98)">47</span>,<span style="color:rgb(98,98,98)">50</span>,<span style="color:rgb(98,98,98)">55</span>,<span style="color:rgb(98,98,98)">56</span>,<span style="color:rgb(98,98,98)">67</span>,<span style="color:rgb(98,98,98)">72</span>,<span style="color:rgb(98,98,98)">75</span>,<span style="color:rgb(98,98,98)">80</span>,<span style="color:rgb(98,98,98)">104</span>,<span style="color:rgb(98,98,98)">105</span>,<span style="color:rgb(98,98,98)">106</span>,<span style="color:rgb(98,98,98)">184</span>]
+<span class="ansi-green-fg">      7</span> <span style="font-style:italic;color:rgb(95,135,135)"># Read in data</span>
+<span class="ansi-green-fg ansi-bold">----&gt; 8</span> df <span style="color:rgb(98,98,98)">=</span> pd<span style="color:rgb(98,98,98)">.</span>read_csv(<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">../../data/raw-data/dc_bike_routes.csv</span><span style="color:rgb(175,0,0)">'</span>)
+<span class="ansi-green-fg">      9</span> df[<span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">distance_mi</span><span style="color:rgb(175,0,0)">'</span>] <span style="color:rgb(98,98,98)">=</span> distances
+<span class="ansi-green-fg">     10</span> df<span style="color:rgb(98,98,98)">.</span>head()
+
+File <span class="ansi-green-fg ansi-bold">c:\Users\Chase\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:948</span>, in <span class="ansi-cyan-fg">read_csv</span><span class="ansi-blue-fg ansi-bold">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="ansi-green-fg">    935</span> kwds_defaults <span style="color:rgb(98,98,98)">=</span> _refine_defaults_read(
+<span class="ansi-green-fg">    936</span>     dialect,
+<span class="ansi-green-fg">    937</span>     delimiter,
+<span class="ansi-green-fg ansi-bold">   (...)</span>
+<span class="ansi-green-fg">    944</span>     dtype_backend<span style="color:rgb(98,98,98)">=</span>dtype_backend,
+<span class="ansi-green-fg">    945</span> )
+<span class="ansi-green-fg">    946</span> kwds<span style="color:rgb(98,98,98)">.</span>update(kwds_defaults)
+<span class="ansi-green-fg ansi-bold">--&gt; 948</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> _read(filepath_or_buffer, kwds)
+
+File <span class="ansi-green-fg ansi-bold">c:\Users\Chase\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:611</span>, in <span class="ansi-cyan-fg">_read</span><span class="ansi-blue-fg ansi-bold">(filepath_or_buffer, kwds)</span>
+<span class="ansi-green-fg">    608</span> _validate_names(kwds<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">names</span><span style="color:rgb(175,0,0)">"</span>, <span style="font-weight:bold;color:rgb(0,135,0)">None</span>))
+<span class="ansi-green-fg">    610</span> <span style="font-style:italic;color:rgb(95,135,135)"># Create the parser.</span>
+<span class="ansi-green-fg ansi-bold">--&gt; 611</span> parser <span style="color:rgb(98,98,98)">=</span> TextFileReader(filepath_or_buffer, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwds)
+<span class="ansi-green-fg">    613</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> chunksize <span style="font-weight:bold;color:rgb(175,0,255)">or</span> iterator:
+<span class="ansi-green-fg">    614</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> parser
+
+File <span class="ansi-green-fg ansi-bold">c:\Users\Chase\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:1448</span>, in <span class="ansi-cyan-fg">TextFileReader.__init__</span><span class="ansi-blue-fg ansi-bold">(self, f, engine, **kwds)</span>
+<span class="ansi-green-fg">   1445</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>options[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">has_index_names</span><span style="color:rgb(175,0,0)">"</span>] <span style="color:rgb(98,98,98)">=</span> kwds[<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">has_index_names</span><span style="color:rgb(175,0,0)">"</span>]
+<span class="ansi-green-fg">   1447</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>handles: IOHandles <span style="color:rgb(98,98,98)">|</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span> <span style="color:rgb(98,98,98)">=</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>
+<span class="ansi-green-fg ansi-bold">-&gt; 1448</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_engine <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_make_engine(f, <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>engine)
+
+File <span class="ansi-green-fg ansi-bold">c:\Users\Chase\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:1705</span>, in <span class="ansi-cyan-fg">TextFileReader._make_engine</span><span class="ansi-blue-fg ansi-bold">(self, f, engine)</span>
+<span class="ansi-green-fg">   1703</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">b</span><span style="color:rgb(175,0,0)">"</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> mode:
+<span class="ansi-green-fg">   1704</span>         mode <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">b</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">-&gt; 1705</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>handles <span style="color:rgb(98,98,98)">=</span> get_handle(
+<span class="ansi-green-fg">   1706</span>     f,
+<span class="ansi-green-fg">   1707</span>     mode,
+<span class="ansi-green-fg">   1708</span>     encoding<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>options<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">encoding</span><span style="color:rgb(175,0,0)">"</span>, <span style="font-weight:bold;color:rgb(0,135,0)">None</span>),
+<span class="ansi-green-fg">   1709</span>     compression<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>options<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">compression</span><span style="color:rgb(175,0,0)">"</span>, <span style="font-weight:bold;color:rgb(0,135,0)">None</span>),
+<span class="ansi-green-fg">   1710</span>     memory_map<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>options<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">memory_map</span><span style="color:rgb(175,0,0)">"</span>, <span style="font-weight:bold;color:rgb(0,135,0)">False</span>),
+<span class="ansi-green-fg">   1711</span>     is_text<span style="color:rgb(98,98,98)">=</span>is_text,
+<span class="ansi-green-fg">   1712</span>     errors<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>options<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">encoding_errors</span><span style="color:rgb(175,0,0)">"</span>, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">strict</span><span style="color:rgb(175,0,0)">"</span>),
+<span class="ansi-green-fg">   1713</span>     storage_options<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>options<span style="color:rgb(98,98,98)">.</span>get(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">storage_options</span><span style="color:rgb(175,0,0)">"</span>, <span style="font-weight:bold;color:rgb(0,135,0)">None</span>),
+<span class="ansi-green-fg">   1714</span> )
+<span class="ansi-green-fg">   1715</span> <span style="font-weight:bold;color:rgb(0,135,0)">assert</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>handles <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">   1716</span> f <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>handles<span style="color:rgb(98,98,98)">.</span>handle
+
+File <span class="ansi-green-fg ansi-bold">c:\Users\Chase\anaconda3\Lib\site-packages\pandas\io\common.py:863</span>, in <span class="ansi-cyan-fg">get_handle</span><span class="ansi-blue-fg ansi-bold">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="ansi-green-fg">    858</span> <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> <span style="color:rgb(0,135,0)">isinstance</span>(handle, <span style="color:rgb(0,135,0)">str</span>):
+<span class="ansi-green-fg">    859</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Check whether the filename is to be opened in binary mode.</span>
+<span class="ansi-green-fg">    860</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Binary mode does not support 'encoding' and 'newline'.</span>
+<span class="ansi-green-fg">    861</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> ioargs<span style="color:rgb(98,98,98)">.</span>encoding <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">b</span><span style="color:rgb(175,0,0)">"</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(175,0,255)">in</span> ioargs<span style="color:rgb(98,98,98)">.</span>mode:
+<span class="ansi-green-fg">    862</span>         <span style="font-style:italic;color:rgb(95,135,135)"># Encoding</span>
+<span class="ansi-green-fg ansi-bold">--&gt; 863</span>         handle <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">open</span>(
+<span class="ansi-green-fg">    864</span>             handle,
+<span class="ansi-green-fg">    865</span>             ioargs<span style="color:rgb(98,98,98)">.</span>mode,
+<span class="ansi-green-fg">    866</span>             encoding<span style="color:rgb(98,98,98)">=</span>ioargs<span style="color:rgb(98,98,98)">.</span>encoding,
+<span class="ansi-green-fg">    867</span>             errors<span style="color:rgb(98,98,98)">=</span>errors,
+<span class="ansi-green-fg">    868</span>             newline<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">"</span>,
+<span class="ansi-green-fg">    869</span>         )
+<span class="ansi-green-fg">    870</span>     <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    871</span>         <span style="font-style:italic;color:rgb(95,135,135)"># Binary mode</span>
+<span class="ansi-green-fg">    872</span>         handle <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">open</span>(handle, ioargs<span style="color:rgb(98,98,98)">.</span>mode)
+
+<span class="ansi-red-fg ansi-bold">FileNotFoundError</span>: [Errno 2] No such file or directory: '../../data/raw-data/dc_bike_routes.csv'</pre>
+</div>
+</div>
+</div>
+<div id="cell-4" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Plot comparing the regular mileage distribution to the normalized one</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the plotting environment</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure and axes</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the original mileage distribution</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">"distance_mi"</span>], kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">10</span>, ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span><span class="st">"blue"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Original Mileage Distribution"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">"Distance (mi)"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the normalized mileage distribution</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">"distance_mi_norm"</span>], kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">10</span>, ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span><span class="st">"green"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Normalized Mileage Distribution"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"Normalized Distance"</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust layout and show the plot</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

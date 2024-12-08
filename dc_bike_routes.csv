@@ -1,0 +1,44 @@
+name,terrain,traffic,scenery,distance_mi,unpaved,flat,workout,park,river,loop,sentiment,state1,state2
+Potomac Tour,1,2,2,10,0,0,0,0,0,0,0.4215,DC,DC
+BWI Trail,2,1,3,11,0,0,0,0,0,0,0.0,MD,MD
+Airpark Cruise,3,3,3,12,1,0,1,1,0,0,0.0,MD,MD
+Seneca Valley Tour,3,3,2,13,0,0,1,1,0,0,0.6249,MD,MD
+For The Boyds,2,3,2,14,1,0,1,1,0,0,0.0,MD,MD
+Key Chain Tour,3,3,2,16,1,0,0,0,0,0,0.4215,VA,VA
+The Arlington Triangle,2,2,3,17,0,0,0,1,0,0,0.0,VA,VA
+Mount Vernon Trail,2,1,1,18,0,0,0,0,1,0,0.5719,DC,VA
+Gettysburg Tour,3,3,1,19,0,0,0,0,0,0,-0.34,PA,PA
+The Zoo Review,1,2,2,20,1,0,0,0,0,0,0.3612,DC,MD
+Antietam Battlefield Tour,3,2,1,21,1,0,0,0,0,0,0.0516,MD,MD
+Thurmont Ramble,3,2,1,23,0,0,0,0,0,0,0.4754,MD,MD
+Wye Not,1,2,2,23,0,0,0,0,0,0,0.4404,MD,MD
+Lost Blossom Tour,2,3,2,24,1,0,0,0,0,0,0.0,DC,DC
+Patuxent Wildlife Center Loop,2,3,2,25,0,0,0,0,0,1,0.4215,MD,MD
+Western Montgomery Loop,2,2,2,25,1,0,0,0,0,1,0.6908,MD,MD
+Peach Tree Loop,3,2,1,25,0,0,0,0,0,1,0.0,MD,MD
+Oxford Loop,1,2,1,26,0,0,0,0,0,1,0.5719,MD,MD
+A Ride to the Falls,1,1,2,27,1,0,0,0,0,0,0.9115,DC,DC
+Montgomery Lake Tour,3,3,3,27,0,0,0,0,0,0,0.25,MD,MD
+Shenandoah River Ramble,3,1,1,27,1,0,0,0,1,0,0.6239,VA,VA
+The Great Washington Loop,2,3,3,30,1,0,0,0,0,1,0.6249,DC,DC
+Chesapeake Bound,3,4,3,33,0,0,0,0,0,0,0.0,MD,MD
+Waterford Double-Cross,3,3,1,34,1,0,0,0,1,0,-0.5267,MD,MD
+South Mountain Loop,4,2,1,37,0,0,0,0,0,1,-0.2481,MD,MD
+Mason-Dixon Double-Cross,3,3,1,38,0,0,0,0,0,0,0.5994,MD,MD
+Greenbelt to Bay,3,3,3,38,0,0,0,0,0,0,0.507,MD,MD
+Northern Central Rail Trail,1,1,1,40,1,0,0,0,0,0,0.5719,MD,PA
+Little Fletcher,3,4,2,44,1,0,0,0,0,1,0.0,DC,DC
+W&OD Rail Trail,1,2,1,45,0,0,0,0,0,0,0.6249,DC,DC
+North to Gettysburg,3,2,1,46,0,0,0,0,0,1,0.3612,MD,MD
+Washington to Baltimore,3,3,3,47,0,0,0,0,0,0,0.7073,MD,MD
+Sugarloaf Challenge Loop,4,2,1,50,0,0,0,0,0,1,0.5994,MD,MD
+The Fletcher Loop,2,3,2,55,1,0,0,0,0,1,0.6249,DC,MD
+The Blue Ridge Challenge,5,3,1,56,0,0,0,0,0,0,-0.2047,VA,VA
+DC to Thurmont,3,4,2,67,0,0,0,0,0,0,-0.5994,DC,MD
+Super Nova,3,3,3,72,0,0,0,0,0,0,0.1779,VA,VA
+The WODCO Loop,1,3,2,75,1,1,0,0,0,1,0.7419,MD,VA
+Tour Between Cities,3,4,2,80,0,0,0,0,0,0,0.6249,MD,MD
+Tkaczyk's All Terrain Century,2,3,2,104,1,0,0,0,0,1,0.0,MD,VA
+Skyline Drive,5,4,1,105,0,0,0,1,0,0,-0.2006,VA,VA
+Bay-to-Beach,2,3,1,106,0,0,0,0,0,0,-0.0516,MD,MD
+C&O Towpath,1,1,1,184,1,0,0,0,0,0,0.6369,DC,MD
