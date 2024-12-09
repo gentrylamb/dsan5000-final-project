@@ -81,3 +81,4 @@ If you are working as a team, at the end, you can duplicate the project and add 
 **12-08-2024**
 
 * [x] Wrote technical details for EDA
+* [x] Coded up a lot of the supervised learning portion
