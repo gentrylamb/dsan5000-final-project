@@ -200,6 +200,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis">Correlation Analysis</a></li>
   </ul></li>
   <li><a href="#multivariate-analysis" id="toc-multivariate-analysis" class="nav-link" data-scroll-target="#multivariate-analysis">Multivariate Analysis</a></li>
+  <li><a href="#statistical-tests" id="toc-statistical-tests" class="nav-link" data-scroll-target="#statistical-tests">Statistical Tests</a>
+  <ul class="collapse">
+  <li><a href="#kolmogorov-smirnov-test" id="toc-kolmogorov-smirnov-test" class="nav-link" data-scroll-target="#kolmogorov-smirnov-test">Kolmogorov-Smirnov Test</a></li>
+  <li><a href="#t-tests-continuous-vs.-binary-variables" id="toc-t-tests-continuous-vs.-binary-variables" class="nav-link" data-scroll-target="#t-tests-continuous-vs.-binary-variables">t-Tests (Continuous vs.&nbsp;Binary Variables)</a></li>
+  <li><a href="#chi-squared-tests-categorical-features" id="toc-chi-squared-tests-categorical-features" class="nav-link" data-scroll-target="#chi-squared-tests-categorical-features">Chi-Squared Tests (Categorical Features)</a></li>
+  <li><a href="#anova-tests-continuous-vs.-categorical-variables" id="toc-anova-tests-continuous-vs.-categorical-variables" class="nav-link" data-scroll-target="#anova-tests-continuous-vs.-categorical-variables">ANOVA Tests (Continuous vs.&nbsp;Categorical Variables)</a></li>
+  <li><a href="#statistical-summary" id="toc-statistical-summary" class="nav-link" data-scroll-target="#statistical-summary">Statistical Summary</a></li>
+  </ul></li>
   <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">Key Insights</a></li>
   <li><a href="#conclusion-and-next-steps" id="toc-conclusion-and-next-steps" class="nav-link" data-scroll-target="#conclusion-and-next-steps">Conclusion and Next Steps</a></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
@@ -258,6 +266,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="multivariate-analysis">Multivariate Analysis</h2>
 <p>To identify potential clusters, we visualized <strong>distance</strong> vs.&nbsp;<strong>sentiment</strong>, color-coded by the <strong>scenery score</strong> and annotated with the <strong>loop</strong> variable (loop vs.&nbsp;non-loop trails). The scatter plot revealed: - No clear clusters based on distance and sentiment. - Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.</p>
 </section>
+<section id="statistical-tests" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-tests">Statistical Tests</h2>
+<p>We conducted a series of statistical tests to analyze the relationships between numerical, binary, and categorical features in our dataset. Below, we outline the methodology and results for each type of test:</p>
+<section id="kolmogorov-smirnov-test" class="level3">
+<h3 class="anchored" data-anchor-id="kolmogorov-smirnov-test">Kolmogorov-Smirnov Test</h3>
+<p>To assess the normality of the numerical variables (<code>mileage</code> and <code>sentiment</code>), we used the Kolmogorov-Smirnov test. The results indicated that both variables appear to be normally distributed: - <strong>Sentiment</strong>: p-value ≈ 0.198 - <strong>Mileage</strong>: p-value ≈ 0.091</p>
+<p>Since the p-values are greater than 0.05, we fail to reject the null hypothesis, concluding that both variables are likely normally distributed.</p>
+<hr>
+</section>
+<section id="t-tests-continuous-vs.-binary-variables" class="level3">
+<h3 class="anchored" data-anchor-id="t-tests-continuous-vs.-binary-variables">t-Tests (Continuous vs.&nbsp;Binary Variables)</h3>
+<p>We performed t-tests to compare the means of numerical variables (<code>sentiment</code> and <code>mileage</code>) across each binary variable in the dataset. For every combination: - The p-values were greater than 0.05. - This indicates that we fail to reject the null hypothesis, suggesting no significant differences in means between the numerical variables from the lens of the the binary features.</p>
+<hr>
+</section>
+<section id="chi-squared-tests-categorical-features" class="level3">
+<h3 class="anchored" data-anchor-id="chi-squared-tests-categorical-features">Chi-Squared Tests (Categorical Features)</h3>
+<p>We used chi-squared tests to examine the independence between all pairs of categorical variables (<code>traffic</code>, <code>terrain</code>, <code>scenery</code>, <code>state1</code>, and <code>state2</code>). The results revealed statistically significant associations for the following pairs: - <strong>Traffic vs.&nbsp;Terrain</strong>: p-value ≈ 0.039 - <strong>Terrain vs.&nbsp;State1</strong>: p-value ≈ 0.033 - <strong>State1 vs.&nbsp;State2</strong>: p-value ≈ 5.61e-11</p>
+<p>For these pairs, we reject the null hypothesis at a significance level of 0.05, concluding that these categorical variables are not independent. All other pairs yielded p-values greater than 0.05, indicating no evidence of dependence.</p>
+<hr>
+</section>
+<section id="anova-tests-continuous-vs.-categorical-variables" class="level3">
+<h3 class="anchored" data-anchor-id="anova-tests-continuous-vs.-categorical-variables">ANOVA Tests (Continuous vs.&nbsp;Categorical Variables)</h3>
+<p>We conducted ANOVA tests to compare the means of continuous variables (<code>sentiment</code> and <code>mileage</code>) across the levels of categorical variables. Notable results include: - <strong>Sentiment across Terrain Levels</strong>: p-value ≈ 0.028 - This suggests a significant difference in sentiment means across terrain categories, leading us to reject the null hypothesis. - <strong>Sentiment across Traffic Levels</strong>: p-value ≈ 0.059 - Although this result is close, it does not meet the 0.05 significance threshold.</p>
+<p>For all other tests, the p-values were greater than 0.05, indicating no significant differences in means across the levels of the binary or categorical variables.</p>
+<hr>
+</section>
+<section id="statistical-summary" class="level3">
+<h3 class="anchored" data-anchor-id="statistical-summary">Statistical Summary</h3>
+<ul>
+<li><strong>Normality (Kolmogorov-Smirnov)</strong>: Both <code>sentiment</code> and <code>mileage</code> are likely normally distributed.</li>
+<li><strong>t-Tests</strong>: No significant differences in means between numerical and binary variables.</li>
+<li><strong>Chi-Squared Tests</strong>: Significant associations observed for <code>traffic</code> vs.&nbsp;<code>terrain</code>, <code>terrain</code> vs.&nbsp;<code>state1</code>, and <code>state1</code> vs.&nbsp;<code>state2</code>.</li>
+<li><strong>ANOVA</strong>: Significant differences in sentiment across terrain levels; no other significant results.</li>
+</ul>
+<p>These findings provide insights into the relationships within the dataset and guide further analysis.</p>
+</section>
+</section>
 <section id="key-insights" class="level2">
 <h2 class="anchored" data-anchor-id="key-insights">Key Insights</h2>
 <ul>
@@ -271,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conclusion-and-next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion-and-next-steps">Conclusion and Next Steps</h2>
 <p>The EDA revealed limited patterns for effectively grouping trails. While the correlation matrix and scatter plots showed minimal relationships, the insights into distributions and rating combinations inform our understanding of the data. These findings will guide the next steps: - <strong>Modeling</strong>: Explore whether machine learning can identify subtle patterns. - <strong>Feature Engineering</strong>: Consider different variable relationships or transformations to improve clustering potential.</p>
-<p>All visualizations, including heatmaps, bar charts, and scatter plots, can be found in the <strong>Code</strong> section below.</p>
+<p>All visualizations, including heatmaps, bar charts, and scatter plots, as well as statistical testing outputs, can be found in the <strong>Code</strong> section below.</p>
 </section>
 <section id="code" class="level1">
 <h1>Code</h1>

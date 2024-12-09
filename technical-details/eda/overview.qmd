@@ -32,6 +32,55 @@ To identify potential clusters, we visualized **distance** vs. **sentiment**, co
 - No clear clusters based on distance and sentiment.
 - Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.
 
+## Statistical Tests
+
+We conducted a series of statistical tests to analyze the relationships between numerical, binary, and categorical features in our dataset. Below, we outline the methodology and results for each type of test:
+
+### Kolmogorov-Smirnov Test
+To assess the normality of the numerical variables (`mileage` and `sentiment`), we used the Kolmogorov-Smirnov test. The results indicated that both variables appear to be normally distributed:
+- **Sentiment**: p-value ≈ 0.198
+- **Mileage**: p-value ≈ 0.091
+
+Since the p-values are greater than 0.05, we fail to reject the null hypothesis, concluding that both variables are likely normally distributed.
+
+---
+
+### t-Tests (Continuous vs. Binary Variables)
+We performed t-tests to compare the means of numerical variables (`sentiment` and `mileage`) across each binary variable in the dataset. For every combination:
+- The p-values were greater than 0.05.
+- This indicates that we fail to reject the null hypothesis, suggesting no significant differences in means between the numerical variables from the lens of the the binary features.
+
+---
+
+### Chi-Squared Tests (Categorical Features)
+We used chi-squared tests to examine the independence between all pairs of categorical variables (`traffic`, `terrain`, `scenery`, `state1`, and `state2`). The results revealed statistically significant associations for the following pairs:
+- **Traffic vs. Terrain**: p-value ≈ 0.039
+- **Terrain vs. State1**: p-value ≈ 0.033
+- **State1 vs. State2**: p-value ≈ 5.61e-11
+
+For these pairs, we reject the null hypothesis at a significance level of 0.05, concluding that these categorical variables are not independent. All other pairs yielded p-values greater than 0.05, indicating no evidence of dependence.
+
+---
+
+### ANOVA Tests (Continuous vs. Categorical Variables)
+We conducted ANOVA tests to compare the means of continuous variables (`sentiment` and `mileage`) across the levels of categorical variables. Notable results include:
+- **Sentiment across Terrain Levels**: p-value ≈ 0.028
+  - This suggests a significant difference in sentiment means across terrain categories, leading us to reject the null hypothesis.
+- **Sentiment across Traffic Levels**: p-value ≈ 0.059
+  - Although this result is close, it does not meet the 0.05 significance threshold.
+
+For all other tests, the p-values were greater than 0.05, indicating no significant differences in means across the levels of the binary or categorical variables.
+
+---
+
+### Statistical Summary
+- **Normality (Kolmogorov-Smirnov)**: Both `sentiment` and `mileage` are likely normally distributed.
+- **t-Tests**: No significant differences in means between numerical and binary variables.
+- **Chi-Squared Tests**: Significant associations observed for `traffic` vs. `terrain`, `terrain` vs. `state1`, and `state1` vs. `state2`.
+- **ANOVA**: Significant differences in sentiment across terrain levels; no other significant results.
+
+These findings provide insights into the relationships within the dataset and guide further analysis.
+
 ## Key Insights
 
 - Sentiment is generally positive, with a bimodal distribution.
@@ -46,5 +95,5 @@ The EDA revealed limited patterns for effectively grouping trails. While the cor
 - **Modeling**: Explore whether machine learning can identify subtle patterns.
 - **Feature Engineering**: Consider different variable relationships or transformations to improve clustering potential.
 
-All visualizations, including heatmaps, bar charts, and scatter plots, can be found in the **Code** section below.
+All visualizations, including heatmaps, bar charts, and scatter plots, as well as statistical testing outputs, can be found in the **Code** section below.
 
