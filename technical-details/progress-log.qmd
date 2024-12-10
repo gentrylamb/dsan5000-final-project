@@ -87,3 +87,8 @@ If you are working as a team, at the end, you can duplicate the project and add 
 **12-08-2024**
 
 * [x] Finished the code for supervised learning
+
+
+**12-10-2024**
+
+* [x] Completed the technical details for supervised learning
