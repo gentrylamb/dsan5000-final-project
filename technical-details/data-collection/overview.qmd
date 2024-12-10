@@ -1,19 +1,18 @@
+# Introduction and Motivation 
+
 ## Goals
 
 The primary objective of this project is to leverage data from [bikewashington.org](http://bikewashington.org) to provide actionable insights about bike paths in Washington, DC. By analyzing and presenting detailed information about these trails, we aim to help riders make informed decisions about their routes. This knowledge will enhance their preparation and contribute to safer biking experiences across the city.
 
-
 ## Motivation
 
 Our motivation lies in supporting the biking community by empowering riders to choose trails that align with their specific needs and goals. Whether for exercise, commuting, or leisure, informed decisions about bike paths can optimize the overall experience. Additionally, providing better trail information is expected to inherently enhance safety, especially for those exploring new or unfamiliar routes.
-
 
 ## Objectives
 
 - **Trail Clustering:** Group similar bike trails in Washington, DC, using algorithms such as KMeans Clustering and Spectral Clustering.
 - **Length Prediction:** Develop a regression decision tree model to predict the length of a trail based on its other qualities.
 - **Personalized Recommendations:** Offer tailored trail recommendations for riders of varying experience levels, addressing their unique preferences.
-
 
 ## Data Source Information
 
@@ -30,15 +29,6 @@ All data used in this project originates from *[Bike Washington](http://bikewash
 - **Traffic:** A score of `1` indicates minimal traffic, while `5` suggests heavy traffic conditions.
 - **Scenery:** A score of `1` indicates a highly scenic trail, whereas `5` represents less visually appealing routes.
 
-
-## Data Collection Methods
-
-We utilized Selenium, an open-source browser automation framework, to scrape data from the website. Specifically:
-- The `webdriver` function was employed to extract trail names, mileage, and ratings.
-- The extracted data was processed using Pandas to consolidate all relevant information into a single DataFrame.
-- The tabular data was then saved for future analysis.
-
-
 ## Data Structure and Format
 
 The cleaned data was exported to a CSV file consisting of:
@@ -52,10 +42,6 @@ The cleaned data was exported to a CSV file consisting of:
 - **Multiclass-Classification Target:** location of trail (Maryland, Virginia, or DC) - found in the description
 
 
-## Methods
+# Overview of Methods
 
-We utilized [Selenium](https://www.selenium.dev/documentation/webdriver/), an open-source framework for automating web browsers, to scrape data from bikewashington.org. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame. 
-
-The ratings were further processed and split into three distinct columns: terrain, scenery, and traffic. Irrelevant or redundant columns were removed from the dataset to streamline the analysis. One such column was the original 'rating' column. Finally, the cleaned DataFrame was exported as a CSV file for seamless integration with the machine learning components of this project.
-
-While the dataset is relatively small, it encompasses all the essential information about bike paths and trails in the DC area, making it a valuable resource for our analysis.
+We utilized [Selenium](https://www.selenium.dev/documentation/webdriver/), an open-source framework for automating web browsers, to scrape data from bikewashington.org. Since the site relied heavily on JavaScript for loading, Selenium was used to render the desired elements. From there, elements were located using Xpaths so the it could then be extracted directly from the HTML structure. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame. 

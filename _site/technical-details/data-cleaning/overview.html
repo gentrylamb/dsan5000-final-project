@@ -151,13 +151,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#introduction-and-motivation" id="toc-introduction-and-motivation" class="nav-link active" data-scroll-target="#introduction-and-motivation">Introduction and Motivation</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#explanation-of-new-variables" id="toc-explanation-of-new-variables" class="nav-link" data-scroll-target="#explanation-of-new-variables">Explanation of New Variables</a></li>
   <li><a href="#managing-missing-data" id="toc-managing-missing-data" class="nav-link" data-scroll-target="#managing-missing-data">Managing Missing Data</a></li>
   <li><a href="#outlier-detection-and-treatment" id="toc-outlier-detection-and-treatment" class="nav-link" data-scroll-target="#outlier-detection-and-treatment">Outlier Detection and Treatment</a></li>
   <li><a href="#data-type-corrections-and-formatting" id="toc-data-type-corrections-and-formatting" class="nav-link" data-scroll-target="#data-type-corrections-and-formatting">Data Type Corrections and Formatting</a></li>
   <li><a href="#normalization-and-scaling" id="toc-normalization-and-scaling" class="nav-link" data-scroll-target="#normalization-and-scaling">Normalization and Scaling</a></li>
   <li><a href="#subsetting-data" id="toc-subsetting-data" class="nav-link" data-scroll-target="#subsetting-data">Subsetting Data</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -167,6 +170,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="introduction-and-motivation" class="level1">
+<h1>Introduction and Motivation</h1>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>Cleaning the raw trail data was a critical step in extracting meaningful insights. The descriptions of each bike trail contained a wealth of information, making data cleaning essential for conducting deeper exploratory analysis and enabling robust machine learning applications. It’s important to note that data cleaning is a dynamic and iterative process. As this project evolves, additional cleaning may be required. Below is a summary of the transformations applied to produce the cleaned dataset.</p>
@@ -209,9 +214,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="subsetting-data" class="level2">
 <h2 class="anchored" data-anchor-id="subsetting-data">Subsetting Data</h2>
-<p>Subsetting was deemed unnecessary due to the already limited size of the dataset.</p>
+<p>Subsetting is unnecessary due to the already small size of the dataset.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

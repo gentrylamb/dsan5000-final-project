@@ -1,8 +1,8 @@
-## Introduction and Motivation
+# Introduction and Motivation
 
 The primary objective of this analysis is to explore and identify meaningful groupings within a dataset of bike routes in Washington, DC, based on features like distance, ratings, sentiment, and route descriptions. By applying clustering techniques, we aim to uncover hidden patterns that can offer insights into the structure of bike routes across the city. To aid in visualizing these patterns, we also conduct dimensionality reduction using PCA and t-SNE. These methods help reduce the complexity of the high-dimensional data, allowing for clearer visualization and interpretation of the clustering results. The analysis involves testing three clustering algorithms—K-Means, DBSCAN, and Agglomerative Clustering—and comparing their performance in terms of cluster quality and relevance to the underlying features of the routes. Ultimately, the goal is to identify clusters that can inform urban planning and biking route optimization in a practical context.
 
-## Overview of Methods
+# Overview of Methods
 
 This analysis employs three clustering algorithms to identify groups within the bike routes dataset, along with dimensionality reduction techniques to visualize the results effectively:
 

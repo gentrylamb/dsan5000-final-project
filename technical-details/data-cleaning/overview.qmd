@@ -1,3 +1,5 @@
+# Introduction and Motivation
+
 ## Overview
 
 Cleaning the raw trail data was a critical step in extracting meaningful insights. The descriptions of each bike trail contained a wealth of information, making data cleaning essential for conducting deeper exploratory analysis and enabling robust machine learning applications. It’s important to note that data cleaning is a dynamic and iterative process. As this project evolves, additional cleaning may be required. Below is a summary of the transformations applied to produce the cleaned dataset.
@@ -38,4 +40,4 @@ Given the significant right skew in the mileage distribution, normalization was 
 
 ## Subsetting Data
 
-Subsetting was deemed unnecessary due to the already limited size of the dataset.
+Subsetting is unnecessary due to the already small size of the dataset.

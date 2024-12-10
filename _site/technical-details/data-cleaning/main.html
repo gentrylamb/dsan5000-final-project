@@ -188,13 +188,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#introduction-and-motivation" id="toc-introduction-and-motivation" class="nav-link active" data-scroll-target="#introduction-and-motivation">Introduction and Motivation</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#explanation-of-new-variables" id="toc-explanation-of-new-variables" class="nav-link" data-scroll-target="#explanation-of-new-variables">Explanation of New Variables</a></li>
   <li><a href="#managing-missing-data" id="toc-managing-missing-data" class="nav-link" data-scroll-target="#managing-missing-data">Managing Missing Data</a></li>
   <li><a href="#outlier-detection-and-treatment" id="toc-outlier-detection-and-treatment" class="nav-link" data-scroll-target="#outlier-detection-and-treatment">Outlier Detection and Treatment</a></li>
   <li><a href="#data-type-corrections-and-formatting" id="toc-data-type-corrections-and-formatting" class="nav-link" data-scroll-target="#data-type-corrections-and-formatting">Data Type Corrections and Formatting</a></li>
   <li><a href="#normalization-and-scaling" id="toc-normalization-and-scaling" class="nav-link" data-scroll-target="#normalization-and-scaling">Normalization and Scaling</a></li>
   <li><a href="#subsetting-data" id="toc-subsetting-data" class="nav-link" data-scroll-target="#subsetting-data">Subsetting Data</a></li>
+  </ul></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   </ul>
 </nav>
@@ -221,6 +224,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="introduction-and-motivation" class="level1">
+<h1>Introduction and Motivation</h1>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>Cleaning the raw trail data was a critical step in extracting meaningful insights. The descriptions of each bike trail contained a wealth of information, making data cleaning essential for conducting deeper exploratory analysis and enabling robust machine learning applications. It’s important to note that data cleaning is a dynamic and iterative process. As this project evolves, additional cleaning may be required. Below is a summary of the transformations applied to produce the cleaned dataset.</p>
@@ -263,11 +268,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="subsetting-data" class="level2">
 <h2 class="anchored" data-anchor-id="subsetting-data">Subsetting Data</h2>
-<p>Subsetting was deemed unnecessary due to the already limited size of the dataset.</p>
+<p>Subsetting is unnecessary due to the already small size of the dataset.</p>
+</section>
 </section>
 <section id="code" class="level1">
 <h1>Code</h1>
-<div id="cell-3" class="cell" data-execution_count="2">
+<p>The first step is just to load in the pacakges we want to use as well as the csv file created in the previous step.</p>
+<div id="cell-3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # ------------------------------------ IMPORTS ------------------------------------ #</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -275,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../data/raw-data/dc_bike_routes.csv'</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
@@ -343,7 +350,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="3">
+<p>Now, we can create new columns to extract useful features from the raw data. A <code>distance_norm</code> column is added by normalizing the mileage (<code>distance_mi</code>) using its mean and standard deviation, ensuring that distances can be compared more effectively. Additionally, the <code>description</code> column, which contains combined information, is split into two separate columns: <code>location</code> and a refined <code>description</code>. To further enhance the dataset, several binary columns are created to indicate whether specific keywords (like “unpaved,” “flat,” or “river”) appear in the description or name fields. These features help identify key characteristics of each bike route.</p>
+<p>Using the <code>SentimentIntensityAnalyzer</code> from the NLTK library, the sentiment of each description is calculated, and the compound sentiment score is stored in a new <code>sentiment</code> column. This score, which ranges from -1 (negative) to +1 (positive), provides insight into the emotional tone of the descriptions.</p>
+<p>Next is to assign states to each bike route based on their locations. It defines lists of regions and keywords associated with specific states (e.g., DC, Maryland, Virginia, and Pennsylvania). The function, <code>assign_states</code>, checks whether any of these keywords appear in the <code>location</code> column, assigning one or more possible states to each route. These assignments are stored in a new state column, which is subsequently split into two separate columns (<code>state1</code> and <code>state2</code>). If a route belongs to only one state, <code>state2</code> is filled with the value from <code>state1</code>, ensuring consistency.</p>
+<p>Redundant columns like <code>description</code>, <code>location</code>, and <code>state</code> are dropped to streamline the data. Missing values are checked for potential issues, and the cleaned dataset is saved as a CSV file for further analysis.</p>
+<div id="cell-5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ CREATE COLUMNS ------------------------------------ #</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize the mileage column</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"distance_norm"</span>] <span class="op">=</span> (df[<span class="st">"distance_mi"</span>] <span class="op">-</span> np.mean(df[<span class="st">"distance_mi"</span>])) <span class="op">/</span> np.std(df[<span class="st">"distance_mi"</span>])</span>
@@ -419,7 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="co"># save to CSV</span></span>
 <span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'../../data/processed-data/dc_bike_routes.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -541,32 +552,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell">
+<p>The following is just a demonstration that normalizing distance does not affect how values are distributed.</p>
+<div id="cell-7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Plot comparing the regular mileage distribution to the normalized one</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the plotting environment</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>sns.set_theme(style<span class="op">=</span><span class="st">"whitegrid"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure and axes</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure and axes</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the original mileage distribution</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">"distance_mi"</span>], kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">10</span>, ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span><span class="st">"blue"</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Original Mileage Distribution"</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">"Distance (mi)"</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">"Frequency"</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the normalized mileage distribution</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">"distance_norm"</span>], kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">10</span>, ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span><span class="st">"green"</span>)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Normalized Mileage Distribution"</span>)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"Normalized Distance"</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">"Frequency"</span>)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust layout and show the plot</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the original mileage distribution</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">"distance_mi"</span>], kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">10</span>, ax<span class="op">=</span>ax[<span class="dv">0</span>], color<span class="op">=</span><span class="st">"blue"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Original Mileage Distribution"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">"Distance (mi)"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the normalized mileage distribution</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>sns.histplot(df[<span class="st">"distance_norm"</span>], kde<span class="op">=</span><span class="va">True</span>, bins<span class="op">=</span><span class="dv">10</span>, ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span><span class="st">"green"</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Normalized Mileage Distribution"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"Normalized Distance"</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust layout and show the plot</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

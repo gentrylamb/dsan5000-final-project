@@ -1,19 +1,17 @@
 # Summary
 
-This section should be written for a **technical audience**, focusing on detailed analysis, factual reporting, and clear presentation of data. The following serves as a guide, but feel free to adjust as needed.
-
 ## Challenges
 
-- Discuss any technical challenges faced during the project, such as data limitations, computational issues, or obstacles encountered during analysis.
-- Explain unexpected results and their technical implications.
-- Identify areas for future work, including potential optimizations, further analysis, or scaling solutions.
-
-## Benchmarks
-
-- Compare your findings to relevant research, industry benchmarks, or intuitive expectations, if applicable.
+During the data cleaning process, several technical challenges were encountered. These included overly generalized HTML formatting that did not ID or name any components in the site. Addressing these issues required extremely specific custom regular expressions and manual inspection to ensure data accuracy. Another challenge was getting the webdriver to work on a WSL connected device. There were several issues with getting Selenium to properly initialize communication with Google Chrome and the installed driver. 
 
 ## Conclusion and Future Steps
 
-- Summarize the key technical points and outcomes of the project.
-- Suggest potential improvements or refinements to this part of the project.
-- Based on the results, provide actionable recommendations for further research or optimization efforts.
+The data cleaning process has provided a strong foundation for the analytical components of this project. Key technical accomplishments include the successful extraction, transformation, and storing of the data. The next step for us is to clean the data and add relevant features as needed for analysis down the road. 
+
+Future work will focus on:
+- **Expanding the Dataset:** Incorporating additional data sources to improve trail coverage and diversity.
+- **Feature Engineering:** Developing more advanced features, such as weather conditions, trail popularity, or proximity to public transit, to enhance model performance.
+- **User Feedback Integration:** Leveraging feedback from local riders to validate and refine trail ratings and recommendations.
+- **Scaling Solutions:** Automating the data cleaning pipeline for integration with larger datasets or real-time updates.
+
+By continuing to refine and augment the dataset, this project aims to deliver actionable insights and tailored recommendations to the biking community.

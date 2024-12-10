@@ -205,21 +205,22 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#goals" id="toc-goals" class="nav-link active" data-scroll-target="#goals">Goals</a></li>
+  <li><a href="#introduction-and-motivation" id="toc-introduction-and-motivation" class="nav-link active" data-scroll-target="#introduction-and-motivation">Introduction and Motivation</a>
+  <ul class="collapse">
+  <li><a href="#goals" id="toc-goals" class="nav-link" data-scroll-target="#goals">Goals</a></li>
   <li><a href="#motivation" id="toc-motivation" class="nav-link" data-scroll-target="#motivation">Motivation</a></li>
   <li><a href="#objectives" id="toc-objectives" class="nav-link" data-scroll-target="#objectives">Objectives</a></li>
   <li><a href="#data-source-information" id="toc-data-source-information" class="nav-link" data-scroll-target="#data-source-information">Data Source Information</a>
   <ul class="collapse">
   <li><a href="#rating-definitions" id="toc-rating-definitions" class="nav-link" data-scroll-target="#rating-definitions">Rating Definitions</a></li>
   </ul></li>
-  <li><a href="#data-collection-methods" id="toc-data-collection-methods" class="nav-link" data-scroll-target="#data-collection-methods">Data Collection Methods</a></li>
   <li><a href="#data-structure-and-format" id="toc-data-structure-and-format" class="nav-link" data-scroll-target="#data-structure-and-format">Data Structure and Format</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  </ul></li>
+  <li><a href="#overview-of-methods" id="toc-overview-of-methods" class="nav-link" data-scroll-target="#overview-of-methods">Overview of Methods</a></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a>
   <ul class="collapse">
   <li><a href="#challenges" id="toc-challenges" class="nav-link" data-scroll-target="#challenges">Challenges</a></li>
-  <li><a href="#benchmarks" id="toc-benchmarks" class="nav-link" data-scroll-target="#benchmarks">Benchmarks</a></li>
   <li><a href="#conclusion-and-future-steps" id="toc-conclusion-and-future-steps" class="nav-link" data-scroll-target="#conclusion-and-future-steps">Conclusion and Future Steps</a></li>
   </ul></li>
   </ul>
@@ -247,6 +248,8 @@ div.csl-indent {
 </header>
 
 
+<section id="introduction-and-motivation" class="level1">
+<h1>Introduction and Motivation</h1>
 <section id="goals" class="level2">
 <h2 class="anchored" data-anchor-id="goals">Goals</h2>
 <p>The primary objective of this project is to leverage data from <a href="http://bikewashington.org">bikewashington.org</a> to provide actionable insights about bike paths in Washington, DC. By analyzing and presenting detailed information about these trails, we aim to help riders make informed decisions about their routes. This knowledge will enhance their preparation and contribute to safer biking experiences across the city.</p>
@@ -281,19 +284,14 @@ div.csl-indent {
 </ul>
 </section>
 </section>
-<section id="data-collection-methods" class="level2">
-<h2 class="anchored" data-anchor-id="data-collection-methods">Data Collection Methods</h2>
-<p>We utilized Selenium, an open-source browser automation framework, to scrape data from the website. Specifically: - The <code>webdriver</code> function was employed to extract trail names, mileage, and ratings. - The extracted data was processed using Pandas to consolidate all relevant information into a single DataFrame. - The tabular data was then saved for future analysis.</p>
-</section>
 <section id="data-structure-and-format" class="level2">
 <h2 class="anchored" data-anchor-id="data-structure-and-format">Data Structure and Format</h2>
 <p>The cleaned data was exported to a CSV file consisting of: - <strong>Rows:</strong> 43 (one for each trail). - <strong>Columns:</strong> 6 (trail name, description, mileage, terrain rating, traffic rating, and scenery rating). - <strong>Data Types:</strong> - <code>string</code> for trail names and descriptions. - <code>integer</code> for mileage and ratings. - <strong>Regression Target:</strong> mileage - <strong>Binary Classification Target:</strong> <em>insert here</em> - <strong>Multiclass-Classification Target:</strong> location of trail (Maryland, Virginia, or DC) - found in the description</p>
 </section>
-<section id="methods" class="level2">
-<h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>We utilized <a href="https://www.selenium.dev/documentation/webdriver/">Selenium</a>, an open-source framework for automating web browsers, to scrape data from bikewashington.org. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame.</p>
-<p>The ratings were further processed and split into three distinct columns: terrain, scenery, and traffic. Irrelevant or redundant columns were removed from the dataset to streamline the analysis. One such column was the original ‘rating’ column. Finally, the cleaned DataFrame was exported as a CSV file for seamless integration with the machine learning components of this project.</p>
-<p>While the dataset is relatively small, it encompasses all the essential information about bike paths and trails in the DC area, making it a valuable resource for our analysis.</p>
+</section>
+<section id="overview-of-methods" class="level1">
+<h1>Overview of Methods</h1>
+<p>We utilized <a href="https://www.selenium.dev/documentation/webdriver/">Selenium</a>, an open-source framework for automating web browsers, to scrape data from bikewashington.org. Since the site relied heavily on JavaScript for loading, Selenium was used to render the desired elements. From there, elements were located using Xpaths so the it could then be extracted directly from the HTML structure. The scraped information included trail names, descriptions, lengths, and ratings, which were initially stored in lists and later consolidated into a single Pandas DataFrame.</p>
 </section>
 <section id="code" class="level1">
 <h1>Code</h1>
@@ -305,7 +303,8 @@ div.csl-indent {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.chrome.options <span class="im">import</span> Options</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="2">
+<p>In the code below we create an <code>Options</code> object to adjust the webdriver so that it works properly without the user interface. We also locate the location of the webdriver and initialize the driver object that we can use later to get the data. Finally, we give the driver access to the website link containing our data.</p>
+<div id="cell-5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CONFIGURE DRIVER</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Initiate options object and configure chrome settings to run headless (without GUI)</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ChatGPT helped address error with Chrome crashing upon startup</span></span>
@@ -321,9 +320,11 @@ div.csl-indent {
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> webdriver.Chrome(service<span class="op">=</span>cService, options<span class="op">=</span>chrome_options)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Use driver to access the bike path website</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>driver.get(<span class="st">'http://bikewashington.org/routes/all.htm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>site_link <span class="op">=</span> <span class="st">'http://bikewashington.org/routes/all.htm'</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>driver.get(site_link)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell">
+<p>Now we can use patterns in the XPaths to find the data we are looking for. This is found by analyzing the html of the page to see what patterns are unique to the specific piece of data we want. The 4 attributes we get for each route is: name, distance (in miles), route description, and ratings. For each of these we take the extracted elements and turn them into lists containing the text. We can then combine these lists into a cohesive DataFrame, where each row is a route and the columns are the route attributes. We also split the ratings into three separate columns based on string patterns, keeping only the numeric value assigned to the rating. As a final step, we write the data to a csv that can be accessed later.</p>
+<div id="cell-7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Xpath's (found using inspect in website) to locate instances of data we want</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Search for instances of bike path names </span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>names <span class="op">=</span> driver.find_elements(By.XPATH, <span class="st">'//td/a'</span>)</span>
@@ -446,28 +447,15 @@ div.csl-indent {
 </section>
 <section id="summary" class="level1">
 <h1>Summary</h1>
-<p>This section should be written for a <strong>technical audience</strong>, focusing on detailed analysis, factual reporting, and clear presentation of data. The following serves as a guide, but feel free to adjust as needed.</p>
 <section id="challenges" class="level2">
 <h2 class="anchored" data-anchor-id="challenges">Challenges</h2>
-<ul>
-<li>Discuss any technical challenges faced during the project, such as data limitations, computational issues, or obstacles encountered during analysis.</li>
-<li>Explain unexpected results and their technical implications.</li>
-<li>Identify areas for future work, including potential optimizations, further analysis, or scaling solutions.</li>
-</ul>
-</section>
-<section id="benchmarks" class="level2">
-<h2 class="anchored" data-anchor-id="benchmarks">Benchmarks</h2>
-<ul>
-<li>Compare your findings to relevant research, industry benchmarks, or intuitive expectations, if applicable.</li>
-</ul>
+<p>During the data cleaning process, several technical challenges were encountered. These included overly generalized HTML formatting that did not ID or name any components in the site. Addressing these issues required extremely specific custom regular expressions and manual inspection to ensure data accuracy. Another challenge was getting the webdriver to work on a WSL connected device. There were several issues with getting Selenium to properly initialize communication with Google Chrome and the installed driver.</p>
 </section>
 <section id="conclusion-and-future-steps" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion-and-future-steps">Conclusion and Future Steps</h2>
-<ul>
-<li>Summarize the key technical points and outcomes of the project.</li>
-<li>Suggest potential improvements or refinements to this part of the project.</li>
-<li>Based on the results, provide actionable recommendations for further research or optimization efforts.</li>
-</ul>
+<p>The data cleaning process has provided a strong foundation for the analytical components of this project. Key technical accomplishments include the successful extraction, transformation, and storing of the data. The next step for us is to clean the data and add relevant features as needed for analysis down the road.</p>
+<p>Future work will focus on: - <strong>Expanding the Dataset:</strong> Incorporating additional data sources to improve trail coverage and diversity. - <strong>Feature Engineering:</strong> Developing more advanced features, such as weather conditions, trail popularity, or proximity to public transit, to enhance model performance. - <strong>User Feedback Integration:</strong> Leveraging feedback from local riders to validate and refine trail ratings and recommendations. - <strong>Scaling Solutions:</strong> Automating the data cleaning pipeline for integration with larger datasets or real-time updates.</p>
+<p>By continuing to refine and augment the dataset, this project aims to deliver actionable insights and tailored recommendations to the biking community.</p>
 
 
 
