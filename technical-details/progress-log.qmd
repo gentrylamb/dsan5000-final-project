@@ -82,3 +82,8 @@ If you are working as a team, at the end, you can duplicate the project and add 
 
 * [x] Wrote technical details for EDA
 * [x] Coded up a lot of the supervised learning portion
+
+
+**12-08-2024**
+
+* [x] Finished the code for supervised learning
