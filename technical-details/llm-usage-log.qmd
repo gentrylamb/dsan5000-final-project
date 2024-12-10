@@ -13,7 +13,7 @@ LLM tools were used in the following way for the tasks below
 ## Writing: 
 
 * Proofreading and improving grammar in the literature reviews. [@gpt4o_grammar]
-* Improved content we wrote to improve overall flow and idea expression [@gpt4o_improve]
+* Improved content we wrote to improve overall flow and idea expression. [@gpt4o_improve]
 
 ## Code: 
 
