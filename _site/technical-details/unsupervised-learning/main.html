@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -43,7 +77,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -87,6 +121,9 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -171,9 +208,28 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#code" id="toc-code" class="nav-link active" data-scroll-target="#code">Code</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#introduction-and-motivation" id="toc-introduction-and-motivation" class="nav-link" data-scroll-target="#introduction-and-motivation">Introduction and Motivation</a></li>
+  <li><a href="#overview-of-methods" id="toc-overview-of-methods" class="nav-link" data-scroll-target="#overview-of-methods">Overview of Methods</a></li>
+  </ul></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
+  <li><a href="#part-1-dimensionality-reduction" id="toc-part-1-dimensionality-reduction" class="nav-link" data-scroll-target="#part-1-dimensionality-reduction">Part 1: Dimensionality Reduction</a>
+  <ul class="collapse">
+  <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca">PCA</a></li>
+  <li><a href="#tsne" id="toc-tsne" class="nav-link" data-scroll-target="#tsne">TSNE</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
+  </ul></li>
+  <li><a href="#part-2-clustering-methods" id="toc-part-2-clustering-methods" class="nav-link" data-scroll-target="#part-2-clustering-methods">Part 2: Clustering Methods</a>
+  <ul class="collapse">
+  <li><a href="#k-means" id="toc-k-means" class="nav-link" data-scroll-target="#k-means">K-Means</a></li>
+  <li><a href="#dbscan" id="toc-dbscan" class="nav-link" data-scroll-target="#dbscan">DBSCAN</a></li>
+  <li><a href="#hierarchical-clustering" id="toc-hierarchical-clustering" class="nav-link" data-scroll-target="#hierarchical-clustering">Hierarchical Clustering</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="overview.embed-preview.html"><i class="bi bi-journal-code"></i>Instructions</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="overview.embed-preview.html"><i class="bi bi-journal-code"></i>Introduction and Motivation</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -197,83 +253,540 @@ div.csl-indent {
 </header>
 
 
-<div class="quarto-embed-nb-cell">
-<section id="section" class="level1">
+<section id="section" class="level1 quarto-embed-nb-cell">
 <h1></h1>
+<section id="introduction-and-motivation" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-and-motivation">Introduction and Motivation</h2>
+<p>The primary objective of this analysis is to explore and identify meaningful groupings within a dataset of bike routes in Washington, DC, based on features like distance, ratings, sentiment, and route descriptions. By applying clustering techniques, we aim to uncover hidden patterns that can offer insights into the structure of bike routes across the city. To aid in visualizing these patterns, we also conduct dimensionality reduction using PCA and t-SNE. These methods help reduce the complexity of the high-dimensional data, allowing for clearer visualization and interpretation of the clustering results. The analysis involves testing three clustering algorithms—K-Means, DBSCAN, and Agglomerative Clustering—and comparing their performance in terms of cluster quality and relevance to the underlying features of the routes. Ultimately, the goal is to identify clusters that can inform urban planning and biking route optimization in a practical context.</p>
 </section>
-<section id="instructions" class="level1">
-<h1>Instructions</h1>
-<p><code>Note</code>: You should remove these instructions once you have read and understood them. They should not be included in your final submission.</p>
-<p><code>Remember:</code> Exactly what do you put on this page will be specific you your project and data. Some things might “make more sense” on one page rather than another, depending on your workflow. Organize your project in a logical way that makes the most sense to you.</p>
-<section id="suggested-page-structure" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-page-structure">Suggested page structure</h2>
-<p>Here’s one suggested structure for organizing your technical pages. You can adjust this as needed:</p>
-<p><code>Audience</code>:Remember that these are written for a technical audience. Assume they have completed the DSAN program, but would appreciate refreshers of the important concepts.</p>
+<section id="overview-of-methods" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-methods">Overview of Methods</h2>
+<p>This analysis employs three clustering algorithms to identify groups within the bike routes dataset, along with dimensionality reduction techniques to visualize the results effectively:</p>
 <ul>
-<li><strong>Introduction and Motivation:</strong> Briefly outline your plan. What are you doing on this page, and why? Provide context and explain the goals of your analysis.</li>
-<li><strong>Overview of Methods:</strong> Give a concise explanation of the methods used. For example, if using K-Means clustering, describe what it is, how it works, the inputs and outputs, and key hyperparameters.</li>
-<li><strong>Code:</strong> Include the code you used to implement your workflow.</li>
-<li><strong>Summary and Interpretation of Results:</strong> Summarize your findings, interpret the results, and discuss their technical implications.</li>
+<li><strong>PCA (Principal Component Analysis) and t-SNE (t-Distributed Stochastic Neighbor Embedding)</strong>: Used to reduce the dimensionality of the data. PCA compresses the features into principal components, capturing the most important variance in the dataset, while t-SNE further reduces the data to two dimensions, making it easier to visualize the clusters.</li>
+<li><strong>K-Means Clustering</strong>: K-Means is a partitioning-based algorithm that assigns data points into a predefined number of clusters by iterating between assigning points to the nearest centroid and updating the centroids based on these assignments. The number of clusters (<code>n_clusters</code>) is determined by evaluating the silhouette score, a metric that measures how well-separated the clusters are.</li>
+<li><strong>DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</strong>: DBSCAN is a density-based clustering algorithm that groups data points based on their proximity to each other and the density of their surroundings. Unlike K-Means, DBSCAN does not require specifying the number of clusters in advance. It relies on two hyperparameters: <code>eps</code> (the maximum distance between two points to be considered neighbors) and <code>min_samples</code> (the minimum number of points required to form a cluster). DBSCAN also identifies noise points, which are labeled as -1.</li>
+<li><strong>Agglomerative Clustering</strong>: Agglomerative Clustering is a hierarchical method that builds clusters by iteratively merging the closest pairs of clusters. The number of clusters (<code>n_clusters</code>) is specified as a hyperparameter, and the algorithm outputs cluster labels for each data point. Agglomerative Clustering produces a hierarchical tree (dendrogram) that shows how clusters are merged, which can help understand the relationships between different groupings.</li>
 </ul>
 </section>
-<section id="what-to-address" class="level2">
-<h2 class="anchored" data-anchor-id="what-to-address">What to address</h2>
-<p>The following is a list of some of the things you should address on this page. This list is not exhaustive, and you should use your judgment to decide what is most relevant to your project.</p>
-<p>This page is designed to give you hands-on experience with key unsupervised learning techniques, including clustering methods and dimensionality reduction, applied to real-world datasets. Please apply algorithms such as K-Means, DBSCAN, Hierarchical clustering, PCA, and t-SNE to your data. Through this process, you’ll deepen your understanding of how unsupervised learning can reveal hidden patterns and structure in data.</p>
-<section id="part-1-dimensionality-reduction" class="level3">
-<h3 class="anchored" data-anchor-id="part-1-dimensionality-reduction">Part 1: Dimensionality Reduction</h3>
-<p>The objective of this section is to explore and demonstrate the effectiveness of PCA and t-SNE in reducing the dimensionality of complex data while preserving essential information and improving visualization.</p>
-<ol type="1">
-<li><strong>PCA (Principal Component Analysis):</strong>
-<ul>
-<li>Apply PCA to your dataset.</li>
-<li>Determine the optimal number of principal components.</li>
-<li>Visualize the reduced-dimensional data.</li>
-<li>Analyze and interpret the results.</li>
-</ul></li>
-<li><strong>t-SNE (t-distributed Stochastic Neighbor Embedding):</strong>
-<ul>
-<li>Implement t-SNE on the same dataset.</li>
-<li>Experiment with different perplexity values.</li>
-<li>Visualize the t-SNE output to reveal patterns and clusters.</li>
-<li>Compare the results of t-SNE with those from PCA.</li>
-</ul></li>
-<li><strong>Evaluation and Comparison:</strong>
-<ul>
-<li>Evaluate the effectiveness of PCA and t-SNE in preserving data structure.</li>
-<li>Compare the visualization capabilities of both techniques.</li>
-<li>Discuss the trade-offs and scenarios where one technique may perform better than the other.</li>
-</ul></li>
-</ol>
-</section>
-<section id="part-2-clustering-methods" class="level3">
-<h3 class="anchored" data-anchor-id="part-2-clustering-methods">Part 2: Clustering Methods</h3>
-<p>Apply clustering techniques (K-Means, DBSCAN, and Hierarchical clustering) to a selected dataset. The goal is to understand how each method works, compare their performance, and interpret the results.</p>
-<ol type="1">
-<li><strong>Clustering Methods:</strong>
-<ul>
-<li>Apply <strong>K-Means</strong>, <strong>DBSCAN</strong>, and <strong>Hierarchical clustering</strong> to your dataset.</li>
-<li>Write a technical summary for each method (2–4 paragraphs per method) explaining how it works, its purpose, and any model selection methods used (e.g., Elbow, Silhouette).</li>
-</ul></li>
-<li><strong>Results Section:</strong>
-<ul>
-<li>Discuss and visualize the results of each clustering analysis.</li>
-<li>Compare the performance of different clustering methods, noting any insights gained from the analysis.</li>
-<li>Visualize cluster patterns and how they relate (if at all) to existing labels in the dataset.</li>
-<li>Use professional, labeled, and clear visualizations that support your discussion.</li>
-</ul></li>
-<li><strong>Conclusion:</strong>
-<ul>
-<li>Summarize the key findings and their real-world implications in a non-technical way. Focus on the most important results and how they could apply to practical situations.</li>
-</ul></li>
-</ol>
-</section>
-</section>
-</section>
-<a class="quarto-notebook-link" id="nblink-1" href="overview.embed-preview.html#46f3fee9-f1fe-4ad3-9c21-507f37fd4074">Source: Instructions</a></div>
-<section id="code" class="level1">
-<h1>Code</h1>
+<a class="quarto-notebook-link" id="nblink-1" href="overview.embed-preview.html#a578693a-c678-4337-9732-945335735de3">Source: Introduction and Motivation</a></section>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
 <p>Some of the text in these sections was informed by ChatGPT to help explain the code using prose to ensure someone not fluent in code could understand it.<span class="citation" data-cites="gpt4o_prose_explain"><sup><a href="#ref-gpt4o_prose_explain" role="doc-biblioref">1</a></sup></span></p>
+<div id="cell-3" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ IMPORTS ------------------------------------ #</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.manifold <span class="im">import</span> TSNE</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN, KMeans, AgglomerativeClustering </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../data/processed-data/dc_bike_routes.csv'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">distance_mi</th>
+<th data-quarto-table-cell-role="th">terrain</th>
+<th data-quarto-table-cell-role="th">traffic</th>
+<th data-quarto-table-cell-role="th">scenery</th>
+<th data-quarto-table-cell-role="th">distance_norm</th>
+<th data-quarto-table-cell-role="th">unpaved</th>
+<th data-quarto-table-cell-role="th">flat</th>
+<th data-quarto-table-cell-role="th">workout</th>
+<th data-quarto-table-cell-role="th">park</th>
+<th data-quarto-table-cell-role="th">river</th>
+<th data-quarto-table-cell-role="th">loop</th>
+<th data-quarto-table-cell-role="th">sentiment</th>
+<th data-quarto-table-cell-role="th">state1</th>
+<th data-quarto-table-cell-role="th">state2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Potomac Tour</td>
+<td>10</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>-0.963394</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.4215</td>
+<td>DC</td>
+<td>DC</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>BWI Trail</td>
+<td>11</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>-0.933354</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0000</td>
+<td>MD</td>
+<td>MD</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Airpark Cruise</td>
+<td>12</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>-0.903313</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.0000</td>
+<td>MD</td>
+<td>MD</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Seneca Valley Tour</td>
+<td>13</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>-0.873273</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.6249</td>
+<td>MD</td>
+<td>MD</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>For The Boyds</td>
+<td>14</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>-0.843232</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.0000</td>
+<td>MD</td>
+<td>MD</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="part-1-dimensionality-reduction" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-dimensionality-reduction">Part 1: Dimensionality Reduction</h2>
+<p>In this section we explore the effectiveness of dimensionality reducing techniques.</p>
+<section id="pca" class="level3">
+<h3 class="anchored" data-anchor-id="pca">PCA</h3>
+<p>First we prepared the data by removing non-numeric columns, leaving only numerical features in <code>numeric_df</code>. The remaining data is then standardized with <code>StandardScaler</code> to ensure all features have a mean of 0 and a standard deviation of 1. This standardization is necessary because PCA can be sensitive to the scale of the data. PCA is applied to the scaled data without specifying the number of components, resulting in all possible components being computed. The <code>pca.fit_transform</code> method transforms the data into the new principal component space. The <code>explained_variance_ratio_</code> attribute of the PCA object provides the proportion of variance explained by each component. Then we visualize the cumulative sum of this explained variance against the number of PCA components to identify a “cutoff” point. The line is pretty constant but we believe 90% is a sufficient portion, so we conclude that 7 principal components is sufficient.</p>
+<div id="cell-5" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize the data (often helps with clustering)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>numeric_df <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'name'</span>,<span class="st">'state1'</span>,<span class="st">'state2'</span>])</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>scaled_df <span class="op">=</span> StandardScaler().fit_transform(numeric_df)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply PCA</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># apply pca to scaled data</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>pca_result <span class="op">=</span> pca.fit_transform(scaled_df)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot explained variance</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>explained_variance_ratio <span class="op">=</span> pca.explained_variance_ratio_</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot number of components against cumulative explained variance</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(explained_variance_ratio) <span class="op">+</span> <span class="dv">1</span>), explained_variance_ratio.cumsum(), marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># label the plot</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cumulative Explained Variance by PCA Components'</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Components'</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cumulative Explained Variance'</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Next, since we can’t visualize what something is looks like in 7-dimensions, we will apply the first 2 components to visualize the data in two dimensions. We plot this 2D visualization, where The x-axis and y-axis correspond to the first and second principal components. Points are color-coded based on the <code>sentiment</code> column from the original dataset, allowing for the identification of patterns or clusters related to sentiment. This 2D visualization provides an intuitive way to observe structure and relationships in the data, such as clustering tendencies or separations between different sentiment values.</p>
+<p>The only trend that appears in sentiment is that lower sentiments appear lower across principal component 2 and increase with it. This could mean a couple of things:</p>
+<ol type="1">
+<li>The lack of distinct clusters might indicate that the variables in the dataset do not exhibit strong groupings or separations related to the target variable</li>
+<li>PCA is a linear dimensionality reduction method, meaning it captures only linear relationships in the data. If the relationships between variables and sentiment are non-linear, PCA might not reveal meaningful clusters.</li>
+<li>If the explained variance ratio of the first two components is relatively low, it suggests that the 2D representation does not capture much of the total variance in the data.</li>
+</ol>
+<p>In our case the 3rd explanation makes the most sense as we saw in the previous graph how the variance is not explained very well until about 6 or 7 components. Let’s check out the rank varibles.</p>
+<div id="cell-7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reduce dimensions to 2D</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pca_2d <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># fit PCA to scaled data</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pca_2d_result <span class="op">=</span> pca_2d.fit_transform(scaled_df)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot resulting 2 d representation of data </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(pca_2d_result[:, <span class="dv">0</span>], pca_2d_result[:, <span class="dv">1</span>], c<span class="op">=</span>df[<span class="st">'sentiment'</span>], cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># label the plot</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'PCA: 2D Visualization'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Principal Component 1'</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Principal Component 2'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.colorbar(label<span class="op">=</span><span class="st">'Sentiment Score'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Below we graph the principal components for all the variables that were ranked for the bike routes. We begin to see some clusters or trends in these plots.</p>
+<div id="cell-9" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define rank vars</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rank_vars <span class="op">=</span> [<span class="st">'terrain'</span>,<span class="st">'traffic'</span>, <span class="st">'scenery'</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># make subplots to plot them next to eachother</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">5</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through the axes and plot each</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(axes)):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    im <span class="op">=</span> axes[i].scatter(pca_2d_result[:, <span class="dv">0</span>], pca_2d_result[:, <span class="dv">1</span>], c<span class="op">=</span>df[rank_vars[i]], cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add colorbar to each as they are all different</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    fig.colorbar(im, label<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>rank_vars[i]<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss"> Score'</span>, ax<span class="op">=</span>axes[i])</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># label the plots</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'PCA: 2D Visualization'</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>fig.supxlabel(<span class="st">'Principal Component 1'</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>fig.supylabel(<span class="st">'Principal Component 2'</span>)    </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tsne" class="level3">
+<h3 class="anchored" data-anchor-id="tsne">TSNE</h3>
+<p>This code applies t-Distributed Stochastic Neighbor Embedding (t-SNE), a non-linear dimensionality reduction technique, to visualize the dataset in two dimensions. Unlike PCA, which is linear, t-SNE is designed to preserve local structure in the data, making it particularly effective for revealing patterns such as clusters in datasets with complex relationships.</p>
+<p>Since we have a relatively small dataset (only 43 observations), we will search across a smaller range of perplexity values since the value controls how many neighbors are used for each point. Here we iterate over the perplexity values of 5 to 30, computing the KL Divergence at each perplexity, and plot them against each other. Perplexities that yield lower KL divergence indicate that the t-SNE embedding is better at maintaining the data’s structure. This helps determine an appropriate perplexity value for the dataset without relying solely on trial-and-error. We don’t see any substantial improvements after 20, and adding more might distort as we near the total number of observations.</p>
+<div id="cell-11" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize list to hold kl div vals and which perplexities we want to test</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>kl_vals <span class="op">=</span> []</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>perps <span class="op">=</span> <span class="bu">range</span>(<span class="dv">5</span>,<span class="dv">30</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over the perplexities</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> perps:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit tsne with using current perplexity</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    tsne <span class="op">=</span> TSNE(perplexity<span class="op">=</span>i, random_state<span class="op">=</span><span class="dv">24</span>).fit(scaled_df)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># append kl divergence</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    kl_vals.append(tsne.kl_divergence_)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot kl divergence against perplexity</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.plot(perps, kl_vals, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'KL Divergence by TSNE Perplexity'</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Perplexity'</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'KL Divergence'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The process begins by initializing t-SNE with two dimensions (<code>n_components=2</code>) to reduce the data into a 2D space suitable for visualization. The <code>perplexity</code> parameter, set to 20, controls the balance between local and global structure in the embedding, while a fixed <code>random_state</code> ensures reproducibility of the results. The algorithm transforms the scaled features into a new coordinate system, capturing the intricate non-linear relationships that may not be evident in PCA’s linear projections. The 2D results are plotted as a scatter plot, where each point corresponds to a data instance. The points are color-coded by the sentiment column to visually explore whether distinct groupings or gradients align with the sentiment values. We don’t see any distinctive clustering in the data across the sentiment score.</p>
+<div id="cell-13" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply t-SNE</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tsne <span class="op">=</span> TSNE(n_components<span class="op">=</span><span class="dv">2</span>, perplexity<span class="op">=</span><span class="dv">20</span>, random_state<span class="op">=</span><span class="dv">24</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>tsne_result <span class="op">=</span> tsne.fit_transform(scaled_df)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize t-SNE results</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(tsne_result[:, <span class="dv">0</span>], tsne_result[:, <span class="dv">1</span>], c<span class="op">=</span>df[<span class="st">'sentiment'</span>], cmap<span class="op">=</span><span class="st">'viridis'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'t-SNE: 2D Visualization'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'t-SNE Dimension 1'</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'t-SNE Dimension 2'</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.colorbar(label<span class="op">=</span><span class="st">'Sentiment Score'</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Similar to above with PCA. We plot the t-SNE again using the ranked variables to color the points. There still doesn’t seem to be any obvious clustering, but there is some patterns seen.</p>
+<div id="cell-15" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make subplots to plot them next to eachother</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">5</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through the axes and plot each</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(axes)):</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    im <span class="op">=</span> axes[i].scatter(tsne_result[:, <span class="dv">0</span>], tsne_result[:, <span class="dv">1</span>], c<span class="op">=</span>df[rank_vars[i]], cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add colorbar to each as they are all different</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    fig.colorbar(im, label<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>rank_vars[i]<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss"> Score'</span>, ax<span class="op">=</span>axes[i])</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># label the plots</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'t-SNE: 2D Visualization'</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>fig.supxlabel(<span class="st">'t-SNE Dimension 1'</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>fig.supylabel(<span class="st">'t-SNE Dimension 2'</span>)    </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation">Evaluation</h3>
+<p>Both PCA and t-SNE were applied to reduce the dataset’s dimensionality for visualization, but neither method produced distinct, well-separated clusters. However, some patterns were observed, suggesting that the data does contain structure, although not strong enough for clear cluster separation in a 2D representation. This outcome highlights the need to carefully evaluate the strengths and limitations of each method when applied to high-dimensional data.</p>
+<p>As a linear technique, PCA captures the directions of maximum variance in the data and projects it onto fewer dimensions. It excels at preserving global structure, making it effective for understanding overarching patterns or trends. However, it’s reliance on linear projections means it may not reveal subtle, non-linear relationships. The cumulative explained variance plot provided insight into how much of the data’s variability is retained by the reduced components.</p>
+<p>In contrast, t-SNE is designed to handle non-linear structures by preserving local similarities between data points. Its visualization often reveals small-scale patterns, such as clusters of similar instances, that might be missed by PCA. In this case, t-SNE revealed patterns that were not fully captured by PCA, but the lack of strong, distinct groupings suggests that either the data does not have well-defined clusters.</p>
+<p>The following are some scenearios in which one method might be better than the other: - PCA is ideal when the primary goal is dimensionality reduction for interpretability, feature analysis, or global trend visualization. It is computationally efficient and works well with linearly separable data. - t-SNE is better suited for uncovering non-linear patterns and exploring local relationships, especially when clustering or separation is of interest in highly complex datasets. However, it is less effective for preserving global data structure and requires careful parameter tuning.</p>
+</section>
+</section>
+<section id="part-2-clustering-methods" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-clustering-methods">Part 2: Clustering Methods</h2>
+<p>Next we will apply clustering techniques to the data to uncover any groupings that exist.</p>
+<section id="k-means" class="level3">
+<h3 class="anchored" data-anchor-id="k-means">K-Means</h3>
+<p>K-Means is a widely-used clustering algorithm that partitions a dataset into a pre-defined number of clusters. It operates by initializing cluster centroids, assigning each data point to the nearest centroid, and iteratively updating the centroids based on the mean positions of points within each cluster. This process continues until the assignments stabilize, minimizing the within-cluster variance.</p>
+<p>A key aspect of K-Means is determining the optimal number of clusters, often guided by methods such as the Elbow Method or Silhouette Score Analysis. The Elbow Method involves plotting the inertia, or the sum of squared distances of samples to their cluster, against the number of clusters and looking for a point where adding more clusters yields diminishing improvements. Silhouette score evaluates cluster quality by measuring how similar a point is to its own cluster compared to others. It compares the average distance between a data point and other points in its cluster to the average distance to points in other clusters. While K-Means is computationally efficient and effective for well-separated clusters, it assumes spherical cluster shapes and may perform poorly with non-spherical distributions or data with significant outliers.</p>
+<p>Below, we perform both methods to select an optimal number of clusters. First, we loop over the different values for the number of clusters and store their inertia and silhouette scores. We then plot these against the number of clusters to find a point that is diminishing returns for the elbow method, or the best score for silhouette score. We see somewhat of a drop-off at 10 for the elbow method and cross check with the silhouette score to see that 10 clusters also maximizes the score.</p>
+<div id="cell-18" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize the k vals to test, and lists to store scores</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>k_vals <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">20</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sil_scores <span class="op">=</span> []</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>inertias <span class="op">=</span> []</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over k vals</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> k_vals:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit the model to our data using current k</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    kmeans_model <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">24</span>).fit(scaled_df)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># append inertia to list</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    inertias.append(kmeans_model.inertia_)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract score and append to list. Appene current k</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> silhouette_score(scaled_df, kmeans_model.labels_)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    sil_scores.append(score)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># plot elbow method</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>plt.plot(k_vals, inertias, <span class="st">"-o"</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Optimal clusters using Elbow Method"</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Intertias"</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Num Clusters"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># plot silouette score </span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>plt.plot(k_vals, sil_scores, <span class="st">'-o'</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Optimal clusters using Silhouete Score"</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Silhouette Score"</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Num Clusters"</span>)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-9-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here, the K-Means algorithm is applied with 10 clusters and each data point is assigned to one of these clusters, the resulting labels added to the DataFrame under the column <code>kmeans_cluster</code>. For visualization, the code uses the t-SNE result to map the high-dimensional data into two dimensions, where points are plotted and color-coded by their assigned K-Means cluster. The scatter plot illustrates how the clusters identified by K-Means are distributed in the 2 dimensional space.</p>
+<p>The graph reveals reasonably well-defined clusters, indicating that the K-Means algorithm has effectively grouped similar data points. However, the clusters are unbalanced, with some containing very few points while others are relatively large. This imbalance could be explained by inherent characteristics of the dataset, such as a naturally skewed distribution of data or an uneven density of points across the feature space. The imbalance in cluster sizes highlights a potential limitation of K-Means in this context. While the algorithm minimizes variance within clusters, it assumes clusters of similar sizes and may assign small groups to their own clusters if their variance significantly differs from larger groups.</p>
+<div id="cell-20" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimal Clusters</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>optimal_kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">5000</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'kmeans_cluster'</span>] <span class="op">=</span> optimal_kmeans.fit_predict(scaled_df)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># plot points in tsne space, colored on kmeans cluster</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(tsne_result[:, <span class="dv">0</span>], tsne_result[:, <span class="dv">1</span>], c<span class="op">=</span>df[<span class="st">'kmeans_cluster'</span>])</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'t-SNE Clusters with K-Means'</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'t-SNE Dimension 1'</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'t-SNE Dimension 2'</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dbscan" class="level3">
+<h3 class="anchored" data-anchor-id="dbscan">DBSCAN</h3>
+<p>DBSCAN, which stands for Density-Based Spatial Clustering of Applications with Noise, is a non-parametric clustering algorithm that identifies clusters based on data density. It groups points that are densely packed together while marking points in low-density regions as noise. The most important hyper-parameters for DBSCAN are <code>eps</code> (maximum distance for points to be considered neighbors) and <code>min_samples</code> (minimum number of points required to form a dense region).</p>
+<p>Unlike K-Means, DBSCAN does not require specifying the number of clusters in advance, making it particularly useful for datasets with irregular cluster shapes or varying densities. However, parameter selection is crucial. Techniques like examining the k-distance plot can help identify an appropriate eps value by finding a knee point, where the distance increases sharply. DBSCAN is robust to noise and handles non-spherical clusters well, but it may struggle with high-dimensional data where density estimation becomes challenging or when eps is not appropriately tuned for the dataset’s scale.</p>
+<p>The code below steps through identifying the optimal parameters for DBSCAN. This 2D grid search covers ranges for both <code>eps</code> and <code>min_sample</code> calculates the silhouette score at every combination of the two parameters, updating the best score and parameter values if better than what has been seen before. Since we are dealing with data that is fairly spread out in the vector space, we look at higher values of <code>eps</code> than is traditionally used. Also, note that in order to calculate silhouette score, the number of clusters needs to be at least 2 and less than the number of observations in the data. After iterating through all possible combinations, the code prints the best silhouette score, along with the corresponding <code>eps</code> and <code>min_samples</code> values.</p>
+<p>This approach serves to automate the parameter tuning process for DBSCAN, which can be challenging since the algorithm’s performance is highly sensitive to eps and min_samples. By evaluating all combinations within the specified ranges and using the silhouette score as a measure of quality, this method ensures that the best-performing parameters are selected.</p>
+<div id="cell-22" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># intialize values</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>best_eps <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>best_min_sample <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>best_score <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate through values for both eps values and min_sample</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> eps <span class="kw">in</span> np.arange(<span class="fl">.1</span>,<span class="dv">4</span>,<span class="fl">.1</span>):</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> min_sample <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10</span>):</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># make dbscan model with current parameters</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        dbscan_model <span class="op">=</span> DBSCAN(eps<span class="op">=</span>eps, min_samples<span class="op">=</span>min_sample).fit(scaled_df)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if labels fit within requirements, calculate silhouette score</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="dv">1</span> <span class="op">&lt;</span> <span class="bu">len</span>(<span class="bu">set</span>(dbscan_model.labels_)) <span class="op">&lt;</span> <span class="bu">len</span>(scaled_df):</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>            score <span class="op">=</span> silhouette_score(scaled_df, dbscan_model.labels_)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if current score is better than our best, reset parameters</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> score <span class="op">&gt;</span> best_score:</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                best_score <span class="op">=</span> score</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                best_eps, best_min_sample <span class="op">=</span> eps, min_sample</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Ouput results</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best Score:"</span>, best_score, <span class="st">"</span><span class="ch">\n</span><span class="st">Best Epsilon:"</span>, best_eps, <span class="st">"</span><span class="ch">\n</span><span class="st">Best min sample: "</span>, best_min_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Best Score: 0.3176437786872938 
+Best Epsilon: 3.4000000000000004 
+Best min sample:  3</code></pre>
+</div>
+</div>
+<p>Here the DBSCAN algorithm is applied with the optimal parameters to our dataset and the predicted clusters are added to the data frame. Next, the scatter plot maps the cluster assignments onto the 2D t-SNE space of the data. Each point is color-coded according to its dbscan_cluster label, with a color bar to distinguish different clusters.</p>
+<p>Several points are labeled as -1, representing noise. This indicates that these points were in low-density areas or isolated regions of the dataset, which DBSCAN appropriately excludes from clusters. While this can reflect meaningful patterns, such as outliers or transitional areas between clusters, it may also suggest that some relevant data points are being excluded as in our case of attempting to cluster bike routes. We also notice that the clusters uneven in size, with one containing all but three of the data points. This imbalance often occurs with DBSCAN, as the algorithm naturally groups points into clusters based on density rather than trying to create clusters of equal size. Overall, the clusters aren’t very informative, highlighting the challenges of interpreting imbalanced clusters and noise in the context of the dataset.</p>
+<div id="cell-24" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit dbscan with optimal params and add column to df</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>dbscan <span class="op">=</span> DBSCAN(eps<span class="op">=</span>best_eps, min_samples<span class="op">=</span>best_min_sample)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'dbscan_cluster'</span>] <span class="op">=</span> dbscan.fit_predict(scaled_df)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the clusters</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(tsne_result[:, <span class="dv">0</span>], tsne_result[:, <span class="dv">1</span>], c<span class="op">=</span>df[<span class="st">'dbscan_cluster'</span>], label<span class="op">=</span>df[<span class="st">'dbscan_cluster'</span>])</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'t-SNE Clusters with DBSCAN'</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'t-SNE Dimension 1'</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'t-SNE Dimension 2'</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hierarchical-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-clustering">Hierarchical Clustering</h3>
+<p>Hierarchical clustering builds a tree-like structure to represent the relationships between data points. It comes in two forms: agglomerative (bottom-up) and divisive (top-down). Agglomerative clustering, the more common approach, starts with each data point as its own cluster and merges the closest clusters iteratively until a single cluster is formed. This is the approach we will use in our analysis.</p>
+<p>There are several important hyper-parameters with agglomerative clustering, such as, choice of linkage criteria, choice of distance metric, and number of clusters. However, in our analysis we will just focus on <code>n_clusters</code> as the other two are more complex and reach beyond the scope of our analysis. Hierarchical clustering is effective for small to medium-sized datasets where relationships between points are more intuitive. However, it can be computationally expensive for large datasets and may suffer from sensitivity to noise and outliers.</p>
+<p>This code below is designed to evaluate the performance of the Agglomerative Clustering algorithm across a range of potential cluster counts using the Silhouette Score. The goal is to identify the optimal number of clusters by analyzing how well-separated the clusters are in terms of their cohesion (internal) and separation (external). We iterate over a range of clusters, knowing we need at least 2 and picking a value lower than our total observations. For each number of clusters, we create an instance of the <code>AgglomerativeClustering</code> model with the current number of clusters, fit the model to the scaled dataset, and calculate the silhouette score. Then plot these scores against the number of clusters. We see a stark drop after 2 clusters and then a slow build to a local maximum at 17. While 2 clusters produces a better result, the behavior around the point is less predictable.</p>
+<div id="cell-26" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize to hold info</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>n_vals  <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">30</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>sil_scores <span class="op">=</span> []</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through n values, need at least 2 clusters for silhouette</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> n_vals:</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit the model to our data using current n</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    cluster_model <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span>n).fit(scaled_df)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get score and add to list</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> silhouette_score(scaled_df, cluster_model.labels_)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    sil_scores.append(score)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the scores against clusts</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>plt.plot(n_vals, sil_scores, <span class="st">'-o'</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Optimal clusters using Silhouete Score"</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Silhouette Score"</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Num Clusters"</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As explained above, the behavior near 2 clusters is less predictable, so here we apply the clustering using the other maximum of 17 clusters. Similar as what was done with K-Means and DBSCAN, we plot the data in the 2D t-SNE space color based on the predicted cluster assignments.</p>
+<p>The clusters appear reasonably well-separated, with distinct groups of points that reflect the underlying structure of the data. This suggests that Agglomerative Clustering has identified meaningful patterns or groupings within the dataset. However, the presence of a relatively large number of clusters, could indicate that the clustering algorithm has over-partitioned the data. The high number of clusters could also be indicative of the algorithm’s sensitivity to the distance metric and the scale of the data. As seen in the second plot, where we try 2 clusters, the outcome is even less informative.</p>
+<div id="cell-28" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fit model using 2 clusters</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>agg_cluster <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">17</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># add predictions back to df</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'agg_cluster'</span>] <span class="op">=</span> agg_cluster.fit_predict(scaled_df)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot points colored on agglomerative cluster</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(tsne_result[:, <span class="dv">0</span>], tsne_result[:, <span class="dv">1</span>], c<span class="op">=</span>df[<span class="st">'agg_cluster'</span>])</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'t-SNE Clusters with Hierarchical Clustering'</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'t-SNE Dimension 1'</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'t-SNE Dimension 2'</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># plot again using only 2 clusters</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>cluster2 <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">2</span>).fit_predict(scaled_df)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>plt.scatter(tsne_result[:, <span class="dv">0</span>], tsne_result[:, <span class="dv">1</span>], c<span class="op">=</span>cluster2)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'t-SNE Clusters with Hierarchical Clustering'</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'t-SNE Dimension 1'</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'t-SNE Dimension 2'</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-14-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p>In this analysis, three clustering algorithms—K-Means, DBSCAN, and Agglomerative Clustering—were applied to the dataset of bike routes in Washington, DC, with the goal of identifying natural groupings of the routes based on their features, such as distance, ratings, descriptions, and sentiment</p>
+<p>K-Means clustering provided a reasonable grouping of bike routes into 10 clusters, as determined by evaluating different cluster counts and selecting the optimal number based on silhouette scores. The resulting clusters appeared somewhat balanced in terms of size, though there were a few smaller clusters containing fewer routes. The clusters formed by K-Means generally aligned with routes that shared common features, such as similar distances or ratings.</p>
+<p>DBSCAN was effective at identifying clusters of varying shapes and sizes. The algorithm’s ability to classify some data points as noise (assigned the label -1) highlighted routes that did not fit well into any of the primary clusters. While DBSCAN’s ability to identify noise is beneficial for excluding irrelevant data, it resulted in an uneven distribution of clusters. Many of the clusters formed were relatively small, and several routes were classified as noise. This imbalance points to the algorithm’s sensitivity to the density of points, and it suggests that DBSCAN may be more suited for datasets that aren’t as empty in the vector space as ours.</p>
+<p>Agglomerative Clustering with 17 clusters produced the most granular results, splitting the bike routes into small and imbalanced clusters. This high number of clusters indicated that the algorithm over-partitioned the data, potentially identifying small, subtle groupings that might not have significant practical meaning. The large number of clusters posed a challenge for interpreting the results, as the small clusters could represent noise or slight variations in the routes, which may not be as valuable for decision-making.</p>
+</section>
+</section>
+<section id="conclusions" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions">Conclusions</h2>
+<p>From a practical perspective, K-Means is the most useful clustering technique for categorizing bike routes in a way that helps urban planners or biking enthusiasts make decisions about route accessibility, popularity, and preferences. Understanding how routes cluster based on distance, rating, or sentiment could inform route improvements or the development of new bike paths. DBSCAN’s identification of noise could also help filter out anomalous routes that might require further investigation, while Agglomerative Clustering’s fine-grained results could be useful for very specific analyses, though it may be best suited for exploratory rather than practical purposes. Overall, these clustering techniques provide valuable tools for gaining insights into the bike route data, with K-Means emerging as the most actionable method for most real-world applications.</p>
 
 
 
