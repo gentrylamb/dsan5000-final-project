@@ -2,8 +2,6 @@
 title: "LLM usage log"
 ---
 
-This page can serve as a "catch-all" for LLM use cases that don’t involve content creation, such as reformatting your own ideas, commenting code that you wrote, or proofreading text, PDF summarization.
-
 LLM tools were used in the following way for the tasks below
 
 ## Brainstorming
@@ -14,6 +12,7 @@ LLM tools were used in the following way for the tasks below
 
 * Proofreading and improving grammar in the literature reviews. [@gpt4o_grammar]
 * Improved content we wrote to improve overall flow and idea expression. [@gpt4o_improve]
+* Used to help summarize code in prose, specifically to make explanations non-techy  [@gpt4o_prose_explain]
 
 ## Code: 
 

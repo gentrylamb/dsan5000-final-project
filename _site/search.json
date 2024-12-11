@@ -4,21 +4,14 @@
     "href": "technical-details/progress-log.html",
     "title": "Progress log",
     "section": "",
-    "text": "Use this page to track your progress and keep a log of your contributions to the project, please update this each time you work on your project, it is generally a good habit to adopt.\nIf you are working as a team, at the end, you can duplicate the project and add it to your individual portfolio websites. If you do, you MUST retain attribution to your teammates. Removing attribution would constitute plagiarism."
-  },
-  {
-    "objectID": "technical-details/progress-log.html#to-do",
-    "href": "technical-details/progress-log.html#to-do",
-    "title": "Progress log",
-    "section": "To-do",
-    "text": "To-do\n\nExplore possible topics by brainstorming with GPT\nwrite a technical methods sections for K-means\nwrite a technical methods sections for PCA\n\n… etc"
+    "text": "Track progress and keep a log of member contributions to the project"
   },
   {
     "objectID": "technical-details/progress-log.html#member-1",
     "href": "technical-details/progress-log.html#member-1",
     "title": "Progress log",
     "section": "Member-1:",
-    "text": "Member-1:\nGentry Lamb\nWeekly project contribution log:\n11-21-2024\n\nCoordinate with team member to set up first project meeting\n\n11-25-2024\n\nBegin working on data collection and researching use of Selenium\n\n12-01-2024\n\nWrite data collection code\n\n12-06-2024\n\nWrite literature review and put together the landing page\n\n12-07-2024\n\nUpdate data collection code to include distances\nWrite data cleaning code\nStart writing EDA code\n\n12-08-2024\n\nComplete writing EDA code and start on Unsupervised Learning Code\n\n12-09-2024\n\nComplete writing Unsupervised Learning Code and start on write-up\n\n12-10-2024\n\nComplete write-up for Unsupervised Learning\nRestructure/Format all technical details page\nComplete all code and write-ups, begin working on non-technical report\n\n12-11-2024"
+    "text": "Member-1:\nGentry Lamb\nWeekly project contribution log:\n11-21-2024\n\nCoordinate with team member to set up first project meeting\n\n11-25-2024\n\nBegin working on data collection and researching use of Selenium\n\n12-01-2024\n\nWrite data collection code\n\n12-06-2024\n\nWrite literature review and put together the landing page\n\n12-07-2024\n\nUpdate data collection code to include distances\nWrite data cleaning code\nStart writing EDA code\n\n12-08-2024\n\nComplete writing EDA code and start on Unsupervised Learning Code\n\n12-09-2024\n\nComplete writing Unsupervised Learning Code and start on write-up\n\n12-10-2024\n\nComplete write-up for Unsupervised Learning\nRestructure/Format all technical details page\nComplete all code and write-ups, begin working on non-technical report\n\n12-11-2024\n\nWrite methodology, societal implications, and call to action portions of the Final report"
   },
   {
     "objectID": "technical-details/progress-log.html#member-2",
@@ -634,7 +627,7 @@
     "href": "technical-details/llm-usage-log.html",
     "title": "LLM usage log",
     "section": "",
-    "text": "This page can serve as a “catch-all” for LLM use cases that don’t involve content creation, such as reformatting your own ideas, commenting code that you wrote, or proofreading text, PDF summarization.\nLLM tools were used in the following way for the tasks below"
+    "text": "LLM tools were used in the following way for the tasks below"
   },
   {
     "objectID": "technical-details/llm-usage-log.html#brainstorming",
@@ -648,13 +641,13 @@
     "href": "technical-details/llm-usage-log.html#writing",
     "title": "LLM usage log",
     "section": "Writing:",
-    "text": "Writing:\n\nProofreading and improving grammar in the literature reviews.2\nImproved content we wrote to improve overall flow and idea expression.3"
+    "text": "Writing:\n\nProofreading and improving grammar in the literature reviews.2\nImproved content we wrote to improve overall flow and idea expression.3\nUsed to help summarize code in prose, specifically to make explanations non-techy4"
   },
   {
     "objectID": "technical-details/llm-usage-log.html#code",
     "href": "technical-details/llm-usage-log.html#code",
     "title": "LLM usage log",
     "section": "Code:",
-    "text": "Code:\n\nUsed ChatGPT to help with error that was faced when accessing the ChromeDriver for Selenium. It suggested that we add the 4 lines of code adjusting chrome options.4"
+    "text": "Code:\n\nUsed ChatGPT to help with error that was faced when accessing the ChromeDriver for Selenium. It suggested that we add the 4 lines of code adjusting chrome options.5"
   }
 ]
