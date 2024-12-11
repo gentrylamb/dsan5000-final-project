@@ -9,6 +9,7 @@ During the data cleaning process, several technical challenges were encountered.
 The data cleaning process has provided a strong foundation for the analytical components of this project. Key technical accomplishments include the successful extraction, transformation, and storing of the data. The next step for us is to clean the data and add relevant features as needed for analysis down the road. 
 
 Future work will focus on:
+
 - **Expanding the Dataset:** Incorporating additional data sources to improve trail coverage and diversity.
 - **Feature Engineering:** Developing more advanced features, such as weather conditions, trail popularity, or proximity to public transit, to enhance model performance.
 - **User Feedback Integration:** Leveraging feedback from local riders to validate and refine trail ratings and recommendations.

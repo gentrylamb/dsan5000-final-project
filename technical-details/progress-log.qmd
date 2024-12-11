@@ -50,7 +50,22 @@ If you are working as a team, at the end, you can duplicate the project and add 
 
 **12-08-2024**
 
-* [x] Complete writing EDA code
+* [x] Complete writing EDA code and start on Unsupervised Learning Code
+
+
+**12-09-2024**
+
+* [x] Complete writing Unsupervised Learning Code and start on write-up
+
+
+**12-10-2024**
+
+* [x] Complete write-up for Unsupervised Learning
+* [x] Restructure/Format all technical details page
+* [x] Complete all code and write-ups, begin working on non-technical report
+
+
+**12-11-2024**
 
 
 

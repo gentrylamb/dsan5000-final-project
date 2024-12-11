@@ -130,10 +130,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../instructions/overview.html"> 
-<span class="menu-text">Instructions</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../report/report.html"> 
 <span class="menu-text">Report</span></a>
   </li>  
@@ -188,7 +184,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#introduction-and-motivation" id="toc-introduction-and-motivation" class="nav-link active" data-scroll-target="#introduction-and-motivation">Introduction and Motivation</a></li>
+  <li><a href="#overview-of-methodolody" id="toc-overview-of-methodolody" class="nav-link" data-scroll-target="#overview-of-methodolody">Overview Of Methodolody</a>
+  <ul class="collapse">
   <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis">Univariate Analysis</a>
   <ul class="collapse">
   <li><a href="#numerical-variables" id="toc-numerical-variables" class="nav-link" data-scroll-target="#numerical-variables">Numerical Variables</a></li>
@@ -210,6 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">Key Insights</a></li>
   <li><a href="#conclusion-and-next-steps" id="toc-conclusion-and-next-steps" class="nav-link" data-scroll-target="#conclusion-and-next-steps">Conclusion and Next Steps</a></li>
+  </ul></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   </ul>
 </nav>
@@ -236,26 +235,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<section id="introduction-and-motivation" class="level1">
+<h1>Introduction and Motivation</h1>
 <p>With our processed data, we created numerous visualizations to uncover the underlying patterns in the bike trail dataset. Most of the analyses focused on univariate relationships, though we also explored some bivariate relationships, particularly between trail ratings. Additionally, we examined the potential for clustering by comparing mileage with sentiment, using the trail’s scenery score as a color-coded feature.</p>
 </section>
+<section id="overview-of-methodolody" class="level1">
+<h1>Overview Of Methodolody</h1>
 <section id="univariate-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="univariate-analysis">Univariate Analysis</h2>
 <section id="numerical-variables" class="level3">
 <h3 class="anchored" data-anchor-id="numerical-variables">Numerical Variables</h3>
-<p>We analyzed the distributions of numerical variables, particularly <strong>mileage</strong> and <strong>sentiment</strong>: - <strong>Mileage</strong>: A discrete variable, categorized into bins for easier analysis. The distribution shows that most trails fall within the 10-120 mile range, with a slight right skew indicating a few longer trails (up to 175 miles). - <strong>Sentiment</strong>: A continuous variable analyzed using Kernel Density Estimation. The distribution reveals that most sentiments are positive, concentrated within the 0-0.8 range. The bimodal nature of the distribution indicates peaks around 0 and 0.6.</p>
+<p>We analyzed the distributions of numerical variables, particularly <strong>mileage</strong> and <strong>sentiment</strong>:</p>
+<ul>
+<li><strong>Mileage</strong>: A discrete variable, categorized into bins for easier analysis. The distribution shows that most trails fall within the 10-120 mile range, with a slight right skew indicating a few longer trails (up to 175 miles).</li>
+<li><strong>Sentiment</strong>: A continuous variable analyzed using Kernel Density Estimation. The distribution reveals that most sentiments are positive, concentrated within the 0-0.8 range. The bimodal nature of the distribution indicates peaks around 0 and 0.6.</li>
+</ul>
 </section>
 <section id="categorical-variables" class="level3">
 <h3 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h3>
-<p>Bar charts helped us visualize the distributions of trail ratings—<strong>terrain</strong>, <strong>traffic</strong>, and <strong>scenery</strong>: - <strong>Terrain</strong>: The only rating using the full range (1-5). Most trails are rated 3, with fewer trails rated 4 or 5. - <strong>Traffic</strong>: Ranges from 1-4, with most trails rated 2 or 3. - <strong>Scenery</strong>: Restricted to scores of 1-3, with the majority of trails rated 1 or 2.</p>
+<p>Bar charts helped us visualize the distributions of trail ratings—<strong>terrain</strong>, <strong>traffic</strong>, and <strong>scenery</strong>:</p>
+<ul>
+<li><strong>Terrain</strong>: The only rating using the full range (1-5). Most trails are rated 3, with fewer trails rated 4 or 5.</li>
+<li><strong>Traffic</strong>: Ranges from 1-4, with most trails rated 2 or 3.</li>
+<li><strong>Scenery</strong>: Restricted to scores of 1-3, with the majority of trails rated 1 or 2.</li>
+</ul>
 </section>
 </section>
 <section id="bivariate-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="bivariate-analysis">Bivariate Analysis</h2>
 <section id="heatmaps" class="level3">
 <h3 class="anchored" data-anchor-id="heatmaps">Heatmaps</h3>
-<p>We explored relationships between trail ratings using heatmaps: - <strong>Terrain vs.&nbsp;Scenery</strong>: The combination of terrain (3) and scenery (1) is the most frequent. - <strong>Terrain vs.&nbsp;Traffic</strong>: The most common combination is when both ratings are 3. - <strong>Traffic vs.&nbsp;Scenery</strong>: Most common combinations are scenery (1) and traffic (2) as well as scenery (2) and traffic (3).</p>
+<p>We explored relationships between trail ratings using heatmaps:</p>
+<ul>
+<li><strong>Terrain vs.&nbsp;Scenery</strong>: The combination of terrain (3) and scenery (1) is the most frequent.</li>
+<li><strong>Terrain vs.&nbsp;Traffic</strong>: The most common combination is when both ratings are 3.</li>
+<li><strong>Traffic vs.&nbsp;Scenery</strong>: Most common combinations are scenery (1) and traffic (2) as well as scenery (2) and traffic (3).</li>
+</ul>
 </section>
 <section id="correlation-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="correlation-analysis">Correlation Analysis</h3>
@@ -264,33 +279,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="multivariate-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="multivariate-analysis">Multivariate Analysis</h2>
-<p>To identify potential clusters, we visualized <strong>distance</strong> vs.&nbsp;<strong>sentiment</strong>, color-coded by the <strong>scenery score</strong> and annotated with the <strong>loop</strong> variable (loop vs.&nbsp;non-loop trails). The scatter plot revealed: - No clear clusters based on distance and sentiment. - Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.</p>
+<p>To identify potential clusters, we visualized <strong>distance</strong> vs.&nbsp;<strong>sentiment</strong>, color-coded by the <strong>scenery score</strong> and annotated with the <strong>loop</strong> variable (loop vs.&nbsp;non-loop trails). The scatter plot revealed:</p>
+<ul>
+<li>No clear clusters based on distance and sentiment.</li>
+<li>Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.</li>
+</ul>
 </section>
 <section id="statistical-tests" class="level2">
 <h2 class="anchored" data-anchor-id="statistical-tests">Statistical Tests</h2>
 <p>We conducted a series of statistical tests to analyze the relationships between numerical, binary, and categorical features in our dataset. Below, we outline the methodology and results for each type of test:</p>
 <section id="kolmogorov-smirnov-test" class="level3">
 <h3 class="anchored" data-anchor-id="kolmogorov-smirnov-test">Kolmogorov-Smirnov Test</h3>
-<p>To assess the normality of the numerical variables (<code>mileage</code> and <code>sentiment</code>), we used the Kolmogorov-Smirnov test. The results indicated that both variables appear to be normally distributed: - <strong>Sentiment</strong>: p-value ≈ 0.198 - <strong>Mileage</strong>: p-value ≈ 0.091</p>
+<p>To assess the normality of the numerical variables (<code>mileage</code> and <code>sentiment</code>), we used the Kolmogorov-Smirnov test. The results indicated that both variables appear to be normally distributed:</p>
+<ul>
+<li><strong>Sentiment</strong>: p-value ≈ 0.198</li>
+<li><strong>Mileage</strong>: p-value ≈ 0.091</li>
+</ul>
 <p>Since the p-values are greater than 0.05, we fail to reject the null hypothesis, concluding that both variables are likely normally distributed.</p>
-<hr>
 </section>
 <section id="t-tests-continuous-vs.-binary-variables" class="level3">
 <h3 class="anchored" data-anchor-id="t-tests-continuous-vs.-binary-variables">t-Tests (Continuous vs.&nbsp;Binary Variables)</h3>
-<p>We performed t-tests to compare the means of numerical variables (<code>sentiment</code> and <code>mileage</code>) across each binary variable in the dataset. For every combination: - The p-values were greater than 0.05. - This indicates that we fail to reject the null hypothesis, suggesting no significant differences in means between the numerical variables from the lens of the the binary features.</p>
-<hr>
+<p>We performed t-tests to compare the means of numerical variables (<code>sentiment</code> and <code>mileage</code>) across each binary variable in the dataset. For every combination:</p>
+<ul>
+<li>The p-values were greater than 0.05.</li>
+<li>This indicates that we fail to reject the null hypothesis, suggesting no significant differences in means between the numerical variables from the lens of the the binary features.</li>
+</ul>
 </section>
 <section id="chi-squared-tests-categorical-features" class="level3">
 <h3 class="anchored" data-anchor-id="chi-squared-tests-categorical-features">Chi-Squared Tests (Categorical Features)</h3>
-<p>We used chi-squared tests to examine the independence between all pairs of categorical variables (<code>traffic</code>, <code>terrain</code>, <code>scenery</code>, <code>state1</code>, and <code>state2</code>). The results revealed statistically significant associations for the following pairs: - <strong>Traffic vs.&nbsp;Terrain</strong>: p-value ≈ 0.039 - <strong>Terrain vs.&nbsp;State1</strong>: p-value ≈ 0.033 - <strong>State1 vs.&nbsp;State2</strong>: p-value ≈ 5.61e-11</p>
+<p>We used chi-squared tests to examine the independence between all pairs of categorical variables (<code>traffic</code>, <code>terrain</code>, <code>scenery</code>, <code>state1</code>, and <code>state2</code>). The results revealed statistically significant associations for the following pairs:</p>
+<ul>
+<li><strong>Traffic vs.&nbsp;Terrain</strong>: p-value ≈ 0.039</li>
+<li><strong>Terrain vs.&nbsp;State1</strong>: p-value ≈ 0.033</li>
+<li><strong>State1 vs.&nbsp;State2</strong>: p-value ≈ 5.61e-11</li>
+</ul>
 <p>For these pairs, we reject the null hypothesis at a significance level of 0.05, concluding that these categorical variables are not independent. All other pairs yielded p-values greater than 0.05, indicating no evidence of dependence.</p>
-<hr>
 </section>
 <section id="anova-tests-continuous-vs.-categorical-variables" class="level3">
 <h3 class="anchored" data-anchor-id="anova-tests-continuous-vs.-categorical-variables">ANOVA Tests (Continuous vs.&nbsp;Categorical Variables)</h3>
-<p>We conducted ANOVA tests to compare the means of continuous variables (<code>sentiment</code> and <code>mileage</code>) across the levels of categorical variables. Notable results include: - <strong>Sentiment across Terrain Levels</strong>: p-value ≈ 0.028 - This suggests a significant difference in sentiment means across terrain categories, leading us to reject the null hypothesis. - <strong>Sentiment across Traffic Levels</strong>: p-value ≈ 0.059 - Although this result is close, it does not meet the 0.05 significance threshold.</p>
+<p>We conducted ANOVA tests to compare the means of continuous variables (<code>sentiment</code> and <code>mileage</code>) across the levels of categorical variables. Notable results include:</p>
+<ul>
+<li><strong>Sentiment across Terrain Levels</strong>: p-value ≈ 0.028
+<ul>
+<li>This suggests a significant difference in sentiment means across terrain categories, leading us to reject the null hypothesis.</li>
+</ul></li>
+<li><strong>Sentiment across Traffic Levels</strong>: p-value ≈ 0.059
+<ul>
+<li>Although this result is close, it does not meet the 0.05 significance threshold.</li>
+</ul></li>
+</ul>
 <p>For all other tests, the p-values were greater than 0.05, indicating no significant differences in means across the levels of the binary or categorical variables.</p>
-<hr>
 </section>
 <section id="statistical-summary" class="level3">
 <h3 class="anchored" data-anchor-id="statistical-summary">Statistical Summary</h3>
@@ -315,12 +353,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="conclusion-and-next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion-and-next-steps">Conclusion and Next Steps</h2>
-<p>The EDA revealed limited patterns for effectively grouping trails. While the correlation matrix and scatter plots showed minimal relationships, the insights into distributions and rating combinations inform our understanding of the data. These findings will guide the next steps: - <strong>Modeling</strong>: Explore whether machine learning can identify subtle patterns. - <strong>Feature Engineering</strong>: Consider different variable relationships or transformations to improve clustering potential.</p>
+<p>The EDA revealed limited patterns for effectively grouping trails. While the correlation matrix and scatter plots showed minimal relationships, the insights into distributions and rating combinations inform our understanding of the data. These findings will guide the next steps:</p>
+<ul>
+<li><strong>Modeling</strong>: Explore whether machine learning can identify subtle patterns.</li>
+<li><strong>Feature Engineering</strong>: Consider different variable relationships or transformations to improve clustering potential.</li>
+</ul>
 <p>All visualizations, including heatmaps, bar charts, and scatter plots, as well as statistical testing outputs, can be found in the <strong>Code</strong> section below.</p>
+</section>
 </section>
 <section id="code" class="level1">
 <h1>Code</h1>
-<div id="cell-3" class="cell" data-execution_count="72">
+<p>The first step is just to load in the pacakges we want to use as well as the now cleaned CSV file created in the previous step.</p>
+<div id="cell-3" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------ IMPORTS ------------------------------------ #</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -332,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../../data/processed-data/dc_bike_routes.csv'</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="72">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
@@ -454,7 +498,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="38">
+<p>Here we provide descriptive statistics of the numeric variables in the data set. Then the distributions of each of these variables is plotted.</p>
+<div id="cell-5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ouput summary stats for numerical variables</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'distance_mi'</span>, <span class="st">'sentiment'</span>]].describe())</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -496,7 +541,8 @@ max     184.000000   0.911500</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="39">
+<p>This code analyzes the categorical and binary variables in the dataset by summarizing their distributions and visualizing their occurrences. It first counts and displays the frequency of each category for ranking variables, providing insight into the most common and rare trail characteristics. Similarly, it counts the occurrences of binary variables so we better understand the prevalence of these trail features. Finally, the count plots visualize the distributions of the ranking variables, offering a clear graphical representation of the frequency of each ranking level.</p>
+<div id="cell-7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count occurrences of each category for ranking variables</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>rank_counts <span class="op">=</span> df[[<span class="st">'terrain'</span>, <span class="st">'traffic'</span>, <span class="st">'scenery'</span>]].<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.value_counts())</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rank_counts)</span>
@@ -542,7 +588,8 @@ max     184.000000   0.911500</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="40">
+<p>In this multivariate analysis, a correlation matrix is output to better understand the effects variables have on one another. Further, cross tabulations are calculated for each interaction of the ranking variables and output using heatmaps. This also aides in understanding how these important variables interact with one anther.</p>
+<div id="cell-9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate correlation matrix</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'distance_mi'</span>, <span class="st">'sentiment'</span>, <span class="st">'terrain'</span>, <span class="st">'traffic'</span>, <span class="st">'scenery'</span>]].corr())</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -577,7 +624,8 @@ scenery        -0.214241   0.055650 -0.113830  0.307563  1.000000</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="41">
+<p>This simple portion just plots the data with distance against sentiment to see if having a higher sentiment might mean a shorter distance. The points are also colored and styled on different categorical variables to understand any other underlying interactions. We notice that loops tend to have higher sentiments and are shorter in distance on average.</p>
+<div id="cell-11" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize distance against sentiment to see if longer trails correlate with higher sentiment</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># color points based on scenery score and style them based on if ther are a loop</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">'distance_mi'</span>, y<span class="op">=</span><span class="st">'sentiment'</span>, hue<span class="op">=</span><span class="st">'scenery'</span>, style<span class="op">=</span><span class="st">'loop'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
@@ -593,7 +641,8 @@ scenery        -0.214241   0.055650 -0.113830  0.307563  1.000000</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell">
+<p>Below, we break the variables into their respective groups of continuous, categorical, and binary. Then, we assess the continuous variables to see if they are normally distributed, a necessary assumption for further analysis. The Kolmogorov–Smirnov test is used to test if they came from their expected normal distribution given those parameters. We conclude that both <code>sentiment</code> and <code>distance_mi</code> are normally distributed.</p>
+<div id="cell-13" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Break columns into respective groups, continuous, categorical, binary</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cont_vars <span class="op">=</span> [<span class="st">'sentiment'</span>, <span class="st">'distance_mi'</span>] <span class="co">#, 'distance_norm']</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>cat_vars <span class="op">=</span> [<span class="st">'traffic'</span>, <span class="st">'scenery'</span>, <span class="st">'terrain'</span>, <span class="st">'state1'</span>, <span class="st">'state2'</span>]</span>
@@ -613,7 +662,8 @@ scenery        -0.214241   0.055650 -0.113830  0.307563  1.000000</code></pre>
 distance_mi appears to be normally distributed (p-value=0.09142254585650134).</code></pre>
 </div>
 </div>
-<div id="cell-9" class="cell">
+<p>This code performs T-tests to compare the means of continuous variables against binary variables in the dataset. For each continuous variable, it iterates through all binary variables and divides the data into two groups based on whether the binary variable is 0 or 1. A T-test is then conducted to determine whether there is a statistically significant difference in the means of the continuous variable between the two groups. The results, including T-statistics and p-values, are compiled into a DataFrame and printed for each continuous variable. This approach provides valuable insights into potential relationships between continuous features and binary attributes, helping identify meaningful differences in trail characteristics.</p>
+<div id="cell-15" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical testing</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># T-test</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -659,7 +709,8 @@ Means Across Distance_mi
 </code></pre>
 </div>
 </div>
-<div id="cell-10" class="cell">
+<p>The next portion of code evaluates the relationship between pairs of categorical variables using the Chi-Squared test. It first generates all possible, non-repeated pairs of categorical variables using combinations. For each pair, it constructs a contingency table that shows the frequency of occurrences for each combination of the pair’s categories. A Chi-square test is then conducted on the contingency table to assess whether the variables are statistically independent. The test statistics and p-values are collected and organized into a DataFrame for easy interpretation.</p>
+<div id="cell-17" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chi-square</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># use combinations to find all non repeated pars of categorical variables</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>pairs <span class="op">=</span> <span class="bu">list</span>(combinations(cat_vars, <span class="dv">2</span>))</span>
@@ -680,7 +731,7 @@ Means Across Distance_mi
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into orderly data frame for output</span></span>
 <span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.DataFrame({<span class="st">'pair'</span>:pairs, <span class="st">'Chi2 Stat'</span>: chi2s, <span class="st">'p-values'</span>:pvals}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                 pair     T-stat      p-values
+<pre><code>                 pair  Chi2 Stat      p-values
 0  (traffic, scenery)   7.569852  2.713401e-01
 1  (traffic, terrain)  21.859405  3.912610e-02
 2   (traffic, state1)   5.661211  7.732882e-01
@@ -693,7 +744,8 @@ Means Across Distance_mi
 9    (state1, state2)  67.104056  5.612906e-11</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell">
+<p>Finally, we use one way ANOVA tests to compare the means of continuous variables across the different categories of the categorical variables. After dividing the data into separate categories based on the current variable being assessed, an ANOVA test is performed to determine if there are significant differences in the means of the continuous variable for the different categories. The results, including the F-statistic and p-values, are collected and organized into a DataFrame for easy interpretation. This analysis helps identify whether the continuous variables differ significantly across various categories, providing insights into how different attributes of bike trails might affect riders’ experiences.</p>
+<div id="cell-19" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate over the continuous variables</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> var1 <span class="kw">in</span> cont_vars:</span>

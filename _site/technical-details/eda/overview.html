@@ -93,10 +93,6 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../instructions/overview.html"> 
-<span class="menu-text">Instructions</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../report/report.html"> 
 <span class="menu-text">Report</span></a>
   </li>  
@@ -151,7 +147,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#introduction-and-motivation" id="toc-introduction-and-motivation" class="nav-link active" data-scroll-target="#introduction-and-motivation">Introduction and Motivation</a></li>
+  <li><a href="#overview-of-methodolody" id="toc-overview-of-methodolody" class="nav-link" data-scroll-target="#overview-of-methodolody">Overview Of Methodolody</a>
+  <ul class="collapse">
   <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis">Univariate Analysis</a>
   <ul class="collapse">
   <li><a href="#numerical-variables" id="toc-numerical-variables" class="nav-link" data-scroll-target="#numerical-variables">Numerical Variables</a></li>
@@ -173,6 +171,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">Key Insights</a></li>
   <li><a href="#conclusion-and-next-steps" id="toc-conclusion-and-next-steps" class="nav-link" data-scroll-target="#conclusion-and-next-steps">Conclusion and Next Steps</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -182,26 +181,42 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<section id="introduction-and-motivation" class="level1">
+<h1>Introduction and Motivation</h1>
 <p>With our processed data, we created numerous visualizations to uncover the underlying patterns in the bike trail dataset. Most of the analyses focused on univariate relationships, though we also explored some bivariate relationships, particularly between trail ratings. Additionally, we examined the potential for clustering by comparing mileage with sentiment, using the trail’s scenery score as a color-coded feature.</p>
 </section>
+<section id="overview-of-methodolody" class="level1">
+<h1>Overview Of Methodolody</h1>
 <section id="univariate-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="univariate-analysis">Univariate Analysis</h2>
 <section id="numerical-variables" class="level3">
 <h3 class="anchored" data-anchor-id="numerical-variables">Numerical Variables</h3>
-<p>We analyzed the distributions of numerical variables, particularly <strong>mileage</strong> and <strong>sentiment</strong>: - <strong>Mileage</strong>: A discrete variable, categorized into bins for easier analysis. The distribution shows that most trails fall within the 10-120 mile range, with a slight right skew indicating a few longer trails (up to 175 miles). - <strong>Sentiment</strong>: A continuous variable analyzed using Kernel Density Estimation. The distribution reveals that most sentiments are positive, concentrated within the 0-0.8 range. The bimodal nature of the distribution indicates peaks around 0 and 0.6.</p>
+<p>We analyzed the distributions of numerical variables, particularly <strong>mileage</strong> and <strong>sentiment</strong>:</p>
+<ul>
+<li><strong>Mileage</strong>: A discrete variable, categorized into bins for easier analysis. The distribution shows that most trails fall within the 10-120 mile range, with a slight right skew indicating a few longer trails (up to 175 miles).</li>
+<li><strong>Sentiment</strong>: A continuous variable analyzed using Kernel Density Estimation. The distribution reveals that most sentiments are positive, concentrated within the 0-0.8 range. The bimodal nature of the distribution indicates peaks around 0 and 0.6.</li>
+</ul>
 </section>
 <section id="categorical-variables" class="level3">
 <h3 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h3>
-<p>Bar charts helped us visualize the distributions of trail ratings—<strong>terrain</strong>, <strong>traffic</strong>, and <strong>scenery</strong>: - <strong>Terrain</strong>: The only rating using the full range (1-5). Most trails are rated 3, with fewer trails rated 4 or 5. - <strong>Traffic</strong>: Ranges from 1-4, with most trails rated 2 or 3. - <strong>Scenery</strong>: Restricted to scores of 1-3, with the majority of trails rated 1 or 2.</p>
+<p>Bar charts helped us visualize the distributions of trail ratings—<strong>terrain</strong>, <strong>traffic</strong>, and <strong>scenery</strong>:</p>
+<ul>
+<li><strong>Terrain</strong>: The only rating using the full range (1-5). Most trails are rated 3, with fewer trails rated 4 or 5.</li>
+<li><strong>Traffic</strong>: Ranges from 1-4, with most trails rated 2 or 3.</li>
+<li><strong>Scenery</strong>: Restricted to scores of 1-3, with the majority of trails rated 1 or 2.</li>
+</ul>
 </section>
 </section>
 <section id="bivariate-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="bivariate-analysis">Bivariate Analysis</h2>
 <section id="heatmaps" class="level3">
 <h3 class="anchored" data-anchor-id="heatmaps">Heatmaps</h3>
-<p>We explored relationships between trail ratings using heatmaps: - <strong>Terrain vs.&nbsp;Scenery</strong>: The combination of terrain (3) and scenery (1) is the most frequent. - <strong>Terrain vs.&nbsp;Traffic</strong>: The most common combination is when both ratings are 3. - <strong>Traffic vs.&nbsp;Scenery</strong>: Most common combinations are scenery (1) and traffic (2) as well as scenery (2) and traffic (3).</p>
+<p>We explored relationships between trail ratings using heatmaps:</p>
+<ul>
+<li><strong>Terrain vs.&nbsp;Scenery</strong>: The combination of terrain (3) and scenery (1) is the most frequent.</li>
+<li><strong>Terrain vs.&nbsp;Traffic</strong>: The most common combination is when both ratings are 3.</li>
+<li><strong>Traffic vs.&nbsp;Scenery</strong>: Most common combinations are scenery (1) and traffic (2) as well as scenery (2) and traffic (3).</li>
+</ul>
 </section>
 <section id="correlation-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="correlation-analysis">Correlation Analysis</h3>
@@ -210,33 +225,56 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="multivariate-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="multivariate-analysis">Multivariate Analysis</h2>
-<p>To identify potential clusters, we visualized <strong>distance</strong> vs.&nbsp;<strong>sentiment</strong>, color-coded by the <strong>scenery score</strong> and annotated with the <strong>loop</strong> variable (loop vs.&nbsp;non-loop trails). The scatter plot revealed: - No clear clusters based on distance and sentiment. - Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.</p>
+<p>To identify potential clusters, we visualized <strong>distance</strong> vs.&nbsp;<strong>sentiment</strong>, color-coded by the <strong>scenery score</strong> and annotated with the <strong>loop</strong> variable (loop vs.&nbsp;non-loop trails). The scatter plot revealed:</p>
+<ul>
+<li>No clear clusters based on distance and sentiment.</li>
+<li>Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.</li>
+</ul>
 </section>
 <section id="statistical-tests" class="level2">
 <h2 class="anchored" data-anchor-id="statistical-tests">Statistical Tests</h2>
 <p>We conducted a series of statistical tests to analyze the relationships between numerical, binary, and categorical features in our dataset. Below, we outline the methodology and results for each type of test:</p>
 <section id="kolmogorov-smirnov-test" class="level3">
 <h3 class="anchored" data-anchor-id="kolmogorov-smirnov-test">Kolmogorov-Smirnov Test</h3>
-<p>To assess the normality of the numerical variables (<code>mileage</code> and <code>sentiment</code>), we used the Kolmogorov-Smirnov test. The results indicated that both variables appear to be normally distributed: - <strong>Sentiment</strong>: p-value ≈ 0.198 - <strong>Mileage</strong>: p-value ≈ 0.091</p>
+<p>To assess the normality of the numerical variables (<code>mileage</code> and <code>sentiment</code>), we used the Kolmogorov-Smirnov test. The results indicated that both variables appear to be normally distributed:</p>
+<ul>
+<li><strong>Sentiment</strong>: p-value ≈ 0.198</li>
+<li><strong>Mileage</strong>: p-value ≈ 0.091</li>
+</ul>
 <p>Since the p-values are greater than 0.05, we fail to reject the null hypothesis, concluding that both variables are likely normally distributed.</p>
-<hr>
 </section>
 <section id="t-tests-continuous-vs.-binary-variables" class="level3">
 <h3 class="anchored" data-anchor-id="t-tests-continuous-vs.-binary-variables">t-Tests (Continuous vs.&nbsp;Binary Variables)</h3>
-<p>We performed t-tests to compare the means of numerical variables (<code>sentiment</code> and <code>mileage</code>) across each binary variable in the dataset. For every combination: - The p-values were greater than 0.05. - This indicates that we fail to reject the null hypothesis, suggesting no significant differences in means between the numerical variables from the lens of the the binary features.</p>
-<hr>
+<p>We performed t-tests to compare the means of numerical variables (<code>sentiment</code> and <code>mileage</code>) across each binary variable in the dataset. For every combination:</p>
+<ul>
+<li>The p-values were greater than 0.05.</li>
+<li>This indicates that we fail to reject the null hypothesis, suggesting no significant differences in means between the numerical variables from the lens of the the binary features.</li>
+</ul>
 </section>
 <section id="chi-squared-tests-categorical-features" class="level3">
 <h3 class="anchored" data-anchor-id="chi-squared-tests-categorical-features">Chi-Squared Tests (Categorical Features)</h3>
-<p>We used chi-squared tests to examine the independence between all pairs of categorical variables (<code>traffic</code>, <code>terrain</code>, <code>scenery</code>, <code>state1</code>, and <code>state2</code>). The results revealed statistically significant associations for the following pairs: - <strong>Traffic vs.&nbsp;Terrain</strong>: p-value ≈ 0.039 - <strong>Terrain vs.&nbsp;State1</strong>: p-value ≈ 0.033 - <strong>State1 vs.&nbsp;State2</strong>: p-value ≈ 5.61e-11</p>
+<p>We used chi-squared tests to examine the independence between all pairs of categorical variables (<code>traffic</code>, <code>terrain</code>, <code>scenery</code>, <code>state1</code>, and <code>state2</code>). The results revealed statistically significant associations for the following pairs:</p>
+<ul>
+<li><strong>Traffic vs.&nbsp;Terrain</strong>: p-value ≈ 0.039</li>
+<li><strong>Terrain vs.&nbsp;State1</strong>: p-value ≈ 0.033</li>
+<li><strong>State1 vs.&nbsp;State2</strong>: p-value ≈ 5.61e-11</li>
+</ul>
 <p>For these pairs, we reject the null hypothesis at a significance level of 0.05, concluding that these categorical variables are not independent. All other pairs yielded p-values greater than 0.05, indicating no evidence of dependence.</p>
-<hr>
 </section>
 <section id="anova-tests-continuous-vs.-categorical-variables" class="level3">
 <h3 class="anchored" data-anchor-id="anova-tests-continuous-vs.-categorical-variables">ANOVA Tests (Continuous vs.&nbsp;Categorical Variables)</h3>
-<p>We conducted ANOVA tests to compare the means of continuous variables (<code>sentiment</code> and <code>mileage</code>) across the levels of categorical variables. Notable results include: - <strong>Sentiment across Terrain Levels</strong>: p-value ≈ 0.028 - This suggests a significant difference in sentiment means across terrain categories, leading us to reject the null hypothesis. - <strong>Sentiment across Traffic Levels</strong>: p-value ≈ 0.059 - Although this result is close, it does not meet the 0.05 significance threshold.</p>
+<p>We conducted ANOVA tests to compare the means of continuous variables (<code>sentiment</code> and <code>mileage</code>) across the levels of categorical variables. Notable results include:</p>
+<ul>
+<li><strong>Sentiment across Terrain Levels</strong>: p-value ≈ 0.028
+<ul>
+<li>This suggests a significant difference in sentiment means across terrain categories, leading us to reject the null hypothesis.</li>
+</ul></li>
+<li><strong>Sentiment across Traffic Levels</strong>: p-value ≈ 0.059
+<ul>
+<li>Although this result is close, it does not meet the 0.05 significance threshold.</li>
+</ul></li>
+</ul>
 <p>For all other tests, the p-values were greater than 0.05, indicating no significant differences in means across the levels of the binary or categorical variables.</p>
-<hr>
 </section>
 <section id="statistical-summary" class="level3">
 <h3 class="anchored" data-anchor-id="statistical-summary">Statistical Summary</h3>
@@ -261,10 +299,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="conclusion-and-next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion-and-next-steps">Conclusion and Next Steps</h2>
-<p>The EDA revealed limited patterns for effectively grouping trails. While the correlation matrix and scatter plots showed minimal relationships, the insights into distributions and rating combinations inform our understanding of the data. These findings will guide the next steps: - <strong>Modeling</strong>: Explore whether machine learning can identify subtle patterns. - <strong>Feature Engineering</strong>: Consider different variable relationships or transformations to improve clustering potential.</p>
+<p>The EDA revealed limited patterns for effectively grouping trails. While the correlation matrix and scatter plots showed minimal relationships, the insights into distributions and rating combinations inform our understanding of the data. These findings will guide the next steps:</p>
+<ul>
+<li><strong>Modeling</strong>: Explore whether machine learning can identify subtle patterns.</li>
+<li><strong>Feature Engineering</strong>: Consider different variable relationships or transformations to improve clustering potential.</li>
+</ul>
 <p>All visualizations, including heatmaps, bar charts, and scatter plots, as well as statistical testing outputs, can be found in the <strong>Code</strong> section below.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

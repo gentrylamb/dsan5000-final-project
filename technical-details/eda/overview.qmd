@@ -1,16 +1,22 @@
-## Overview
+# Introduction and Motivation
 
 With our processed data, we created numerous visualizations to uncover the underlying patterns in the bike trail dataset. Most of the analyses focused on univariate relationships, though we also explored some bivariate relationships, particularly between trail ratings. Additionally, we examined the potential for clustering by comparing mileage with sentiment, using the trail's scenery score as a color-coded feature.
+
+# Overview Of Methodolody
 
 ## Univariate Analysis
 
 ### Numerical Variables
+
 We analyzed the distributions of numerical variables, particularly **mileage** and **sentiment**:
+
 - **Mileage**: A discrete variable, categorized into bins for easier analysis. The distribution shows that most trails fall within the 10-120 mile range, with a slight right skew indicating a few longer trails (up to 175 miles).
 - **Sentiment**: A continuous variable analyzed using Kernel Density Estimation. The distribution reveals that most sentiments are positive, concentrated within the 0-0.8 range. The bimodal nature of the distribution indicates peaks around 0 and 0.6.
 
 ### Categorical Variables
+
 Bar charts helped us visualize the distributions of trail ratings—**terrain**, **traffic**, and **scenery**:
+
 - **Terrain**: The only rating using the full range (1-5). Most trails are rated 3, with fewer trails rated 4 or 5.
 - **Traffic**: Ranges from 1-4, with most trails rated 2 or 3.
 - **Scenery**: Restricted to scores of 1-3, with the majority of trails rated 1 or 2.
@@ -18,17 +24,21 @@ Bar charts helped us visualize the distributions of trail ratings—**terrain**,
 ## Bivariate Analysis
 
 ### Heatmaps
+
 We explored relationships between trail ratings using heatmaps:
+
 - **Terrain vs. Scenery**: The combination of terrain (3) and scenery (1) is the most frequent.
 - **Terrain vs. Traffic**: The most common combination is when both ratings are 3.
 - **Traffic vs. Scenery**: Most common combinations are scenery (1) and traffic (2) as well as scenery (2) and traffic (3).
 
 ### Correlation Analysis
+
 A correlation matrix comparing **mileage**, **sentiment**, and the three ratings showed no strong correlations. However, **sentiment** and **terrain rating** had the highest correlation, suggesting that challenging terrains might lead to more negative sentiments.
 
 ## Multivariate Analysis
 
 To identify potential clusters, we visualized **distance** vs. **sentiment**, color-coded by the **scenery score** and annotated with the **loop** variable (loop vs. non-loop trails). The scatter plot revealed:
+
 - No clear clusters based on distance and sentiment.
 - Scenery scores often grouped closely, with no discernible differences between loop and non-loop trails.
 
@@ -37,33 +47,35 @@ To identify potential clusters, we visualized **distance** vs. **sentiment**, co
 We conducted a series of statistical tests to analyze the relationships between numerical, binary, and categorical features in our dataset. Below, we outline the methodology and results for each type of test:
 
 ### Kolmogorov-Smirnov Test
+
 To assess the normality of the numerical variables (`mileage` and `sentiment`), we used the Kolmogorov-Smirnov test. The results indicated that both variables appear to be normally distributed:
+
 - **Sentiment**: p-value ≈ 0.198
 - **Mileage**: p-value ≈ 0.091
 
 Since the p-values are greater than 0.05, we fail to reject the null hypothesis, concluding that both variables are likely normally distributed.
 
----
-
 ### t-Tests (Continuous vs. Binary Variables)
+
 We performed t-tests to compare the means of numerical variables (`sentiment` and `mileage`) across each binary variable in the dataset. For every combination:
+
 - The p-values were greater than 0.05.
 - This indicates that we fail to reject the null hypothesis, suggesting no significant differences in means between the numerical variables from the lens of the the binary features.
 
----
-
 ### Chi-Squared Tests (Categorical Features)
+
 We used chi-squared tests to examine the independence between all pairs of categorical variables (`traffic`, `terrain`, `scenery`, `state1`, and `state2`). The results revealed statistically significant associations for the following pairs:
+
 - **Traffic vs. Terrain**: p-value ≈ 0.039
 - **Terrain vs. State1**: p-value ≈ 0.033
 - **State1 vs. State2**: p-value ≈ 5.61e-11
 
 For these pairs, we reject the null hypothesis at a significance level of 0.05, concluding that these categorical variables are not independent. All other pairs yielded p-values greater than 0.05, indicating no evidence of dependence.
 
----
-
 ### ANOVA Tests (Continuous vs. Categorical Variables)
+
 We conducted ANOVA tests to compare the means of continuous variables (`sentiment` and `mileage`) across the levels of categorical variables. Notable results include:
+
 - **Sentiment across Terrain Levels**: p-value ≈ 0.028
   - This suggests a significant difference in sentiment means across terrain categories, leading us to reject the null hypothesis.
 - **Sentiment across Traffic Levels**: p-value ≈ 0.059
@@ -71,9 +83,8 @@ We conducted ANOVA tests to compare the means of continuous variables (`sentimen
 
 For all other tests, the p-values were greater than 0.05, indicating no significant differences in means across the levels of the binary or categorical variables.
 
----
-
 ### Statistical Summary
+
 - **Normality (Kolmogorov-Smirnov)**: Both `sentiment` and `mileage` are likely normally distributed.
 - **t-Tests**: No significant differences in means between numerical and binary variables.
 - **Chi-Squared Tests**: Significant associations observed for `traffic` vs. `terrain`, `terrain` vs. `state1`, and `state1` vs. `state2`.
@@ -92,6 +103,7 @@ These findings provide insights into the relationships within the dataset and gu
 ## Conclusion and Next Steps
 
 The EDA revealed limited patterns for effectively grouping trails. While the correlation matrix and scatter plots showed minimal relationships, the insights into distributions and rating combinations inform our understanding of the data. These findings will guide the next steps:
+
 - **Modeling**: Explore whether machine learning can identify subtle patterns.
 - **Feature Engineering**: Consider different variable relationships or transformations to improve clustering potential.
 

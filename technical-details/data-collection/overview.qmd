@@ -32,6 +32,7 @@ All data used in this project originates from *[Bike Washington](http://bikewash
 ## Data Structure and Format
 
 The cleaned data was exported to a CSV file consisting of:
+
 - **Rows:** 43 (one for each trail).
 - **Columns:** 6 (trail name, description, mileage, terrain rating, traffic rating, and scenery rating).
 - **Data Types:** 
