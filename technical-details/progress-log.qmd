@@ -99,3 +99,8 @@ Track progress and keep a log of member contributions to the project
 **12-10-2024**
 
 * [x] Completed the technical details for supervised learning
+
+
+**12-11-2024**
+
+* [x] Write introduction, objectives, supervised learning methodology, and part of key findings for the report
