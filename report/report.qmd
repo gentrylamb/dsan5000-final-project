@@ -79,9 +79,15 @@ Linear regression can be thought of as drawing a line of best fit through a set 
 
 In contrast, regression trees rely on decision-based rules to create a branching structure of yes/no responses, leading to a specific outcome. We used a regression tree to predict sentiment using the same 10 independent variables. After training the tree on 34 observations and testing it on unseen data, we optimized its structure by experimenting with different parameters. The resulting tree outperformed the linear regression model, improving prediction accuracy by nearly 10%, demonstrating the superiority of regression trees in this context.
 
+![Regression Hyperparameter Optimization](../assets/plots/regression-tree-hyperparameter.png)
+
 To predict whether a bike trail was a loop, we used a binary classification tree. Classification trees operate similarly to regression trees but predict discrete outcomes — in this case, whether a trail is a loop (1) or not (0). We optimized the tree’s parameters and trained it on 80% of the dataset. While the model achieved reasonable accuracy, there was significant room for improvement, indicating that additional data or alternative approaches might enhance performance.
 
+![Binary Classification Tree](../assets/plots/binary-classification-tree.png)
+
 Finally, we used a multiclass classification tree to predict the state where each bike trail begins. Unlike binary classification trees, multiclass trees predict one of several possible categories — in this case, four unique state labels in our dataset. Following the same procedure as before, we optimized the tree’s parameters and trained it on 80% of the data. However, this model performed poorly in predicting the correct state, only slightly surpassing random guessing. This outcome highlighted the complexity of the task and the limitations of the current dataset and approach.
+
+![Multiclass Classification Tree](../assets/plots/multiclass-classification-tree.png)
 
 ## Societal Implications
 

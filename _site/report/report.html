@@ -281,8 +281,26 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="supervised-learning">Supervised Learning</h3>
 <p>Linear regression can be thought of as drawing a line of best fit through a set of data points to uncover the most accurate relationship between variables. It is one of the simplest and most interpretable models for making predictions. Using data from 43 bike trails in the DMV area, we explored the predictive power of a multiple linear regression model. Specifically, we aimed to predict the sentiment of a trail (the dependent variable) based on 10 independent variables: terrain rating, traffic rating, scenery rating, normalized distance in miles, unpaved, flat, workout, park, river, and loop. After training the model on 34 observations, we assessed its performance by evaluating both the error and the goodness-of-fit. While the model predicted trail sentiment reasonably well, it ultimately failed to capture the complexity of the data, making it a poor overall fit.</p>
 <p>In contrast, regression trees rely on decision-based rules to create a branching structure of yes/no responses, leading to a specific outcome. We used a regression tree to predict sentiment using the same 10 independent variables. After training the tree on 34 observations and testing it on unseen data, we optimized its structure by experimenting with different parameters. The resulting tree outperformed the linear regression model, improving prediction accuracy by nearly 10%, demonstrating the superiority of regression trees in this context.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/plots/regression-tree-hyperparameter.png" class="img-fluid figure-img"></p>
+<figcaption>Regression Hyperparameter Optimization</figcaption>
+</figure>
+</div>
 <p>To predict whether a bike trail was a loop, we used a binary classification tree. Classification trees operate similarly to regression trees but predict discrete outcomes — in this case, whether a trail is a loop (1) or not (0). We optimized the tree’s parameters and trained it on 80% of the dataset. While the model achieved reasonable accuracy, there was significant room for improvement, indicating that additional data or alternative approaches might enhance performance.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/plots/binary-classification-tree.png" class="img-fluid figure-img"></p>
+<figcaption>Binary Classification Tree</figcaption>
+</figure>
+</div>
 <p>Finally, we used a multiclass classification tree to predict the state where each bike trail begins. Unlike binary classification trees, multiclass trees predict one of several possible categories — in this case, four unique state labels in our dataset. Following the same procedure as before, we optimized the tree’s parameters and trained it on 80% of the data. However, this model performed poorly in predicting the correct state, only slightly surpassing random guessing. This outcome highlighted the complexity of the task and the limitations of the current dataset and approach.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/plots/multiclass-classification-tree.png" class="img-fluid figure-img"></p>
+<figcaption>Multiclass Classification Tree</figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="societal-implications" class="level2">
