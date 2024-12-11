@@ -149,9 +149,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#objective" id="toc-objective" class="nav-link" data-scroll-target="#objective">Objective</a></li>
-  <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings">Key Findings</a></li>
-  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering">Clustering</a>
+  <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings">Key Findings</a>
   <ul class="collapse">
+  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering">Clustering</a></li>
   <li><a href="#predicting" id="toc-predicting" class="nav-link" data-scroll-target="#predicting">Predicting</a></li>
   </ul></li>
   <li><a href="#methodology-overview" id="toc-methodology-overview" class="nav-link" data-scroll-target="#methodology-overview">Methodology Overview</a>
@@ -225,15 +225,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="key-findings" class="level2">
 <h2 class="anchored" data-anchor-id="key-findings">Key Findings</h2>
-</section>
-<section id="clustering" class="level2">
-<h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
+<section id="clustering" class="level3">
+<h3 class="anchored" data-anchor-id="clustering">Clustering</h3>
 <ul>
 <li>Clustering results were subtle, and clear, actionable groupings were not identified.</li>
 <li>K-Means showed the most promise, though the clusters lacked obvious interpretability.</li>
 <li>Results suggest that current features may not fully capture trail distinctions; additional data could improve insights.</li>
 <li>Incorporating user feedback or geospatial data might enhance the clustering process and provide more actionable results.</li>
 </ul>
+</section>
 <section id="predicting" class="level3">
 <h3 class="anchored" data-anchor-id="predicting">Predicting</h3>
 <ul>
@@ -256,11 +256,26 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="unsupervised-learning">Unsupervised Learning</h3>
 <p>Clustering the bike trails involved multiple steps to uncover patterns and groupings within the dataset, leveraging unsupervised learning techniques. Initially, we applied dimensionality reduction methods, such as Principal Component Analysis (PCA) and t-Distributed Stochastic Neighbor Embedding (t-SNE), to simplify the dataset while preserving its essential structure. PCA helped identify the optimal number of dimensions by capturing variance, whereas t-SNE provided a more nuanced visualization of potential clusters by maintaining local similarities. Both techniques informed the subsequent clustering steps, allowing us to visualize the data in reduced dimensions and better understand its structure.</p>
 <p>Three primary clustering algorithms were then employed to group similar bike trails: K-Means, DBSCAN, and Hierarchical Clustering. K-Means, a partitioning method, was optimized using the Elbow and Silhouette methods to determine the appropriate number of clusters. This approach provided well balanced groups that logically appeared the best. The clusters formed by K-Means generally aligned with routes that shared common features, such as similar distances or ratings. The plot below illustrates the eight clusters formed by K-Means, projected onto the 2-D t-SNE space for ease of visualization.</p>
-<p><img src="../assets/plots/k-means-cluster.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/plots/k-means-cluster.png" class="img-fluid figure-img"></p>
+<figcaption>K-Means Clustering Groups</figcaption>
+</figure>
+</div>
 <p>DBSCAN, a density-based clustering method, allowed us to detect clusters of trails based on proximity and density, making it particularly useful for identifying outliers or trails that do not fit well into other groupings. While this ability is beneficial for excluding irrelevant data, it resulted in an uneven distribution of clusters. This highlights the sparsity of our data set, as we have a 15 dimensional vector space and only 43 points to fill it. Below displays the DBSCAN clusters represented in a 2-D space. Note that purple points represent “noise” or unassigned data in the DBSCAN algorithm.</p>
-<p><img src="../assets/plots/dbscan-cluster.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/plots/dbscan-cluster.png" class="img-fluid figure-img"></p>
+<figcaption>DBSCAN Clustering Groups</figcaption>
+</figure>
+</div>
 <p>Finally, Hierarchical Clustering was implemented to create a framework of the groups clusters belonged to. Specifically, we used agglomerative clustering, or “bottom-up”, where each data point starts as its own cluster and is progressively merged with others to form larger clusters until all data points are grouped. This resulted in 18 different clusters as seen in the plot below.</p>
-<p><img src="../assets/plots/hier-cluster.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/plots/hier-cluster.png" class="img-fluid figure-img"></p>
+<figcaption>Hierarchical Clustering Groups</figcaption>
+</figure>
+</div>
 </section>
 <section id="supervised-learning" class="level3">
 <h3 class="anchored" data-anchor-id="supervised-learning">Supervised Learning</h3>
@@ -272,13 +287,21 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="societal-implications" class="level2">
 <h2 class="anchored" data-anchor-id="societal-implications">Societal Implications</h2>
-<p>The results of the clustering methods revealed some groupings, but they were not particularly clear or immediately informative. Of the three methods used, K-Means produced the most interpretable results, with clusters aligning to some extent with trail features. However, the distinctions between clusters were subtle, and no definitive or obvious patterns emerged that could clearly segment trails into well-defined categories. While K-Means provided a structured grouping, these results should be approached cautiously, as the boundaries between clusters were not always intuitive or meaningful. This lack of clarity suggests that the features used in this analysis may not fully capture the nuances of trail characteristics or user preferences. As a result, the clustering outputs should be taken with a grain of salt, as they may not provide actionable insights without further refinement or additional data. While K-Means performed relatively well, the overall findings highlight the need for caution when interpreting clustering results in this context.</p>
+<p>The results of the clustering methods revealed some groupings, but they were not particularly clear or immediately informative. Of the three methods used, K-Means produced the most interpretable results, with clusters aligning to some extent with trail features. However, the distinctions between clusters were subtle, and no definitive or obvious patterns emerged that could clearly segment trails into well-defined categories. While K-Means provided a structured grouping, these results should be approached cautiously, as the boundaries between clusters were not always intuitive or meaningful. This lack of clarity suggests that the features used in this analysis may not fully capture the nuances of trail characteristics or user preferences. Contrarily, the results suggest that clustering is possible, and with enhanced data, more concrete insights may be revealed.</p>
+<p>So, although clustering results were not highly interpretable, they emphasize the need for comprehensive trail data to inform future planning efforts. These findings can inspire discussions on how urban infrastructure can better accommodate cyclists, promote sustainable commuting, and encourage healthier lifestyles. We were largely limited by available data on bike routes in DC. Additional features such as user demographics, trail usage patterns, economic data, and even community input would greatly improve the data and ensuing analysis. With richer data, future iterations of this project could generate deeper insights, making the findings more actionable and beneficial for urban development and the biking community.</p>
+<p>Improved biking infrastructure not only benefits individual riders but also fosters broader societal gains, including reduced traffic congestion, lower carbon emissions, and enhanced public health. By addressing challenges such as unclear clustering patterns, city planners can refine their approach to ensure that bike trails are designed to meet the community’s diverse needs.</p>
 </section>
 <section id="call-to-action" class="level2">
 <h2 class="anchored" data-anchor-id="call-to-action">Call to Action</h2>
+<p>The findings of this project highlight an exciting opportunity for city planners, policymakers, and community stakeholders to take meaningful steps toward improving biking infrastructure in Washington, DC. As biking continues to grow in popularity as a sustainable and healthy mode of transportation, it is imperative to ensure that trails are accessible, safe, and enjoyable for all types of riders. While the current analysis provides some insights, the clustering results reveal that further refinements are necessary to better classify and understand trail characteristics.</p>
+<p>Moving forward, city planners should consider investing in more comprehensive data collection efforts. Gathering detailed information on trail usage, user demographics, and rider feedback would enhance the ability to make meaningful clusters, which would in turn help tailor biking infrastructure to community needs. Collaborating with local organizations or even biking advocates could provide valuable perspectives and real-time feedback on trail usability.</p>
+<p>Ultimately, this project underlines the importance of continual research and innovation in urban planning. Leveraging advanced analytical and statistical methods alongside community-focused approaches will help shape a biking infrastructure that better supports the city. By taking these actions, DC can set an example for other cities striving to become more bike-friendly and environmentally conscious.</p>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This study highlights the growing importance of well-planned biking infrastructure in urban areas like Washington, DC. While the clustering results were not highly conclusive, they emphasize the potential for data-driven approaches to improve how bike trails are understood, categorized, and enhanced. Predictive modeling demonstrated the capability to estimate trail characteristics like sentiment and loop formation, though the models’ performance varied depending on the task.</p>
+<p>The analysis reveals the need for richer and more diverse data to generate actionable insights. By prioritizing comprehensive data collection and leveraging community input, city planners can better meet the needs of diverse cyclists and create a more connected, bike-friendly urban environment.</p>
+<p>These findings encourage stakeholders to act by refining data collection, collaborating with the community, and prioritizing improvements in underutilized areas. With these efforts, Washington, DC, can not only enhance its biking experience but also set a benchmark for urban cycling infrastructure nationwide.</p>
 
 
 </section>

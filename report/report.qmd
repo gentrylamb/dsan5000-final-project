@@ -33,7 +33,7 @@ We transitioned from clustering techniques to a focus on supervised learning met
 
 ## Key Findings
 
-## Clustering
+### Clustering
 
 - Clustering results were subtle, and clear, actionable groupings were not identified.
 - K-Means showed the most promise, though the clusters lacked obvious interpretability.
@@ -63,15 +63,15 @@ Clustering the bike trails involved multiple steps to uncover patterns and group
 
 Three primary clustering algorithms were then employed to group similar bike trails: K-Means, DBSCAN, and Hierarchical Clustering. K-Means, a partitioning method, was optimized using the Elbow and Silhouette methods to determine the appropriate number of clusters. This approach provided well balanced groups that logically  appeared the best. The clusters formed by K-Means generally aligned with routes that shared common features, such as similar distances or ratings. The plot below illustrates the eight clusters formed by K-Means, projected onto the 2-D t-SNE space for ease of visualization.
 
-![](../assets/plots/k-means-cluster.png)
+![K-Means Clustering Groups](../assets/plots/k-means-cluster.png)
 
 DBSCAN, a density-based clustering method, allowed us to detect clusters of trails based on proximity and density, making it particularly useful for identifying outliers or trails that do not fit well into other groupings. While this ability is beneficial for excluding irrelevant data, it resulted in an uneven distribution of clusters. This highlights the sparsity of our data set, as we have a 15 dimensional vector space and only 43 points to fill it. Below displays the DBSCAN clusters represented in a 2-D space. Note that purple points represent “noise” or unassigned data in the DBSCAN algorithm. 
 
-![](../assets/plots/dbscan-cluster.png)
+![DBSCAN Clustering Groups](../assets/plots/dbscan-cluster.png)
 
 Finally, Hierarchical Clustering was implemented to create a framework of the groups clusters belonged to. Specifically, we used agglomerative clustering, or “bottom-up”, where each data point starts as its own cluster and is progressively merged with others to form larger clusters until all data points are grouped. This resulted in 18 different clusters as seen in the plot below. 
 
-![](../assets/plots/hier-cluster.png)
+![Hierarchical Clustering Groups](../assets/plots/hier-cluster.png)
 
 ### Supervised Learning  
 
@@ -85,11 +85,24 @@ Finally, we used a multiclass classification tree to predict the state where eac
 
 ## Societal Implications
 
-The results of the clustering methods revealed some groupings, but they were not particularly clear or immediately informative. Of the three methods used, K-Means produced the most interpretable results, with clusters aligning to some extent with trail features. However, the distinctions between clusters were subtle, and no definitive or obvious patterns emerged that could clearly segment trails into well-defined categories. While K-Means provided a structured grouping, these results should be approached cautiously, as the boundaries between clusters were not always intuitive or meaningful. This lack of clarity suggests that the features used in this analysis may not fully capture the nuances of trail characteristics or user preferences. As a result, the clustering outputs should be taken with a grain of salt, as they may not provide actionable insights without further refinement or additional data. While K-Means performed relatively well, the overall findings highlight the need for caution when interpreting clustering results in this context.
+The results of the clustering methods revealed some groupings, but they were not particularly clear or immediately informative. Of the three methods used, K-Means produced the most interpretable results, with clusters aligning to some extent with trail features. However, the distinctions between clusters were subtle, and no definitive or obvious patterns emerged that could clearly segment trails into well-defined categories. While K-Means provided a structured grouping, these results should be approached cautiously, as the boundaries between clusters were not always intuitive or meaningful. This lack of clarity suggests that the features used in this analysis may not fully capture the nuances of trail characteristics or user preferences. Contrarily, the results suggest that clustering is possible, and with enhanced data, more concrete insights may be revealed. 
+
+So, although clustering results were not highly interpretable, they emphasize the need for comprehensive trail data to inform future planning efforts. These findings can inspire discussions on how urban infrastructure can better accommodate cyclists, promote sustainable commuting, and encourage healthier lifestyles. We were largely limited by available data on bike routes in DC. Additional features such as user demographics, trail usage patterns, economic data, and even community input would greatly improve the data and ensuing analysis. With richer data, future iterations of this project could generate deeper insights, making the findings more actionable and beneficial for urban development and the biking community.
+
+Improved biking infrastructure not only benefits individual riders but also fosters broader societal gains, including reduced traffic congestion, lower carbon emissions, and enhanced public health. By addressing challenges such as unclear clustering patterns, city planners can refine their approach to ensure that bike trails are designed to meet the community's diverse needs.
 
 ## Call to Action
 
+The findings of this project highlight an exciting opportunity for city planners, policymakers, and community stakeholders to take meaningful steps toward improving biking infrastructure in Washington, DC. As biking continues to grow in popularity as a sustainable and healthy mode of transportation, it is imperative to ensure that trails are accessible, safe, and enjoyable for all types of riders. While the current analysis provides some insights, the clustering results reveal that further refinements are necessary to better classify and understand trail characteristics.
 
+Moving forward, city planners should consider investing in more comprehensive data collection efforts. Gathering detailed information on trail usage, user demographics, and rider feedback would enhance the ability to make meaningful clusters, which would in turn help tailor biking infrastructure to community needs. Collaborating with local organizations or even biking advocates could provide valuable perspectives and real-time feedback on trail usability.
+
+Ultimately, this project underlines the importance of continual research and innovation in urban planning. Leveraging advanced analytical and statistical methods alongside community-focused approaches will help shape a biking infrastructure that better supports the city. By taking these actions, DC can set an example for other cities striving to become more bike-friendly and environmentally conscious.
 
 ## Conclusion
 
+This study highlights the growing importance of well-planned biking infrastructure in urban areas like Washington, DC. While the clustering results were not highly conclusive, they emphasize the potential for data-driven approaches to improve how bike trails are understood, categorized, and enhanced. Predictive modeling demonstrated the capability to estimate trail characteristics like sentiment and loop formation, though the models' performance varied depending on the task.
+
+The analysis reveals the need for richer and more diverse data to generate actionable insights. By prioritizing comprehensive data collection and leveraging community input, city planners can better meet the needs of diverse cyclists and create a more connected, bike-friendly urban environment. 
+
+These findings encourage stakeholders to act by refining data collection, collaborating with the community, and prioritizing improvements in underutilized areas. With these efforts, Washington, DC, can not only enhance its biking experience but also set a benchmark for urban cycling infrastructure nationwide.
