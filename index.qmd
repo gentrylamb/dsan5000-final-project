@@ -18,8 +18,8 @@ Cycling is integral to sustainable urban mobility, offering benefits such as red
 - Data professionals looking to replicate analysis in other cities
 
 ## Key Topics
-- KMeans Clustering
-- Spectral Clustering
+- K-Means Clustering
+- Dimensionality Reduction (PCA/t-SNE)
 - Regression Decision Tree Classificaiton
 - Predictive Models
 - Data Visualization
