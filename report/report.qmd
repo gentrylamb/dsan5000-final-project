@@ -61,7 +61,13 @@ These are just examples, you can use any structure that is suitable for your pro
 
 ## Introduction
 
-Going to a new city can be overwhelming, especially when considering all of the new traditions, attractions, and outdoor activities that come with it. For avid biking fans, this stress is further amplified when trying to find new bike paths to explore. Which bike paths offer the best scenery around the city? Which paths are best for getting to work, going to the grocery store, or going somewhere else important? All of these are natural questions that come to mind when thinking about the biking scene of a new city. Even for those not passionate about biking, companies like Lime, Capital Bikeshare, and others provide accessible eBikes for those looking to get off their feet. Biking, both as a hobby and as a simple mode of transportation, is an essential part of a city's culture. Not only that, it helps lower carbon emissions, aiding in the environmental footprint a city has. Undoubtedly, biking is an essential activity in the lives of many, especially those living in Washington, DC. It can be a daunting task to look at all bike trails in the area to find ones that best fit your goals. This study attempts to rectify that concern by clustering bike paths based on their inherent qualities. Specifically, we focus on three qualities to cluster the bike paths effectively - difficulty of terrain, the amount of traffic the bike path sees, and the scenery of the bike path. With these characteristics, we hope to group similar bike paths together, allowing the public to see which paths are best for their needs.
+Exploring a new city can be an overwhelming experience, especially when navigating its unique traditions, attractions, and outdoor activities. For avid biking enthusiasts, this challenge is heightened by the need to find suitable bike paths to explore. Questions like *Which trails offer the best scenery around the city?* and *Which paths are most practical for commuting, shopping, or other daily activities?* naturally arise when diving into the biking landscape of an unfamiliar area.
+
+Even for those less passionate about cycling, services like Lime, Capital Bikeshare, and others have made eBikes widely accessible, offering a convenient and sustainable way to explore the city. Biking, whether as a recreational activity or a mode of transportation, is a vital aspect of urban culture. Beyond its practical benefits, cycling also contributes to reducing carbon emissions, playing a critical role in a city's environmental sustainability efforts.
+
+For residents and visitors of Washington, DC, biking is an integral part of city life. However, identifying bike trails that align with personal goals—whether for leisure, fitness, or utility—can be a daunting task. This study aims to address that challenge by clustering bike trails based on their inherent qualities and predicting characteristics for new or unexplored paths.
+
+We focused on a variety of trail attributes to inform our analysis. These included ratings for terrain difficulty, traffic levels, and scenic beauty. Additionally, we considered sentiment analysis, trail distances, and structural aspects such as whether a trail forms a loop. By leveraging these characteristics, our goal is to group similar bike paths together, providing users with actionable insights into which trails best meet their needs.
 
 ## Objective 
 
@@ -69,13 +75,18 @@ The primary goal of this research is to analyze and categorize the bike trails i
 
 By employing different clustering algorithms, we attempt to group bike trails with similar characteristics such as distance, terrain, traffic and more. This will allow cyclists to easily identify trails that best match their preferences, whether they seek leisurely recreation or a physically demanding workout. Beyond just cyclists, grouping data can be used by city planners in addressing gaps in trail diversity when expanding trails to new areas. For example, if there are few trails catering to beginners with flat terrain and low traffic, planners can prioritize adding such routes to balance the network and make cycling more accessible.
 
-*Predicting route attributes - talk about supervised learning and trying to make a model that can predict things about the routes based on other features*
+We transitioned from clustering techniques to a focus on supervised learning methods with the objective of accurately predicting key qualities of bike trails. Specifically, we utilized decision trees to achieve this goal. Predictive modeling in this context offers significant potential to enhance the overall biking experience and address various practical needs. For instance, an effective model can predict trail sentiment — a measure that provides insight into factors such as the level of tourism or crowding on a trail. Cyclists seeking quieter routes can use these predictions to identify less busy trails, thereby tailoring their experience to personal preferences. Additionally, supervised learning can provide insights into the structural characteristics of a trail, such as whether it forms a loop. This type of information not only improves a cyclist’s understanding of a trail but also contributes to safety by helping riders make more informed decisions about their routes. Overall, our objective is to leverage supervised learning techniques to deliver actionable insights that optimize the biking experience and enhance trail accessibility, safety, and enjoyment.
 
 ## Key Findings
 
 Clustering is possible but not the most interpretable ... 
 
+### Supervised Learning
 
+- A simple linear model predicted sentiment with roughly 86% success. However, it was deemed a poor fit for the data, having an R^2 value of 0.03.
+- Using a more advanced model, we successfully predicted the sentiment of previously unseen trails with over 95% accuracy (equivalent to a 4.7% error rate).
+- Predicting whether a trail forms a loop proved more challenging, with the model achieving an accuracy of around 78%.
+- Lastly, predicting the state in which a trail begins was particularly difficult, with the model reaching only 44% accuracy.
 
 ## Methodology Overview
 
@@ -89,7 +100,13 @@ Unsupervised learning methods
 
 ### Predictions 
 
-Supervised learning methods 
+Linear regression can be thought of as drawing a line of best fit through a set of data points to uncover the most accurate relationship between variables. It is one of the simplest and most interpretable models for making predictions. Using data from 43 bike trails in the DMV area, we explored the predictive power of a multiple linear regression model. Specifically, we aimed to predict the sentiment of a trail (the dependent variable) based on 10 independent variables: terrain rating, traffic rating, scenery rating, normalized distance in miles, unpaved, flat, workout, park, river, and loop. After training the model on 34 observations, we assessed its performance by evaluating both the error and the goodness-of-fit. While the model predicted trail sentiment reasonably well, it ultimately failed to capture the complexity of the data, making it a poor overall fit.
+
+In contrast, regression trees rely on decision-based rules to create a branching structure of yes/no responses, leading to a specific outcome. We used a regression tree to predict sentiment using the same 10 independent variables. After training the tree on 34 observations and testing it on unseen data, we optimized its structure by experimenting with different parameters. The resulting tree outperformed the linear regression model, improving prediction accuracy by nearly 10%, demonstrating the superiority of regression trees in this context.
+
+To predict whether a bike trail was a loop, we used a binary classification tree. Classification trees operate similarly to regression trees but predict discrete outcomes — in this case, whether a trail is a loop (1) or not (0). We optimized the tree’s parameters and trained it on 80% of the dataset. While the model achieved reasonable accuracy, there was significant room for improvement, indicating that additional data or alternative approaches might enhance performance.
+
+Finally, we used a multiclass classification tree to predict the state where each bike trail begins. Unlike binary classification trees, multiclass trees predict one of several possible categories — in this case, four unique state labels in our dataset. Following the same procedure as before, we optimized the tree’s parameters and trained it on 80% of the data. However, this model performed poorly in predicting the correct state, only slightly surpassing random guessing. This outcome highlighted the complexity of the task and the limitations of the current dataset and approach.
 
 ## Societal Implications
 
