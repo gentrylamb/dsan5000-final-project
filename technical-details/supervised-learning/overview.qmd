@@ -1,4 +1,4 @@
-# Supervised Learning - Leveraging Linear Regression and Decision Trees
+# Introduction and Motivation
 
 In this analysis, we explore the performance of regression and classification decision tree models to understand the intricate relationships within our dataset. We found that the regression tree outperformed the linear regression model, likely because decision trees do not assume any specific functional form or distribution, whereas linear regression attempts to fit a straight line through the data, which may not be suitable for complex relationships. Decision trees, by learning simple decision rules from features, are better equipped to capture the underlying patterns in the bike path dataset.
 
@@ -21,7 +21,7 @@ In this analysis, we explore the performance of regression and classification de
 ### 2. **Dataset Proportions**
    - The dataset was divided such that 80% was used for training, and 20% was reserved for testing.
 
-## Model Selection
+# Overview of Methods
 
 ### 1. **Model Rationale**
    - Decision tree models were selected due to their flexibility in capturing complex, non-linear relationships. We chose regression trees for continuous targets and classification trees for categorical targets.

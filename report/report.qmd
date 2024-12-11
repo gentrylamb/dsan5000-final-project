@@ -51,24 +51,6 @@ These are just examples, you can use any structure that is suitable for your pro
 - **Conclusion**: Recap the main findings and societal impact.
    *Example*: "Understanding pollution's health impacts will help create healthier cities."
 
-### Case-2: Business-Oriented Projects
-
-- **Executive Summary**: Summarize key findings and their relevance to business goals.
-   *Example*: "This report predicts customer churn and offers strategies to reduce churn by 15%."
-- **Objective**: Define the problem or question addressed.
-   *Example*: "This project aims to identify the drivers of customer churn."
-- **Key Insights**: Present the most important, actionable insights.
-   *Example*: "Customers who interact with support twice within 30 days are 25% less likely to churn."
-- **Visualizations**: Use clear graphs to convey key insights.
-   *Example*: A bar chart showing churn likelihood based on engagement.
-- **Business Implications**: Explain how findings impact business outcomes and offer specific recommendations.
-   *Example*: "Focus retention efforts on low-engagement customers."
-- **Recommendations**: Provide clear, actionable steps with projections.
-   *Example*: "Implement an automated retention campaign, reducing churn by 10%."
-- **Conclusion**: Summarize findings and suggest next steps.
-   *Example*: "Addressing churn drivers can reduce loss and improve profitability."
-- **Appendix** (Optional): Additional charts or explanations for further insights.
-
 ## Final Tips
 
 - **Simplicity**: Avoid jargon; focus on business-relevant insights.
@@ -83,4 +65,39 @@ Going to a new city can be overwhelming, especially when considering all of the 
 
 ## Objective 
 
-Our objective is to group similar bike paths together based on three discrete variables - terrain, traffic, and scenery.
+The primary goal of this research is to analyze and categorize the bike trails in Washington, DC, to provide valuable insights that help cyclists make informed decisions about their routes. By examining key characteristics of the trails, such as distance, terrain difficulty, traffic conditions, and scenic value, we aim to create a comprehensive understanding of the biking infrastructure in the city. The study specifically focuses on the objectives of trail clustering and predicting route attributes. 
+
+By employing different clustering algorithms, we attempt to group bike trails with similar characteristics such as distance, terrain, traffic and more. This will allow cyclists to easily identify trails that best match their preferences, whether they seek leisurely recreation or a physically demanding workout. Beyond just cyclists, grouping data can be used by city planners in addressing gaps in trail diversity when expanding trails to new areas. For example, if there are few trails catering to beginners with flat terrain and low traffic, planners can prioritize adding such routes to balance the network and make cycling more accessible.
+
+*Predicting route attributes - talk about supervised learning and trying to make a model that can predict things about the routes based on other features*
+
+## Key Findings
+
+Clustering is possible but not the most interpretable ... 
+
+
+
+## Methodology Overview
+
+### Data
+
+To gain a comprehensive understanding of bike trails in Washington, DC, we gathered data from [bikewashington.org](http://bikewashington.org/routes/index.htm), which includes information on trail names, descriptions, distances, and ratings for terrain, traffic, and scenery. We used advanced data analysis techniques to process this information, including statistical tests to compare trail characteristics and clustering methods to group similar trails. Additionally, we explored sentiment analysis of trail descriptions to gauge the general tone and rider experience.
+
+### Clustering 
+
+Unsupervised learning methods
+
+### Predictions 
+
+Supervised learning methods 
+
+## Societal Implications
+
+
+
+## Call to Action
+
+
+
+## Conclusion
+
