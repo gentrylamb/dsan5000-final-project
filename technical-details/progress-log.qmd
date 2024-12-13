@@ -60,6 +60,10 @@ Track progress and keep a log of member contributions to the project
 * [x] Write methodology, societal implications, and call to action portions of the Final report
 
 
+**12-12-2024**
+
+* [x] Finalize details of report and prepare for submission
+
 
 ## Member-2:
 

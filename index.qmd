@@ -62,6 +62,7 @@ Unlike the previous two papers, this research, "A Taxonomy of Machine Learning C
 Gentry Lamb is a Graduate Student at Georgetown University pursuing a Master’s in Data Science and Analytics. He received a Bachelor’s in Operations Research in 2024 from the United States Air Force Academy in Colorado Springs, CO. He was also commissioned into the U.S. Air Force as a 2nd Lt and will be attending Pilot Training at Vance AFB in Oklahoma after graduating from Georgetown. After his time in the Air Force, he looks forward to working as a data scientist or operations analyst.
 
 **Education:**
+
 - 2024: United States Air Force Academy (USAFA) - B.S. Operations Research  
 - 2025: Georgetown University - M.S. Data Science and Analytics (Current)
 
@@ -76,6 +77,7 @@ Gentry Lamb is a Graduate Student at Georgetown University pursuing a Master’s
 Chase Clemence is currently a graduate student at Georgetown University pursuing a Master’s of Science in Data Science & Analytics. He received a Bachelor’s of Science in Operations Research from the United States Air Force Academy in 2024, commissioning as a 2nd Lieutenant. After obtaining his degree, he will head to Goodfellow AFB in San Angelo, Texas, to start training as a Military Intelligence Officer in the United States Air Force. Following his Air Force career, he aspires to earn an MBA and work in industry. He hopes having a background in data science and business will make him an effective leader in the civilian sector.
 
 **Education:**
+
 - 2024: United States Air Force Academy (USAFA) - B.S. Operations Research  
 - 2025: Georgetown University - M.S. Data Science and Analytics (Current)
 
